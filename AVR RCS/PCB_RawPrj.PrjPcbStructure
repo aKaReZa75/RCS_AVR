@@ -1,1 +1,7 @@
-Record=TopLevelDocument|FileName=Sheet1.SchDoc|SheetNumber=1
+Record=TopLevelDocument|FileName=aLCD.SchDoc|SheetNumber=6
+Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Controller.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=GSM.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Inputs.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Outputs.SchDoc|SheetNumber=3
+Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Remote.SchDoc|SheetNumber=7
+Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Supply.SchDoc|SheetNumber=1
