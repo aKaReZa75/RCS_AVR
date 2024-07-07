@@ -186,16 +186,16 @@ GenerateClassCluster=0
 DocumentUniqueId=YNMJTBSW
 
 [Parameter1]
-Name=Revision
-Value=1.0
+Name=CompanyName
+Value=aKaReZa
 
 [Parameter2]
 Name=Project_Name
 Value=AVR RCS
 
 [Parameter3]
-Name=CompanyName
-Value=aKaReZa
+Name=Revision
+Value=1.0
 
 [Configuration1]
 Name=Sources
