@@ -5,6 +5,7 @@ Videos
 -------------
 [![](https://img.shields.io/badge/RCS-AVR,PART_A-violet)](https://youtu.be/KLH8E3yOOMw)
 [![](https://img.shields.io/badge/RCS-AVR,PART_B-violet)](https://youtu.be/-EyT4b3-hQU)
+[![](https://img.shields.io/badge/RCS-AVR,PART_C-violet)](https://youtu.be/bh53Z6KH728)
 
 Contact Us
 -------------
