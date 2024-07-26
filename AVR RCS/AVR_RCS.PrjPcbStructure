@@ -1,7 +1,8 @@
-Record=TopLevelDocument|FileName=aLCD.SchDoc|SheetNumber=6
-Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Controller.SchDoc|SheetNumber=2
-Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=GSM.SchDoc|SheetNumber=5
-Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Inputs.SchDoc|SheetNumber=4
-Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Outputs.SchDoc|SheetNumber=3
-Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Remote.SchDoc|SheetNumber=7
-Record=NoMainPathDocument|SourceDocument=aLCD.SchDoc|FileName=Supply.SchDoc|SheetNumber=1
+Record=TopLevelDocument|FileName=Main.SchDoc|SheetNumber=1
+Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_aLCD|SchDesignator=U_aLCD|FileName=aLCD.SchDoc|SheetNumber=7|SymbolType=Normal|RawFileName=aLCD.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Controller|SchDesignator=U_Controller|FileName=Controller.SchDoc|SheetNumber=3|SymbolType=Normal|RawFileName=Controller.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_GSM|SchDesignator=U_GSM|FileName=GSM.SchDoc|SheetNumber=6|SymbolType=Normal|RawFileName=GSM.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Inputs|SchDesignator=U_Inputs|FileName=Inputs.SchDoc|SheetNumber=5|SymbolType=Normal|RawFileName=Inputs.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Outputs|SchDesignator=U_Outputs|FileName=Outputs.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=Outputs.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Remote|SchDesignator=U_Remote|FileName=Remote.SchDoc|SheetNumber=8|SymbolType=Normal|RawFileName=Remote.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Supply|SchDesignator=U_Supply|FileName=Supply.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=Supply.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
