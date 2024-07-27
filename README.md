@@ -1,6 +1,11 @@
 # RCS_AVR
 AVR, Relay Control By SMS
 
+This is a Embedded System AVR learning project with interactive learning approach.
+In this course, we discribe some technical specifications and deployment them step by step.
+The main parts are contained Power Supply, GSM, AVR, Relay control ,remote control (ASK), Inputs ( keys, sensors, ...), output ( LCD, buzzer, ...) and their communication ( UART, ... ).
+This course is in Persian Language.
+
 Videos
 -------------
 [![](https://img.shields.io/badge/RCS-AVR,PART_A-violet)](https://youtu.be/KLH8E3yOOMw)
