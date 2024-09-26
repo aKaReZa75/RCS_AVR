@@ -6,3 +6,4 @@ Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Inputs|SchDesignator=
 Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Outputs|SchDesignator=U_Outputs|FileName=Outputs.SchDoc|SheetNumber=4|SymbolType=Normal|RawFileName=Outputs.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Remote|SchDesignator=U_Remote|FileName=Remote.SchDoc|SheetNumber=8|SymbolType=Normal|RawFileName=Remote.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
 Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=U_Supply|SchDesignator=U_Supply|FileName=Supply.SchDoc|SheetNumber=2|SymbolType=Normal|RawFileName=Supply.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=NoMainPathDocument|SourceDocument=Main.SchDoc|FileName=Detect220V.SchDoc|SheetNumber=9
