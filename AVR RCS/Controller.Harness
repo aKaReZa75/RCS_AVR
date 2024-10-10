@@ -1,4 +1,3 @@
 aLCD=aLCD_RS,aLCD_EN,aLCD_D4,aLCD_D5,aLCD_D6,aLCD_D7
 MotorSignals=Speed,Motor,Pump
-Switch=SW_High,SW_Low
 UART=RX,TX
