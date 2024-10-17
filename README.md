@@ -11,7 +11,7 @@ Videos
 [![](https://img.shields.io/badge/RCS-AVR,PART_D-violet)](https://youtu.be/vWiSh-8D4kY)
 [![](https://img.shields.io/badge/RCS-AVR,PART_E-violet)](https://youtu.be/V0r4XVZA-bk)
 [![](https://img.shields.io/badge/RCS-AVR,PART_F-violet)](https://youtu.be/U1JYVCcn27k)
-[![](https://img.shields.io/badge/RCS-AVR,PART_G-violet)](https://youtu.be/pVAue7mcq5w)
+[![](https://img.shields.io/badge/RCS-AVR,PART_G-violet)](https://youtu.be/6VrP90s_HFc)
 
 Contact Us
 -------------
