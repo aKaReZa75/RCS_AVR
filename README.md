@@ -12,6 +12,7 @@ Videos
 [![](https://img.shields.io/badge/RCS-AVR,PART_E-violet)](https://youtu.be/V0r4XVZA-bk)
 [![](https://img.shields.io/badge/RCS-AVR,PART_F-violet)](https://youtu.be/U1JYVCcn27k)
 [![](https://img.shields.io/badge/RCS-AVR,PART_G-violet)](https://youtu.be/6VrP90s_HFc)
+[![](https://img.shields.io/badge/RCS-AVR,PART_H-violet)](https://youtu.be/ByZ2kSmf6VU)
 
 Contact Us
 -------------
