@@ -1,29 +1,30 @@
-# Rrelay Control with SMS Project
-The RCS_AVR project is an Embedded System AVR learning initiative with an interactive and hands-on approach. This project focuses on relay control via SMS, utilizing various components to provide a comprehensive learning experience.
-
+# 📲 Relay Control with SMS using an AVR microcontroller  
+The RCS_AVR project is an interactive, hands-on initiative focused on remote relay control via SMS. 
+It includes components like a Power Supply Unit (PSU) for multiple voltage levels, a GSM Module for SMS command processing, an AVR Microcontroller (ATMEGA328) for control logic, and various inputs and outputs for seamless interaction. 
+Communication occurs through protocols like UART. 
+This project provides practical insights into embedded systems, covering GSM module integration, power supply management, microcontroller interfacing, remote control mechanisms, and sensor data processing.
 This project serves as an excellent platform for learning and experimenting with embedded systems, offering practical insights into real-world applications.
 
-### Components:
-- **Power Supply Unit (PSU)**: Provides different voltage levels (12V, 5V, 4V, 3.3V) for powering the modules.
-- **GSM Module**: Enables the reception and processing of SMS commands for controlling the relay.
-- **Microcontroller (MC)**: Central processing unit that interfaces with all other components, executing control logic.
-- **Relay**: Facilitates the switching of external devices based on SMS or remote control commands.
-- **Remote Control (ASK)**: Offers remote control capabilities.
-- **Input Module**: Manages inputs from keys, sensors, and other devices.
-- **Sensor Module**: Monitors environmental parameters and sends data to the microcontroller.
+### 📋 Additional Details:
+| Component               | Specification                        |
+|-------------------------|--------------------------------------|
+| **Microcontroller**     | ATMEGA328                            |
+| **Operating Frequency** | 16MHz                                |
+| **Programming Language**| Embedded C                           |
+| **Compiler**            | avr-gcc                              |
+| **Editor**              | Visual Studio Code (VsCode)          |
+| **IDE**                 | PlatformIO                           |
+| **PCB Design Software** | Altium Designer                      |
+| **Version Control**     | Git, GitHub                          |
+| **Communication Module**| GSM (Quectel MC66)                   |
+| **Remote Control**      | RXB22 433 MHZ                        |
+| **Display**             | Character LCD 16x2                   |
+| **Output**              | Relay, SPDT, 12V, 22X16mm, 240V/7A   |
+| **Temperature Sensor**  | AHT20                                |
+| **5V Regulator**        | TPS54302                             |
+| **4V Regulator**        | TPS54302                             |
+| **3.3V Regulator**      | AMS1117-3.3V                         |
 
-### Communication
-The components communicate through various protocols, including UART, ensuring seamless interaction and control.
-
-### Project Status
-The hardware design for the RCS_AVR project is complete. Currently, the assembly and programming phases are ongoing.
-
-### Learning Objectives
-- Understanding GSM module integration for SMS-based control.
-- Managing power supply for embedded systems.
-- Hands-on experience with microcontroller programming and interfacing.
-- Exploring remote control mechanisms using ASK modules.
-- Implementing sensor data acquisition and processing.
 
 # 💻 How to Use Git and GitHub
 
@@ -57,7 +58,7 @@ git clone https://github.com/aKaReZa75/RCS_AVR
 
 **Note:** Please keep in mind that the numbers displayed in the image might vary when you perform the same actions. This is because repositories are continuously being updated and expanded. Nevertheless, the overall process remains unchanged.
 
-# PCB Desing Videos
+# 🎬 PCB Desing Videos
 - [aKaReZa 70 - RCS, AVR - PART A](https://youtu.be/KLH8E3yOOMw)
    ---
   This first video in the series covers designing a project from idea to final product, including conceptual design, casing selection, schematic creation in Altium Designer, and more.
