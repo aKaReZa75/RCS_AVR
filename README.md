@@ -5,6 +5,8 @@ Communication occurs through protocols like UART.
 This project provides practical insights into embedded systems, covering GSM module integration, power supply management, microcontroller interfacing, remote control mechanisms, and sensor data processing.
 This project serves as an excellent platform for learning and experimenting with embedded systems, offering practical insights into real-world applications.
 
+![RCS](Images/RCS1.png)
+
 ### 📋 Additional Details:
 | Component               | Specification                        |
 |-------------------------|--------------------------------------|
