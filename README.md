@@ -7,6 +7,9 @@ This project serves as an excellent platform for learning and experimenting with
 
 ![RCS](Images/RCS1.png)
 
+> [!CAUTION]
+> It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
+
 ### 📋 Additional Details:
 | Component               | Specification                        |
 |-------------------------|--------------------------------------|
@@ -27,8 +30,18 @@ This project serves as an excellent platform for learning and experimenting with
 | **4V Regulator**        | TPS54302                             |
 | **3.3V Regulator**      | AMS1117-3.3V                         |
 
-> [!CAUTION]
-> It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
+# 🔗 Resources
+  Here you'll find a collection of useful links and documents related to the RCS_AVR project.  
+  These resources include datasheets, tutorials, and essential tools to get you started and guide you through.
+  
+> [!TIP]
+> The resources are detailed in the sections below.  
+> To access any of them, simply click on the corresponding blue link.
+
+- [Video PlayList](./Videos.md)
+  ---  
+  All educational videos related to this topic are available at this link.  
+
 
 # 💻 How to Use Git and GitHub
 To access the repository files and save them on your computer, there are two methods available:
@@ -105,39 +118,6 @@ Follow these steps:
 > - No Updates: Keep in mind that downloading the repository as a ZIP file does not allow you to receive updates.    
 >   If the repository is updated, you will need to download it again manually.  
 > - Ease of Use: This method is simpler and suitable for users who are not comfortable with Git or command-line tools.
-
-# 🎬 PCB Desing Videos
-- [aKaReZa 70 - RCS, AVR - PART A](https://youtu.be/KLH8E3yOOMw)
-   ---
-  This first video in the series covers designing a project from idea to final product, including conceptual design, casing selection, schematic creation in Altium Designer, and more.
-
-- [aKaReZa 71 - RCS, AVR - PART B](https://youtu.be/-EyT4b3-hQU)
-  ---
-  In this video, we design a 12-5-4-3.3V power supply, add fuses, and include voltage indicators.
-
-- [aKaReZa 72 - RCS, AVR - PART C](https://youtu.be/bh53Z6KH728)
-  --- 
-  In this video, we review all your Issues and Pull Requests, introduce some useful software, complete the project's power supply section, and discuss upcoming channel content and plans.
-
-- [aKaReZa 73 - RCS, AVR - PART D](https://youtu.be/vWiSh-8D4kY)
-  --- 
-  In this video, after designing the controller and output sections, we learn hierarchical design, create the project hierarchically, and finally generate the project's library file.
-
-- [aKaReZa 75 - RCS, AVR - PART E](https://youtu.be/V0r4XVZA-bk)
-  ---
-  In this video, we cover using character LCDs, the Harness tool in Altium Designer, identifying VCC, VEE, VDD, and VSS pins, connecting a SIM card and UART protocol to a GSM module, adding power filters and a network status LED to the GSM module, and reviewing some GSM module tips. Additionally, we check the raised Pull Requests and Issues.
-
-- [aKaReZa 79 - RCS, AVR - PART F](https://youtu.be/U1JYVCcn27k)
-  --- 
-  In this video, we review raised Pull Requests and Issues, organize the project, design the input section and 220V signal detection, design the code-learn remote section, fix errors, resize the board to fit the casing, introduce the "Hami Bash" section, and discuss the idea of casing installation.
-
-- [aKaReZa 81 - RCS, AVR - PART G](https://youtu.be/6VrP90s_HFc)
-  --- 
-  In this video, we address the issues raised on GitHub, make several schematic changes, place components in the PCB environment, route several sections, and learn a crucial tip about capacitor placement.
-
-- [aKaReZa 83 - RCS, AVR - PART H](https://youtu.be/ByZ2kSmf6VU)
-  ---
-  In this video, we continue routing the board. After completing the routes, we learn how to strengthen power paths, place screws on the board, and use the Polygon, Teardrops, and Via stitching tools.
 
 # 📝 How to Ask Questions
 If you have any questions or issues, you can raise them through the **"Issues"** section of this repository. Here's how you can do it:  
