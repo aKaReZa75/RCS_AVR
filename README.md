@@ -1,9 +1,9 @@
 # 📲 Relay Control with SMS using an AVR microcontroller  
-The RCS_AVR project is an interactive, hands-on initiative focused on remote relay control via SMS. 
-It includes components like a Power Supply Unit (PSU) for multiple voltage levels, a GSM Module for SMS command processing, an AVR Microcontroller (ATMEGA328) for control logic, and various inputs and outputs for seamless interaction. 
-Communication occurs through protocols like UART. 
-This project provides practical insights into embedded systems, covering GSM module integration, power supply management, microcontroller interfacing, remote control mechanisms, and sensor data processing.
-This project serves as an excellent platform for learning and experimenting with embedded systems, offering practical insights into real-world applications.
+The RCS_AVR project is an interactive, hands-on initiative focused on remote relay control via SMS.  
+It includes components like a Power Supply Unit (PSU) for multiple voltage levels, a GSM Module for SMS command processing, an AVR Microcontroller (ATMEGA328) for control logic, and various inputs and outputs for seamless interaction.  
+Communication occurs through protocols like UART.  
+This project provides practical insights into embedded systems, covering GSM module integration, power supply management, microcontroller interfacing, remote control mechanisms, and sensor data processing. 
+This project serves as an excellent platform for learning and experimenting with embedded systems, offering practical insights into real-world applications. 
 
 ![RCS](Images/RCS1.png)
 
@@ -27,6 +27,8 @@ This project serves as an excellent platform for learning and experimenting with
 | **4V Regulator**        | TPS54302                             |
 | **3.3V Regulator**      | AMS1117-3.3V                         |
 
+> [!CAUTION]
+> It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
 
 # 💻 How to Use Git and GitHub
 To access the repository files and save them on your computer, there are two methods available:
