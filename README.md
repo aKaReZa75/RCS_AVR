@@ -40,8 +40,15 @@ This project serves as an excellent platform for learning and experimenting with
 
 - [Video PlayList](./Videos.md)
   ---  
-  All educational videos related to this topic are available at this link.  
+  All educational videos related to this topic are available at this link.
 
+- [Altium Library](https://github.com/aKaReZa75/Altium-Library)  
+  ---  
+   All PCB designs across all repositories and projects are built using this Altium Designer component library. It contains a wide range of verified footprints, schematic symbols, and 3D models, ensuring consistency and accuracy in PCB designs. If you're working on a new PCB, using this library will save you time and minimize errors.
+
+- [PCB & Electronics Design Training](https://github.com/aKaReZa75/PCB)  
+  ---  
+  This repository is dedicated to **learning PCB design and electronics from scratch**. It covers everything from circuit theory to practical PCB layout techniques, including routing strategies, best practices, and component placement. Whether you're a beginner or an experienced designer, this resource will help you **improve your PCB design skills and create professional-quality boards**.
 
 # 💻 How to Use Git and GitHub
 To access the repository files and save them on your computer, there are two methods available:
