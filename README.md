@@ -50,6 +50,10 @@ This project serves as an excellent platform for learning and experimenting with
   ---  
   This repository is dedicated to **learning PCB design and electronics from scratch**. It covers everything from circuit theory to practical PCB layout techniques, including routing strategies, best practices, and component placement. Whether you're a beginner or an experienced designer, this resource will help you **improve your PCB design skills and create professional-quality boards**.
 
+- [AVR Microcontroller Training](https://github.com/aKaReZa75/AVR)  
+  ---  
+  This repository is focused on **AVR microcontroller programming**. It covers everything from **basic to advanced concepts**, including peripheral interfacing, timers, interrupts, and communication protocols. Ideal for anyone looking to deepen their knowledge and skills with AVR microcontrollers.
+
 # 💻 How to Use Git and GitHub
 To access the repository files and save them on your computer, there are two methods available:
 1. **Using Git Bash and Cloning the Repository**
