@@ -1,0 +1,128 @@
+Altium Designer Pick and Place Locations
+E:\aKaReZa\#gitHub\RCS_AVR\AVR RCS\Project Outputs for AVR_RCS\Generates pick and place files\Pick Place for PCB.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       08/03/25
+Time:       18:35
+Revision:   8af5b1bec866511164d9b980140ddddfaf38369d
+Variant:    No variations
+Units used: mm
+
+Designator Comment    Layer       Footprint                 Center-X(mm) Center-Y(mm) Rotation Description                                                                       
+J3         3          TopLayer    HDR_THT_3M_2.54mm         38.6080      138.3030     270      "Header, single row, 3 pin"                                                       
+L2         10u        TopLayer    L_7                       25.7810      62.3570      90       Inductor                                                                          
+L1         10u        TopLayer    L_7                       13.3350      62.1030      90       Inductor                                                                          
+J2         6'Pin      TopLayer    GCT_SIM8051_Plastik       27.6280      112.5220     90       "Nano SimCard Holder 6P"                                                          
+C23        33p        TopLayer    CAP_0805/2012             19.6850      110.9726     90       "Bipolar ceramic capacitor SMD"                                                   
+C24        33p        TopLayer    CAP_0805/2012             36.8300      107.0864     270      "Bipolar ceramic capacitor SMD"                                                   
+C25        33p        TopLayer    CAP_0805/2012             38.9890      107.0864     270      "Bipolar ceramic capacitor SMD"                                                   
+C26        100n       TopLayer    CAP_0805/2012             37.0586      120.1420     0        "Bipolar ceramic capacitor SMD"                                                   
+C27        33p        TopLayer    CAP_0805/2012             37.0586      117.9830     0        "Bipolar ceramic capacitor SMD"                                                   
+C28        1u         TopLayer    SMT_C_Tantalum_A          37.0840      122.1740     0        "Tantalum Capacitor,TAJ Series-SMD"                                               
+R19        22b        TopLayer    RES_0805_(2012X06L)       28.7020      123.6640     90       Resistor                                                                          
+R20        22b        TopLayer    RES_0805_(2012X06L)       33.0200      123.5370     90       Resistor                                                                          
+R21        22b        TopLayer    RES_0805_(2012X06L)       30.8610      123.6590     90       Resistor                                                                          
+Z1         5.1V       TopLayer    SOD80,_LL-34              12.6990      129.6670     180      "Zener Diode"                                                                     
+S2         PB         TopLayer    SW_PB_SMD_2PIN_SPST_6X3X2 48.5140      108.2040     225      "SMT Tactile ?Switch"                                                             
+Y1         12M        TopLayer    Crystal_SMD               49.1490      90.0430      135      "Crystal Oscillator"                                                              
+P4         3x2        TopLayer    IDC_2X3                   99.0600      91.4400      90       "6 Pin Standard ISP Header For MKII"                                              
+S1         PB         TopLayer    SW_PB_SMD_2PIN_SPST_6X3X2 98.8060      103.5050     0        "SMT Tactile ?Switch"                                                             
+U4         ATmega328P TopLayer    ATMEGA328                 59.8170      99.3140      0        "8-Bit AVR Microcontroller with 32K Bytes of In-System Programmable Flash Memory" 
+K2         12V        TopLayer    Relay_18.85x15.35x15.70   62.7380      52.4510      180      "SPDT Relay"                                                                      
+K3         12V        TopLayer    Relay_18.85x15.35x15.70   79.2150      52.4910      180      "SPDT Relay"                                                                      
+P3         2'Pin      TopLayer    Phoenix_2PIN_RA_P5.08mm   70.8660      32.9560      0        "Power Connector 2'Pin"                                                           
+P2         Value?     TopLayer    Phoenix_3PIN_RA_P5.08mm   89.7890      32.9560      0        "Power Connector 3'Pin"                                                           
+U5         ULN2003    TopLayer    SO16_M                    75.6920      78.1050      270      "Seven darlington array drivers"                                                  
+P6         2'Pin      TopLayer    Phoenix_2PIN_RA_P5.08mm   55.6260      32.9560      0        "Power Connector 2'Pin"                                                           
+P1         10K        TopLayer    Multi_turn_01             60.1980      150.1140     270      "Multi Turn"                                                                      
+R35        1K         BottomLayer RES_0805_(2012X06L)       93.7260      120.4350     270      Resistor                                                                          
+R36        1.8K       BottomLayer RES_0805_(2012X06L)       93.7260      116.6740     90       Resistor                                                                          
+MP3        M3         TopLayer    SCREW-M3                  31.1150      31.3690      0        "Board Screw With Spacer"                                                         
+MP2        M3         TopLayer    SCREW-M3                  100.8380     148.9710     0        "Board Screw With Spacer"                                                         
+MP1        M3         TopLayer    SCREW-M3                  11.0490      148.8440     0        "Board Screw With Spacer"                                                         
+R26        47K        TopLayer    RES_0805_(2012X06L)       53.8820      129.1930     225      Resistor                                                                          
+R25        4.7K       TopLayer    RES_0805_(2012X06L)       55.1520      126.3310     135      Resistor                                                                          
+Q3         NPN        TopLayer    SOT23_N                   51.6439      131.2361     135      "NPN General purpose Transistor"                                                  
+DS1        16x2       TopLayer    BOX-HDR-2x6-2.54mm-S      56.3880      140.9700     180      "Alphanumeric LCD character"                                                      
+U3         3.3V       TopLayer    SOT223_M                  28.8000      90.4240      0        "1'A Positive voltage regulator"                                                  
+U2         Value?     TopLayer    TPS54302                  28.1940      53.3400      270      "3'A Synchronous Step-Down Converter"                                             
+U1         Value?     TopLayer    TPS54302                  14.9860      53.3400      270      "3'A Synchronous Step-Down Converter"                                             
+R37        10K        TopLayer    RES_0805_(2012X06L)       49.3100      104.6820     225      Resistor                                                                          
+R34        4.7K       BottomLayer RES_0805_(2012X06L)       79.6630      144.6530     180      Resistor                                                                          
+R33        4.7K       BottomLayer RES_0805_(2012X06L)       79.6680      146.5580     180      Resistor                                                                          
+R24        5.6K       TopLayer    RES_0805_(2012X06L)       42.0760      140.0810     180      Resistor                                                                          
+R23        1K         TopLayer    RES_0805_(2012X06L)       42.0760      138.0490     180      Resistor                                                                          
+R22        1K         TopLayer    RES_0805_(2012X06L)       42.0710      136.0170     180      Resistor                                                                          
+R18        47K        TopLayer    RES_0805_(2012X06L)       40.3860      129.7600     90       Resistor                                                                          
+R17        4.7K       TopLayer    RES_0805_(2012X06L)       39.4580      132.5880     0        Resistor                                                                          
+R16        100b       TopLayer    RES_0805_(2012X06L)       44.4890      128.7780     180      Resistor                                                                          
+R14        1.8K       TopLayer    RES_0805_(2012X06L)       81.0260      67.7840      90       Resistor                                                                          
+R13        1.8K       TopLayer    RES_0805_(2012X06L)       64.5160      68.0380      90       Resistor                                                                          
+R12        1.8K       TopLayer    RES_0805_(2012X06L)       97.5360      68.0380      90       Resistor                                                                          
+R11        10K        TopLayer    RES_0805_(2012X06L)       100.6720     106.5530     0        Resistor                                                                          
+R10        220b       TopLayer    RES_0805_(2012X06L)       20.9550      85.0430      90       Resistor                                                                          
+R9         100b       TopLayer    RES_0805_(2012X06L)       18.0340      79.7950      270      Resistor                                                                          
+R8         680b       TopLayer    RES_0805_(2012X06L)       20.8280      79.9220      270      Resistor                                                                          
+R7         1.8k       TopLayer    RES_0805_(2012X06L)       13.5010      30.9880      180      Resistor                                                                          
+R6         100K       TopLayer    RES_0805_(2012X06L)       30.7340      63.5390      270      Resistor                                                                          
+R5         13.7K      TopLayer    RES_0805_(2012X06L)       32.6390      59.4750      270      Resistor                                                                          
+R4         49.9b      TopLayer    RES_0805_(2012X06L)       31.4730      66.4210      0        Resistor                                                                          
+R3         100K       TopLayer    RES_0805_(2012X06L)       17.9960      63.6690      270      Resistor                                                                          
+R2         17.8K      TopLayer    RES_0805_(2012X06L)       19.9390      59.4700      270      Resistor                                                                          
+R1         49.9b      TopLayer    RES_0805_(2012X06L)       19.0110      66.4210      0        Resistor                                                                          
+Q2         NPN        TopLayer    SOT23_N                   43.4340      131.4450     0        "NPN General purpose Transistor"                                                  
+MS1        AHT20      TopLayer    AHT20                     81.7880      149.6568     180      "Air Temperature and Humidity Sensor"                                             
+MC2        RXB22      TopLayer    RF_ETRXB                  97.7900      129.8790     270      "JMR RXB22 433MHz ASK superheterodyne wireless receiving module"                  
+MC1        M66        TopLayer    m66                       25.9080      138.0490     90       "Quectel GSM/GPRS Module"                                                         
+K1         12V        TopLayer    Relay_18.85x15.35x15.70   95.6640      52.4910      180      "SPDT Relay"                                                                      
+J4         U.FL       TopLayer    IPEX-3x3mm                19.3040      149.3640     270      U.FL                                                                              
+J1         Female     TopLayer    Power_Jack_BIG            22.9240      33.3440      90       "Power Jack"                                                                      
+F5         5A         TopLayer    FUSE_BLX_20x5             49.2887      50.0761      90       "Short circiut  protection"                                                       
+F4         0.5A       TopLayer    1206_F                    26.0350      79.1210      90       "Short circiut  protection"                                                       
+F3         1A         TopLayer    1206_F                    17.0180      41.9100      90       "Short circiut  protection"                                                       
+F2         2A         TopLayer    1206_F                    12.8270      42.0370      90       "Short circiut  protection"                                                       
+F1         3A         TopLayer    1206_F                    14.2240      38.2270      180      "Short circiut  protection"                                                       
+D12        SMF-05     BottomLayer SC70-5_N                  27.4320      112.3950     180      "TVS Diode Array"                                                                 
+D11        Blue       TopLayer    LED_0805/2012_BLUE        44.3390      126.8730     180      LED                                                                               
+D10        1N5819     TopLayer    430X270D                  79.3750      63.6270      180      "Schottky Rectifiers"                                                             
+D9         1N5819     TopLayer    430X270D                  62.8650      63.8810      180      "Schottky Rectifiers"                                                             
+D8         1N5819     TopLayer    430X270D                  95.6310      64.0080      180      "Schottky Rectifiers"                                                             
+D7         Green      TopLayer    LED_0805/2012_GREEN       78.2320      67.8180      90       LED                                                                               
+D6         Green      TopLayer    LED_0805/2012_GREEN       61.7220      68.0720      90       LED                                                                               
+D5         Green      TopLayer    LED_0805/2012_GREEN       94.6150      68.0720      90       LED                                                                               
+D4         Green      TopLayer    LED_0805/2012_GREEN       20.9550      89.1460      270      LED                                                                               
+D3         Blue       TopLayer    LED_0805/2012_BLUE        17.0180      76.9620      0        LED                                                                               
+D2         Red        TopLayer    LED_0805/2012_RED         21.8440      76.9620      180      LED                                                                               
+D1         Yellow     TopLayer    LED_0805/2012_YELLOW      12.5730      34.6710      270      LED                                                                               
+C40        100n       TopLayer    CAP_0805/2012             51.9250      107.2970     45       "Bipolar ceramic capacitor SMD"                                                   
+C35        22p        TopLayer    CAP_0805/2012             50.2842      94.1892      315      "Bipolar ceramic capacitor SMD"                                                   
+C34        22p        TopLayer    CAP_0805/2012             53.0142      91.4592      135      "Bipolar ceramic capacitor SMD"                                                   
+C33        100u       TopLayer    SMT_C_Tantalum_C          13.0810      117.4750     180      "Tantalum Capacitor,TAJ Series-SMD"                                               
+C32        33p        TopLayer    CAP_1206/3216             12.8110      127.2540     180      "Bipolar ceramic capacitor SMD"                                                   
+C31        10p        TopLayer    CAP_1206/3216             12.6840      124.8410     180      "Bipolar ceramic capacitor SMD"                                                   
+C30        100n       TopLayer    CAP_1206/3216             12.8270      122.6820     180      "Bipolar ceramic capacitor SMD"                                                   
+C29        1u         TopLayer    SMT_C_Tantalum_A          12.4460      120.2690     180      "Tantalum Capacitor,TAJ Series-SMD"                                               
+C22        100n       TopLayer    CAP_0805/2012             96.4184      106.5530     180      "Bipolar ceramic capacitor SMD"                                                   
+C21        100n       TopLayer    CAP_0805/2012             50.5714      100.3300     180      "Bipolar ceramic capacitor SMD"                                                   
+C20        100n       TopLayer    CAP_0805/2012             68.1736      98.1710      0        "Bipolar ceramic capacitor SMD"                                                   
+C19        100n       TopLayer    CAP_0805/2012             50.5714      98.2980      180      "Bipolar ceramic capacitor SMD"                                                   
+C18        100n       TopLayer    CAP_1206/3216             27.5590      95.1230      180      "Bipolar ceramic capacitor SMD"                                                   
+C17        100n       TopLayer    CAP_1206/3216             27.3050      85.3440      0        "Bipolar ceramic capacitor SMD"                                                   
+C16        22u        TopLayer    SMT_C_Tantalum_A          27.1780      97.4090      180      "Tantalum Capacitor,TAJ Series-SMD"                                               
+C15        10u        TopLayer    SMT_C_Tantalum_A          27.3050      82.9310      0        "Tantalum Capacitor,TAJ Series-SMD"                                               
+C14        100n       TopLayer    CAP_1206/3216             27.3050      74.5490      0        "Bipolar ceramic capacitor SMD"                                                   
+C13        68p        TopLayer    CAP_0805/2012             32.6390      63.6016      90       "Bipolar ceramic capacitor SMD"                                                   
+C12        100n       TopLayer    CAP_1206/3216             24.6380      49.4030      180      "Bipolar ceramic capacitor SMD"                                                   
+C11        10u        TopLayer    SMT_C_Tantalum_B          24.8920      46.3550      180      "Tantalum Capacitor,TAJ Series-SMD"                                               
+C10        10u        TopLayer    SMT_C_Tantalum_A          27.1780      71.8820      0        "Tantalum Capacitor,TAJ Series-SMD"                                               
+C9         47u        TopLayer    SMT_C_Tantalum_B          27.0510      68.4530      0        "Tantalum Capacitor,TAJ Series-SMD"                                               
+C8         100n       TopLayer    CAP_0805/2012             29.3624      56.0070      180      "Bipolar ceramic capacitor SMD"                                                   
+C7         100n       TopLayer    CAP_1206/3216             12.8270      74.5490      180      "Bipolar ceramic capacitor SMD"                                                   
+C6         68p        TopLayer    CAP_0805/2012             19.9010      63.5936      90       "Bipolar ceramic capacitor SMD"                                                   
+C5         10u        TopLayer    SMT_C_Tantalum_B          11.3030      46.3550      180      "Tantalum Capacitor,TAJ Series-SMD"                                               
+C4         10u        TopLayer    SMT_C_Tantalum_A          12.9540      71.8820      180      "Tantalum Capacitor,TAJ Series-SMD"                                               
+C3         47u        TopLayer    SMT_C_Tantalum_B          12.8270      68.8340      180      "Tantalum Capacitor,TAJ Series-SMD"                                               
+C2         100n       TopLayer    CAP_0805/2012             16.0274      56.0070      180      "Bipolar ceramic capacitor SMD"                                                   
+C1         100n       TopLayer    CAP_1206/3216             11.4300      49.2760      180      "Bipolar ceramic capacitor SMD"                                                   

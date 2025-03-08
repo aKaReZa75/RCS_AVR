@@ -1,0 +1,14 @@
+------------------------------------------------------------
+Design Hierarchy Report for AVR_RCS.PrjPcb
+-- 3/8/2025
+-- 6:35:28 PM
+------------------------------------------------------------
+
+Main                          SCH        (Main.SchDoc)
+    U_aLCD                    SCH        (aLCD.SchDoc)
+    U_Controller              SCH        (Controller.SchDoc)
+    U_GSM                     SCH        (GSM.SchDoc)
+    U_Inputs                  SCH        (Inputs.SchDoc)
+    U_Outputs                 SCH        (Outputs.SchDoc)
+    U_Remote                  SCH        (Remote.SchDoc)
+    U_Supply                  SCH        (Supply.SchDoc)
