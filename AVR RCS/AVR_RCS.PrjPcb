@@ -397,16 +397,16 @@ DocumentPath=Project Outputs for AVR_RCS\Generates pick and place files\Pick Pla
 DItemRevisionGUID=
 
 [Parameter1]
-Name=CompanyName
-Value=aKaReZa
+Name=Revision
+Value=1.0
 
 [Parameter2]
 Name=Project_Name
 Value=AVR RCS
 
 [Parameter3]
-Name=Revision
-Value=1.0
+Name=CompanyName
+Value=github.com/aKaReZa75
 
 [Configuration1]
 Name=Sources
