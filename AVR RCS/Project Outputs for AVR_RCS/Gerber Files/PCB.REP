@@ -2,65 +2,87 @@
 FileName = PCB.GBR
 AutoAperture = True
 *************************************************************
-Generating : Bottom Overlay
-      File : PCB_Legend_Bot.gbr
+Generating : Bottom Solder
+      File : PCB_Soldermask_Bot.gbr
 
-    Adding Layer      : Bottom Overlay
+    Adding Layer      : Bottom Solder
 
-
-Used DCodes :
-    D12
-    D13
-    D19
-    D20
-*************************************************************
-
-*************************************************************
-Generating : Top Layer
-      File : PCB_Copper_Signal_Top.gbr
-
-    Adding Layer      : Top Layer
+    Adding Layer      : Bottom Layer
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
+    D68
+    D69
+    D85
+    D86
+    D87
+    D88
+    D89
+    D90
+    D91
+    D92
+    D93
+    D94
+    D95
+    D96
+    D97
+    D98
+    D99
+    D100
+    D101
+    D102
+    D103
+    D131
+*************************************************************
+
+*************************************************************
+Generating : Keep-Out Layer
+      File : PCB_Keep-out.gbr
+
+    Adding Layer      : Keep-Out Layer
+
+
+Used DCodes :
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : PCB_Legend_Top.gbr
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
     D10
+    D11
+    D12
+    D13
+    D14
+    D15
+    D16
+    D17
+    D18
     D19
-    D23
-    D24
-    D25
-    D26
-    D27
-    D28
-    D29
-    D30
-    D31
-    D32
-    D33
-    D34
-    D35
+    D20
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : PCB_Copper_Signal_Bot.gbr
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D19
     D36
     D37
-    D38
-    D39
-    D40
-    D41
-    D42
-    D43
-    D44
-    D45
-    D46
-    D47
-    D48
-    D49
-    D50
-    D51
-    D52
-    D53
-    D54
-    D106
-    D107
+    D104
     D108
     D109
     D110
@@ -87,13 +109,20 @@ Used DCodes :
 *************************************************************
 
 *************************************************************
-Generating : Keep-Out Layer
-      File : PCB_Keep-out.gbr
+Generating : Bottom Paste
+      File : PCB_Paste_Bot.gbr
 
-    Adding Layer      : Keep-Out Layer
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
+    D36
+    D37
+    D129
 *************************************************************
 
 *************************************************************
@@ -108,6 +137,8 @@ Generating : Top Solder
 
 
 Used DCodes :
+    D53
+    D54
     D55
     D56
     D57
@@ -157,38 +188,11 @@ Used DCodes :
     D101
     D102
     D103
-    D104
-    D105
 *************************************************************
 
 *************************************************************
-Generating : Top Overlay
-      File : PCB_Legend_Top.gbr
-
-    Adding Layer      : Top Overlay
-
-
-Used DCodes :
-    D10
-    D11
-    D12
-    D13
-    D14
-    D15
-    D16
-    D17
-    D18
-    D19
-    D20
-    D21
-    D22
-*************************************************************
-
-*************************************************************
-Generating : Top Paste
-      File : PCB_Paste_Top.gbr
-
-    Adding Layer      : Top Paste
+Generating : Top Layer
+      File : PCB_Copper_Signal_Top.gbr
 
     Adding Layer      : Top Layer
 
@@ -196,6 +200,10 @@ Generating : Top Paste
 
 
 Used DCodes :
+    D15
+    D19
+    D21
+    D22
     D23
     D24
     D25
@@ -226,78 +234,12 @@ Used DCodes :
     D50
     D51
     D52
-    D53
-    D54
-*************************************************************
-
-*************************************************************
-Generating : Bottom Solder
-      File : PCB_Soldermask_Bot.gbr
-
-    Adding Layer      : Bottom Solder
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D70
-    D71
-    D87
-    D88
-    D89
-    D90
-    D91
-    D92
-    D93
-    D94
-    D95
-    D96
-    D97
-    D98
-    D99
-    D100
-    D101
-    D102
-    D103
     D104
     D105
-    D133
-*************************************************************
-
-*************************************************************
-Generating : Bottom Paste
-      File : PCB_Paste_Bot.gbr
-
-    Adding Layer      : Bottom Paste
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D38
-    D39
-    D131
-*************************************************************
-
-*************************************************************
-Generating : Bottom Layer
-      File : PCB_Copper_Signal_Bot.gbr
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D10
-    D19
-    D38
-    D39
     D106
+    D107
+    D108
+    D109
     D110
     D111
     D112
@@ -317,10 +259,66 @@ Used DCodes :
     D126
     D127
     D128
-    D129
-    D130
-    D131
-    D132
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : PCB_Paste_Top.gbr
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D41
+    D42
+    D43
+    D44
+    D45
+    D46
+    D47
+    D48
+    D49
+    D50
+    D51
+    D52
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : PCB_Legend_Bot.gbr
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D10
+    D14
+    D19
+    D20
 *************************************************************
 
 *************************************************************
@@ -333,9 +331,9 @@ Generating : Drill Drawing
 
 
 Used DCodes :
-    D15
-    D134
-    D135
+    D12
+    D132
+    D133
 *************************************************************
 
 *************************************************************
@@ -348,7 +346,7 @@ Generating : Drill Guide
 
 
 Used DCodes :
-    D15
+    D12
 *************************************************************
 
 *************************************************************
@@ -357,6 +355,6 @@ Generating : Profile
 
 
 Used DCodes :
-    D136
+    D134
 *************************************************************
 

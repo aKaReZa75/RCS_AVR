@@ -302,7 +302,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
-DocumentUniqueId=HOTNNCZE
+DocumentUniqueId=BYBIALKR
 
 [GeneratedDocument1]
 DocumentPath=Project Outputs for AVR_RCS\Report Project Hierarchy\AVR_RCS.REP
@@ -337,76 +337,100 @@ DocumentPath=Project Outputs for AVR_RCS\NC Drill Files\PCB.LDP
 DItemRevisionGUID=
 
 [GeneratedDocument9]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB.REP
+DocumentPath=Project Outputs for AVR_RCS\PCB_WithOUT_3D\PCB.PcbDoc
 DItemRevisionGUID=
 
 [GeneratedDocument10]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Copper_Signal_Bot.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB.REP
 DItemRevisionGUID=
 
 [GeneratedDocument11]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Copper_Signal_Top.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Copper_Signal_Bot.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument12]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Drawing_1.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Copper_Signal_Top.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument13]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Drillmap_1.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Drawing_1.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument14]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Keep-out.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Drillmap_1.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument15]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Legend_Bot.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Keep-out.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument16]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Legend_Top.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Legend_Bot.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument17]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Paste_Bot.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Legend_Top.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument18]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Paste_Top.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Paste_Bot.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument19]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Profile.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Paste_Top.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument20]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Soldermask_Bot.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Profile.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument21]
-DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Soldermask_Top.gbr
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Soldermask_Bot.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument22]
-DocumentPath=Project Outputs for AVR_RCS\Generates pick and place files\Pick Place for PCB.csv
+DocumentPath=Project Outputs for AVR_RCS\Gerber Files\PCB_Soldermask_Top.gbr
 DItemRevisionGUID=
 
 [GeneratedDocument23]
+DocumentPath=Project Outputs for AVR_RCS\Generates pick and place files\Pick Place for PCB.csv
+DItemRevisionGUID=
+
+[GeneratedDocument24]
 DocumentPath=Project Outputs for AVR_RCS\Generates pick and place files\Pick Place for PCB.txt
 DItemRevisionGUID=
 
+[GeneratedDocument25]
+DocumentPath=C:\Users\Hossein\AppData\Local\Temp\Qjz9BE7.xls
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=C:\Users\Hossein\AppData\Local\Temp\Qjz767F.xls
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=C:\Users\Hossein\AppData\Local\Temp\Qjz6356.xls
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=C:\Users\Hossein\AppData\Local\Temp\QjzE2BE.xls
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=C:\Users\Hossein\AppData\Local\Temp\QjzF66E.xls
+DItemRevisionGUID=
+
 [Parameter1]
-Name=Revision
-Value=1.0
+Name=CompanyName
+Value=github.com/aKaReZa75
 
 [Parameter2]
 Name=Project_Name
 Value=AVR RCS
 
 [Parameter3]
-Name=CompanyName
-Value=github.com/aKaReZa75
+Name=Revision
+Value=1.0
 
 [Configuration1]
 Name=Sources
