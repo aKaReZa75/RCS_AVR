@@ -7,6 +7,8 @@ This project serves as an excellent platform for learning and experimenting with
 
 ![RCS](Images/RCS1.png)
 
+![RCS](Images/RCS2.png)
+
 > [!CAUTION]
 > It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
 
