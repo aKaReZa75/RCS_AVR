@@ -1,10 +1,14 @@
-Output: PCB_WithOUT_3D
-Type  : Universal Exporter
-From  : PCB Document [PCB.PcbDoc]
-   Generated File[PCB.PcbDoc]
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 5:18:10 PM On 3/11/2025
+
+Output: Export STEP
+Type  : ExportSTEP
+From  : Variant [[No Variations]] of PCB Document [PCB.PcbDoc]
+   Generated File[PCB.step]
 
 
 Files Generated   : 1
 Documents Printed : 0
 
-Finished Output Generation At 12:51:38 PM On 3/11/2025
+Finished Output Generation At 5:18:21 PM On 3/11/2025

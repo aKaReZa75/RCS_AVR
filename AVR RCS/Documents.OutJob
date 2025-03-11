@@ -377,6 +377,19 @@ OutputEnabled19_OutputMedium4=0
 OutputDefault19=0
 Configuration19_Name1=OutputConfigurationParameter1
 Configuration19_Item1=Format=PCB Binary Files (*.PcbDoc)|Record=UniExporterView|DocumentPath=E:\aKaReZa\#gitHub\RCS_AVR\AVR RCS\PCB.PcbDoc
+OutputType20=ExportSTEP
+OutputName20=Export STEP
+OutputCategory20=Export
+OutputDocumentPath20=
+OutputVariantName20=
+OutputEnabled20=1
+OutputEnabled20_OutputMedium1=0
+OutputEnabled20_OutputMedium2=0
+OutputEnabled20_OutputMedium3=8
+OutputEnabled20_OutputMedium4=0
+OutputDefault20=0
+Configuration20_Name1=OutputConfigurationParameter1
+Configuration20_Item1=Record=ExportSTEPView|ExportComponentOptions=0|ExportModelsOption=2|ExportHolesOption=0|CanSelectPrimitives=False|IncludeMechanicalPadHoles=True|IncludeElectricalPadHoles=True|IncludeFreePadHoles=True|ExportFoldedBoard=False|ExportFoldedBoardRate=0|ComponentSuffixType=0|ComponentSuffix= |ExportCopperOption=0|ExportCopperLayer=0|ExportPadAndViaBarrelsOnly=False|IgnoreBoardCopperLayerColors=False|ExportAsSinglePart=False|IncludeCoverLayer=True|SkipFreeBodies=False|SkipHidden=False|DocumentPath=E:\aKaReZa\#gitHub\RCS_AVR\AVR RCS\PCB.PcbDoc
 
 [PublishSettings]
 OutputFilePath2=Project Outputs for Free Documents\Job1.PDF
