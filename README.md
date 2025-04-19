@@ -12,6 +12,12 @@ This project serves as an excellent platform for learning and experimenting with
 > [!CAUTION]
 > It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
 
+> [!TIP]
+> If you're looking to better understand how to navigate and use my GitHub repositories — including exploring their structure, downloading or cloning projects, submitting issues, and asking questions 
+> everything you need is clearly explained in this video:  
+> [aKaReZa 95 - Programming, Git - PART B](https://youtu.be/zYiUItVFRqQ)   
+> Make sure to check it out!
+
 ### 📋 Additional Details:
 | Component               | Specification                        |
 |-------------------------|--------------------------------------|
