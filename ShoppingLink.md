@@ -7,15 +7,15 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**Cap_0805_100n**](https://lionelectronic.ir/products/2791-CL21B104KBCNNNC) Quantity: 8, Prefer: 25, Supplier: LionElectronic
 - [ ] [**Cap_1206_10p**](https://lionelectronic.ir/products/1991-1206CG100J500NT) Quantity: 1, Prefer: 25, Supplier: LionElectronic  
 - [ ] [**Cap_1206_33p**](https://lionelectronic.ir/products/1994-TCC1206C0G330J500DT) Quantity: 1, Prefer: 25, Supplier: LionElectronic  
-- [ ] [**Cap_1206_100n**](https://lionelectronic.ir/products/4275-C3216X7R2E104K160AA) Quantity: 7, Prefer: 25, Supplier: LionElectronic  
+- [ ] [**Cap_1206_100n**](https://lionelectronic.ir/products/5156-C3216NP01H104J160AA) Quantity: 7, Prefer: 25, Supplier: LionElectronic  
 - [ ] [**Cap_Tantal_10u_10V_A**](https://lionelectronic.ir/products/2046-TAJA106K010RNJ) Quantity: 3, Prefer: 10, Supplier: LionElectronic **(Instead of: Cap_Tantal_10u_6.3V_A)**
 - [ ] [**Cap_Tantal_10u_25V_B**](https://lionelectronic.ir/products/1037-TAJB106K025RNJ) Quantity: 2, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Cap_Tantal_22u_6.3V_A**](https://lionelectronic.ir/products/2051-TAJA226M006RNJ) Quantity: 1, Prefer: 5, Supplier: LionElectronic 
-- [ ] [**Cap_Tantal_47u_6.3V_TPB**](https://lionelectronic.ir/products/2056-TAJA476K006RNJ) Quantity: 2, Prefer: 5, Supplier: LionElectronic 
+- [ ] [**Cap_Tantal_47u_6.3V_A**](https://lionelectronic.ir/products/2056-TAJA476K006RNJ) Quantity: 2, Prefer: 5, Supplier: LionElectronic 
 - [ ] [**Cap_Tantal_100u_6.3V_B**](https://lionelectronic.ir/products/3312-T520B107M006ATE040) Quantity: 1, Prefer: 5, Supplier: LionElectronic 
 
 # Connector
-- [ ] [**Adaptor_Jack**](https://lionelectronic.ir/products/4704-DC005) Quantity: 2, Prefer: 25, Supplier: LionElectronic  
+- [ ] [**Power_Jack**](https://lionelectronic.ir/products/4704-DC005) Quantity: 2, Prefer: 25, Supplier: LionElectronic  
 - [ ] [**Con_Phonix_3Pin**](https://lionelectronic.ir/products/6050-KF2EDGR%2BK-5.08-3P) Quantity: 1, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Con_Phonix_2Pin**](https://lionelectronic.ir/products/6049-KF2EDGR%2BK-5.08-2P) Quantity: 2, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Con_BoxHeadr_2x8**](https://roboeq.ir/products/detail/1504020/%D8%A8%D8%A7%DA%A9%D8%B3-%D9%87%D8%AF%D8%B1-8-2-BOX-HEADER-%D8%B5%D8%A7%D9%81/) Quantity: 1, Prefer: 5, Supplier: RoboEQ  
@@ -27,7 +27,6 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**Male_PinHeader**](https://lionelectronic.ir/products/5356-PLS-2.54-1X40GF) Quantity: 0.1, Prefer: 1, Supplier: LionElectronic  
 - [ ] [**uFL**](https://lionelectronic.ir/products/5100-BWIPX-1-001E-) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
 - [ ] [**uFL to SMA**](https://roboeq.ir/products/detail/1509123/%DA%A9%D8%A7%D9%86%DA%A9%D8%AA%D9%88%D8%B1-UFL-%D8%A8%D9%87-SMA-%D9%85%D8%A7%D8%AF%DA%AF%DB%8C-%D8%B7%D9%88%D9%84-15-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1/) Quantity: 1, Prefer: 1, Supplier: RoboEQ  
-- [ ] [**Power_Jack**](https://roboeq.ir/products/detail/1401005/%D8%AC%DA%A9-%D8%A2%D8%AF%D8%A7%D9%BE%D8%AA%D9%88%D8%B1-%D8%B1%D9%88-%D8%A8%D8%B1%D8%AF%DB%8C-%D9%85%D8%A7%D8%AF%DA%AF%DB%8C/) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
 
 # Integrated Circuit
 - [ ] [**IC_ATMEGA328P**](https://lionelectronic.ir/products/293-ATMEGA328P-AU) Quantity: 1, Prefer: 1, Supplier: LionElectronic  
@@ -68,8 +67,8 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**Res_0805_4.7K**](https://lionelectronic.ir/products/1581-SER0805J4K7) Quantity: 4, Prefer: 25, Supplier: LionElectronic 
 - [ ] [**Res_0805_5.6K**](https://lionelectronic.ir/products/1582-0805W8J0562T5E) Quantity: 1, Prefer: 25, Supplier: LionElectronic 
 - [ ] [**Res_0805_10K**](https://lionelectronic.ir/products/1585-SCR0805J10K) Quantity: 2, Prefer: 25, Supplier: LionElectronic
-- [ ] [**Res_0805_13K**](https://lionelectronic.ir/products/1453-0805W8F1302T5E) Quantity: 1, Prefer: 25, Supplier: LionElectronic
-- [ ] [**Res_0805_18K**](https://lionelectronic.ir/products/5463-0805W8F1782T5E) Quantity: 1, Prefer: 25, Supplier: LionElectronic
+- [ ] [**Res_0805_13K**](https://lionelectronic.ir/products/1453-0805W8F1302T5E) Quantity: 1, Prefer: 25, Supplier: LionElectronic **(Instead of: Res_0805_13.7K)**
+- [ ] [**Res_0805_18K**](https://lionelectronic.ir/products/5463-0805W8F1782T5E) Quantity: 1, Prefer: 25, Supplier: LionElectronic **(Instead of: Res_0805_17.8K)**
 - [ ] [**Res_0805_47K**](https://lionelectronic.ir/products/1593-SER0805J47K) Quantity: 2, Prefer: 25, Supplier: LionElectronic
 - [ ] [**Res_0805_100K**](https://lionelectronic.ir/products/1474-RS-05K1003FT) Quantity: 2, Prefer: 25, Supplier: LionElectronic
 - [ ] [**Res_0805_130K**](https://lionelectronic.ir/products/1477-0805W8F1303T5E) Quantity: 1, Prefer: 25, Supplier: LionElectronic
