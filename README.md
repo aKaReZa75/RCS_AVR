@@ -84,6 +84,12 @@ This project serves as an excellent platform for learning and experimenting with
   ---  
   This repository is focused on **AVR microcontroller programming**. It covers everything from **basic to advanced concepts**, including peripheral interfacing, timers, interrupts, and communication protocols. Ideal for anyone looking to deepen their knowledge and skills with AVR microcontrollers.
 
+- [Shopping Link](./ShoppingLink.md)  
+  ---
+  This document provides links to trusted suppliers where you can purchase all the essential components for this project, ensuring quality and reliability.
+
+
+
 # 💻 How to Use Git and GitHub
 To access the repository files and save them on your computer, there are two methods available:
 1. **Using Git Bash and Cloning the Repository**
