@@ -1,6 +1,8 @@
-In this document, links to purchase the necessary components for the **"Relay Control with SMS using an AVR microcontroller"** project from reputable stores are provided.
+# 📦 Components Purchase Links
+This section provides a comprehensive list of components required for the "Relay Control with SMS using an AVR microcontroller" project.
+Each item includes direct purchase links from reliable Iranian electronics suppliers, with recommended quantities for both essential needs and future prototyping.
 
-# Capacitor
+## Capacitor
 - [ ] [**Cap_0805_22p**](https://lionelectronic.ir/products/1950-TCC0805COG220J500BT) Quantity: 2, Prefer: 25, Supplier: LionElectronic
 - [ ] [**Cap_0805 33p**](https://lionelectronic.ir/products/1951-TCC0805COG330J500BT) Quantity: 4, Prefer: 25, Supplier: LionElectronic
 - [ ] [**Cap_0805_68p**](https://lionelectronic.ir/products/1954-0805CG680J500NT) Quantity: 2, Prefer: 25, Supplier: LionElectronic
@@ -15,7 +17,7 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**Cap_Tantal_47u_6.3V_A**](https://lionelectronic.ir/products/2056-TAJA476K006RNJ) Quantity: 2, Prefer: 5, Supplier: LionElectronic 
 - [ ] [**Cap_Tantal_100u_6.3V_B**](https://lionelectronic.ir/products/3312-T520B107M006ATE040) Quantity: 1, Prefer: 5, Supplier: LionElectronic 
 
-# Connector
+## Connector
 - [ ] [**Power_Jack**](https://lionelectronic.ir/products/4704-DC005) Quantity: 2, Prefer: 25, Supplier: LionElectronic  
 - [ ] [**Con_Phonix_3Pin**](https://lionelectronic.ir/products/6050-KF2EDGR%2BK-5.08-3P) Quantity: 1, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Con_Phonix_2Pin**](https://lionelectronic.ir/products/6049-KF2EDGR%2BK-5.08-2P) Quantity: 2, Prefer: 5, Supplier: LionElectronic
@@ -29,23 +31,23 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**uFL**](https://lionelectronic.ir/products/5100-BWIPX-1-001E-) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
 - [ ] [**uFL to SMA**](https://roboeq.ir/products/detail/1509123/%DA%A9%D8%A7%D9%86%DA%A9%D8%AA%D9%88%D8%B1-UFL-%D8%A8%D9%87-SMA-%D9%85%D8%A7%D8%AF%DA%AF%DB%8C-%D8%B7%D9%88%D9%84-15-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1/) Quantity: 1, Prefer: 1, Supplier: RoboEQ  
 
-# Integrated Circuit
+## Integrated Circuit
 - [ ] [**IC_ATMEGA328P**](https://lionelectronic.ir/products/293-ATMEGA328P-AU) Quantity: 1, Prefer: 1, Supplier: LionElectronic  
 - [ ] [**IC_ULN2003**](https://lionelectronic.ir/products/1506-ULN2003D1013TR) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
 - [ ] [**Reg_TPS54302DDCR**](https://lionelectronic.ir/products/2487-TPS54302DDCR) Quantity: 2, Prefer: 5, Supplier: LionElectronic  
 - [ ] [**Reg_AMS1117-3.3**](https://lionelectronic.ir/products/868-AMS1117-3.3) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
 
-# Inductor
+## Inductor
 - [ ] [**Ind_10u_3.8A**](https://lionelectronic.ir/products/4357-SPM6530T-100M) Quantity: 2, Prefer: 5, Supplier: LionElectronic
 
-# Module and Sensor
+## Module and Sensor
 - [ ] [**AHT20**](https://roboeq.ir/products/detail/0509020/%D9%85%D8%A7%DA%98%D9%88%D9%84-%D8%B3%D9%86%D8%B3%D9%88%D8%B1-%D8%AF%D9%85%D8%A7-%D9%88-%D8%B1%D8%B7%D9%88%D8%A8%D8%AA-AHT20/) Quantity: 1, Prefer: 1, Supplier: RoboEQ
 - [ ] [**Quectel M66**](https://shop.sisoog.com/product/%D9%85%D8%A7%DA%98%D9%88%D9%84-m66fb-%DA%A9%D9%88%DB%8C%DA%A9%D8%AA%D9%84/) Quantity: 1, Prefer: 1, Supplier: Sisog
 - [ ] [**GSM Anntena**](https://roboeq.ir/products/detail/0502052/%D8%A2%D9%86%D8%AA%D9%86-GSM-%D8%B1%D8%A7%DB%8C%D8%AA-5-%D8%B3%D8%A7%D9%86%D8%AA%DB%8C-%D9%85%D8%AA%D8%B1/) Quantity: 1, Prefer: 1, Supplier: RoboEQ  
 - [ ] [**LCD_CH_16x2**](https://lionelectronic.ir/products/994-JHD659-162A-B-W) Quantity: 1, Prefer: 1, Supplier: LionElectronic
 - [ ] [**RXB22**](https://roboeq.ir/products/detail/0501141/%D9%85%D8%A7%DA%98%D9%88%D9%84-%DA%AF%DB%8C%D8%B1%D9%86%D8%AF%D9%87-ASK-%D9%81%D8%B1%DA%A9%D8%A7%D9%86%D8%B3-433-%D9%85%DA%AF%D8%A7%D9%87%D8%B1%D8%AA%D8%B2-%D9%85%D8%AF%D9%84-RXB22-/) Quantity: 1, Prefer: 1, Supplier: RoboEQ  
 
-# Other
+## Other
 - [ ] [**Adaptor12V-3A**](https://eshop.eca.ir/%D8%A2%D8%AF%D8%A7%D9%BE%D8%AA%D9%88%D8%B1/1596-%D8%A2%D8%AF%D8%A7%D9%BE%D8%AA%D9%88%D8%B1-12-%D9%88%D9%84%D8%AA-3-%D8%A2%D9%85%D9%BE%D8%B1-%D8%A8%DB%8C%D9%86-%D8%B1%D8%A7%D9%87%DB%8C-12v-3a.html) Quantity: 1, Prefer: 1, Supplier: ECA  
 - [ ] [**BMW 50006-A1**](https://eshop.eca.ir/%D8%AC%D8%B9%D8%A8%D9%87-%D8%A8%D8%B1%D8%AF-%D9%88-%D9%85%D8%AF%D8%A7%D8%B1/11600-%D8%AC%D8%B9%D8%A8%D9%87-%D8%A8%D8%B1%D8%AF-%D9%BE%D9%84%D8%A7%D8%B3%D8%AA%DB%8C%DA%A9%DB%8C-%D8%AF%DB%8C%D9%88%D8%A7%D8%B1%DB%8C-%D8%A8%D8%A7-%D9%BE%D9%86%D9%84-lcd-%D9%85%D8%AF%D9%84-bmw-a-%D8%B3%D8%A7%DB%8C%D8%B2-168x107x42mm.html) Quantity: 1, Prefer: 1, Supplier: ECA  
 - [ ] [**Fuse_1206_0.5A**](https://lionelectronic.ir/products/1891-JFC1206-0500FS-63V-0.5A) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
@@ -57,7 +59,7 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**Crystal 12MHz**](https://lionelectronic.ir/products/2101-XTAL-16MHZ%28HC-49SMD%29) Quantity: 1, Prefer: 5, Supplier: LionElectronic
 - [ ] [**M3_Screw**](https://lionelectronic.ir/products/5042-M3x6-Screw) Quantity: 3, Prefer: 25, Supplier: LionElectronic
 
-# Resistor
+## Resistor
 - [ ] [**Res_0805_22b**](https://lionelectronic.ir/products/1553-0805W8J0220T5E) Quantity: 3, Prefer: 25, Supplier: LionElectronic  
 - [ ] [**Res_0805_49.9b**](https://lionelectronic.ir/products/4246-0805W8F499JT5E) Quantity: 2, Prefer: 25, Supplier: LionElectronic  
 - [ ] [**Res_0805_100b**](https://lionelectronic.ir/products/1561-0805W8J0101T5E) Quantity: 2, Prefer: 25, Supplier: LionElectronic  
@@ -75,7 +77,7 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**Res_0805_130K**](https://lionelectronic.ir/products/1477-0805W8F1303T5E) Quantity: 1, Prefer: 25, Supplier: LionElectronic
 - [ ] [**Res_Multi_10K**](https://lionelectronic.ir/products/3235-3296W-1-103LF) Quantity: 1, Prefer: 5, Supplier: LionElectronic
 
-# Semiconductore
+## Semiconductore
 - [ ] [**Semi_BJT_BC817**](https://lionelectronic.ir/products/134-BC817-40) Quantity: 2, Prefer: 10, Supplier: LionElectronic 
 - [ ] [**Semi_Diod_TVS_SMF05**](https://lionelectronic.ir/products/121-SMF05C.TCT) Quantity: 1, Prefer: 5, Supplier: LionElectronic 
 - [ ] [**Semi_Diod_Zener_SMD**](https://lionelectronic.ir/products/2359-ZMM5V1) Quantity: 1, Prefer: 5, Supplier: LionElectronic 
@@ -85,7 +87,7 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**LED_0805_Yellow**](https://lionelectronic.ir/products/3267-XL-2012UYC) Quantity: 1, Prefer: 10, Supplier: LionElectronic  
 - [ ] [**LED_0805_Green**](https://lionelectronic.ir/products/3265-XL-2012SYGC) Quantity: 4, Prefer: 10, Supplier: LionElectronic
 
-# Switch
+## Switch
 - [ ] [**SW_Relay**](https://roboeq.ir/products/detail/0308060/%D8%B1%D9%84%D9%87-12-%D9%88%D9%84%D8%AA-%D8%AA%DA%A9-%DA%A9%D9%86%D8%AA%D8%A7%DA%A9%D8%AA-10-%D8%A2%D9%85%D9%BE%D8%B1-5-%D9%BE%DB%8C%D9%86/) Quantity: 3, Prefer: 5, Supplier: RoboEQ
 - [ ] [**SW_PushButton-6-3.7-2.5**](https://lionelectronic.ir/products/4165-TS365TP) Quantity: 2, Prefer: 10, Supplier: LionElectronic
 
