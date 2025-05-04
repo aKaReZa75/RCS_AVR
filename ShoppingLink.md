@@ -7,7 +7,8 @@ In this document, links to purchase the necessary components for the **"Relay Co
 - [ ] [**Cap_0805_100n**](https://lionelectronic.ir/products/2791-CL21B104KBCNNNC) Quantity: 8, Prefer: 25, Supplier: LionElectronic
 - [ ] [**Cap_1206_10p**](https://lionelectronic.ir/products/1991-1206CG100J500NT) Quantity: 1, Prefer: 25, Supplier: LionElectronic  
 - [ ] [**Cap_1206_33p**](https://lionelectronic.ir/products/1994-TCC1206C0G330J500DT) Quantity: 1, Prefer: 25, Supplier: LionElectronic  
-- [ ] [**Cap_1206_100n**](https://lionelectronic.ir/products/5156-C3216NP01H104J160AA) Quantity: 7, Prefer: 25, Supplier: LionElectronic  
+- [ ] [**Cap_1206_100n**](https://lionelectronic.ir/products/5156-C3216NP01H104J160AA) Quantity: 7, Prefer: 25, Supplier: LionElectronic
+- [ ] [**Cap_Tantal_1u_16V_A**](https://lionelectronic.ir/products/2037-TAJA105K016RNJ) Quantity: 2, Prefer: 5, Supplier: LionElectronic **(Instead of: Cap_Tantal_1u_6.3V_A)**
 - [ ] [**Cap_Tantal_10u_10V_A**](https://lionelectronic.ir/products/2046-TAJA106K010RNJ) Quantity: 3, Prefer: 10, Supplier: LionElectronic **(Instead of: Cap_Tantal_10u_6.3V_A)**
 - [ ] [**Cap_Tantal_10u_25V_B**](https://lionelectronic.ir/products/1037-TAJB106K025RNJ) Quantity: 2, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Cap_Tantal_22u_6.3V_A**](https://lionelectronic.ir/products/2051-TAJA226M006RNJ) Quantity: 1, Prefer: 5, Supplier: LionElectronic 
