@@ -56,7 +56,7 @@ Each item includes direct purchase links from reliable Iranian electronics suppl
 - [ ] [**Fuse_1206_3A**](https://lionelectronic.ir/products/1894-JFC1206-1300FS-63V-3A) Quantity: 1, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Fuse_5A**](https://roboeq.ir/products/detail/0320015/%D9%81%DB%8C%D9%88%D8%B2-%D8%B4%DB%8C%D8%B4%D9%87-%D8%A7%DB%8C-5-%D8%A2%D9%85%D9%BE%D8%B1-5x20/) Quantity: 1, Prefer: 5, Supplier: RoboEQ
 - [ ] [**Fuse_Holder**](https://roboeq.ir/products/detail/0320002/%D8%AC%D8%A7%D9%81%DB%8C%D9%88%D8%B2%DB%8C-%DA%A9%D9%88%DA%86%DA%A9-%D8%AF%D8%B1%D8%A8-%D8%AF%D8%A7%D8%B1/) Quantity: 1, Prefer: 5, Supplier: RoboEQ
-- [ ] [**Crystal 12MHz**](https://lionelectronic.ir/products/2101-XTAL-16MHZ%28HC-49SMD%29) Quantity: 1, Prefer: 5, Supplier: LionElectronic
+- [ ] [**Crystal 16MHz**](https://lionelectronic.ir/products/2101-XTAL-16MHZ%28HC-49SMD%29) Quantity: 1, Prefer: 5, Supplier: LionElectronic
 - [ ] [**M3_Screw**](https://lionelectronic.ir/products/5042-M3x6-Screw) Quantity: 3, Prefer: 25, Supplier: LionElectronic
 
 ## Resistor
