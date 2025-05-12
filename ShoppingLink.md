@@ -49,7 +49,7 @@ Each item includes direct purchase links from reliable Iranian electronics suppl
 
 ## Other
 - [ ] [**Adaptor12V-3A**](https://eshop.eca.ir/%D8%A2%D8%AF%D8%A7%D9%BE%D8%AA%D9%88%D8%B1/1596-%D8%A2%D8%AF%D8%A7%D9%BE%D8%AA%D9%88%D8%B1-12-%D9%88%D9%84%D8%AA-3-%D8%A2%D9%85%D9%BE%D8%B1-%D8%A8%DB%8C%D9%86-%D8%B1%D8%A7%D9%87%DB%8C-12v-3a.html) Quantity: 1, Prefer: 1, Supplier: ECA  
-- [ ] [**BMW 50006-A1**](https://eshop.eca.ir/%D8%AC%D8%B9%D8%A8%D9%87-%D8%A8%D8%B1%D8%AF-%D9%88-%D9%85%D8%AF%D8%A7%D8%B1/11600-%D8%AC%D8%B9%D8%A8%D9%87-%D8%A8%D8%B1%D8%AF-%D9%BE%D9%84%D8%A7%D8%B3%D8%AA%DB%8C%DA%A9%DB%8C-%D8%AF%DB%8C%D9%88%D8%A7%D8%B1%DB%8C-%D8%A8%D8%A7-%D9%BE%D9%86%D9%84-lcd-%D9%85%D8%AF%D9%84-bmw-a-%D8%B3%D8%A7%DB%8C%D8%B2-168x107x42mm.html) Quantity: 1, Prefer: 1, Supplier: ECA  
+- [ ] [**BMW 50006-A1**](https://bahar-enclosure.ir/product/bmw-50006-a1/) Quantity: 1, Prefer: 1, Supplier: Bahar
 - [ ] [**Fuse_1206_0.5A**](https://lionelectronic.ir/products/1891-JFC1206-0500FS-63V-0.5A) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
 - [ ] [**Fuse_1206_1A**](https://lionelectronic.ir/products/1892-JFC1206-1100FS-63V-1A) Quantity: 1, Prefer: 5, Supplier: LionElectronic  
 - [ ] [**Fuse_1206_2A**](https://lionelectronic.ir/products/1893-JFC1206-1200FS-63V-2A) Quantity: 1, Prefer: 5, Supplier: LionElectronic
