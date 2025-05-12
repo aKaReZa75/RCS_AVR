@@ -22,9 +22,9 @@ Each item includes direct purchase links from reliable Iranian electronics suppl
 - [ ] [**Con_Phonix_3Pin**](https://lionelectronic.ir/products/6050-KF2EDGR%2BK-5.08-3P) Quantity: 1, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Con_Phonix_2Pin**](https://lionelectronic.ir/products/6049-KF2EDGR%2BK-5.08-2P) Quantity: 2, Prefer: 5, Supplier: LionElectronic
 - [ ] [**Con_BoxHeadr_2x8**](https://roboeq.ir/products/detail/1504020/%D8%A8%D8%A7%DA%A9%D8%B3-%D9%87%D8%AF%D8%B1-8-2-BOX-HEADER-%D8%B5%D8%A7%D9%81/) Quantity: 1, Prefer: 5, Supplier: RoboEQ  
-- [ ] [**Con_IDE_2x8**](https://roboeq.ir/products/detail/1504003/%D8%A2%DB%8C-%D8%AF%DB%8C-%D8%B3%DB%8C-IDC-2-8/) Quantity: 1, Prefer: 5, Supplier: RoboEQ  
+- [ ] [**Con_IDC_2x8**](https://roboeq.ir/products/detail/1504003/%D8%A2%DB%8C-%D8%AF%DB%8C-%D8%B3%DB%8C-IDC-2-8/) Quantity: 1, Prefer: 5, Supplier: RoboEQ  
 - [ ] [**Con_BoxHeadr_2x3**](https://roboeq.ir/products/detail/1504056/%D8%A8%D8%A7%DA%A9%D8%B3-%D9%87%D8%AF%D8%B1-3-2-BOX-HEADER-%D8%B5%D8%A7%D9%81/) Quantity: 1, Prefer: 5, Supplier: RoboEQ  
-- [ ] [**Con_IDE_2x3**](https://roboeq.ir/products/detail/1504059/%D8%A2%DB%8C-%D8%AF%DB%8C-%D8%B3%DB%8C-IDC-2-3/) Quantity: 1, Prefer: 5, Supplier: RoboEQ  
+- [ ] [**Con_IDC_2x3**](https://roboeq.ir/products/detail/1504059/%D8%A2%DB%8C-%D8%AF%DB%8C-%D8%B3%DB%8C-IDC-2-3/) Quantity: 1, Prefer: 5, Supplier: RoboEQ  
 - [ ] [**Flat Cable**](https://roboeq.ir/products/detail/1301002/%DA%A9%D8%A7%D8%A8%D9%84-20-%D8%B1%D8%B4%D8%AA%D9%87-%D9%81%D9%84%D8%AA/) Quantity: 0.2, Prefer: 1, Supplier: RoboEQ  
 - [ ] [**Simcard_Nano**](https://lionelectronic.ir/products/4593-SI107C-08200) Quantity: 1, Prefer: 1, Supplier: LionElectronic  
 - [ ] [**Male_PinHeader**](https://lionelectronic.ir/products/5356-PLS-2.54-1X40GF) Quantity: 0.1, Prefer: 1, Supplier: LionElectronic  
