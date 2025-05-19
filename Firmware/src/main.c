@@ -4,7 +4,7 @@ int main(void)
 {
   alcd_init();
   alcd_backLight(true);
-  alcd_puts("aKaReZa");
+  display_HomePage();
   while(1)
   {
     
