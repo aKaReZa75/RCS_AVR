@@ -22,6 +22,7 @@
 #include <avr/interrupt.h>
 #include "alcd.h"
 #include "display.h"
+#include "outputs.h"
 
 #define bitSet(_Reg, _Bit)    (_Reg |= (1<<_Bit))
 #define bitClear(_Reg, _Bit)  (_Reg &= ~(1<<_Bit))
