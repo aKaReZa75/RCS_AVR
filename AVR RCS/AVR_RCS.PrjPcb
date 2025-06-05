@@ -400,26 +400,6 @@ DItemRevisionGUID=
 DocumentPath=Project Outputs for AVR_RCS\Generates pick and place files\Pick Place for PCB.txt
 DItemRevisionGUID=
 
-[GeneratedDocument25]
-DocumentPath=C:\Users\Hossein\AppData\Local\Temp\Qjz9BE7.xls
-DItemRevisionGUID=
-
-[GeneratedDocument26]
-DocumentPath=C:\Users\Hossein\AppData\Local\Temp\Qjz767F.xls
-DItemRevisionGUID=
-
-[GeneratedDocument27]
-DocumentPath=C:\Users\Hossein\AppData\Local\Temp\Qjz6356.xls
-DItemRevisionGUID=
-
-[GeneratedDocument28]
-DocumentPath=C:\Users\Hossein\AppData\Local\Temp\QjzE2BE.xls
-DItemRevisionGUID=
-
-[GeneratedDocument29]
-DocumentPath=C:\Users\Hossein\AppData\Local\Temp\QjzF66E.xls
-DItemRevisionGUID=
-
 [Parameter1]
 Name=CompanyName
 Value=github.com/aKaReZa75
@@ -829,6 +809,11 @@ OutputName9=Report Single Pin Nets
 OutputDocumentPath9=
 OutputVariantName9=[No Variations]
 OutputDefault9=0
+OutputType10=BoasTools
+OutputName10=BoasTools Html BOM
+OutputDocumentPath10=
+OutputVariantName10=[No Variations]
+OutputDefault10=0
 
 [OutputGroup7]
 Name=Other Outputs

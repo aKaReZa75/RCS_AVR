@@ -37,7 +37,14 @@ typedef enum
     PUMP_ON
 }PUMP_T;
 
+typedef struct
+{
+    PUMP_T Pump;
+    MOTOR_T Motor;
+} Outputs_T;
+
+
 void outputs_Init(void);
-void Outputs_Control(PUMP_T _pumpStatus, MOTOR_T _motorStatus);
+void Outputs_Control(Outputs_T _Outputs);
 
 #endif

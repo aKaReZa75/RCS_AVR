@@ -7,9 +7,9 @@ void outputs_Init(void)
     GPIO_Config_OUTPUT(_Speed_Config, _Speed_Pin);
 };
 
-void Outputs_Control(PUMP_T _pumpStatus, MOTOR_T _motorStatus)
+void Outputs_Control(Outputs_T _Outputs)
 {
-    switch (_pumpStatus)
+    switch (_Outputs.Pump)
     {
         case PUMP_OFF:
             PUMP_CTR_OFF;
@@ -20,7 +20,7 @@ void Outputs_Control(PUMP_T _pumpStatus, MOTOR_T _motorStatus)
         break;
     };  
 
-    switch (_motorStatus)
+    switch (_Outputs.Motor)
     {
         case MOTOR_OFF:
             MOTOR_CTR_OFF;
