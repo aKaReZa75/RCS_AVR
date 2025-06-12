@@ -149,6 +149,24 @@
       </a>
     </td>
   </tr>
+
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/FoJUFKjwWjk">aKaReZa 98 – PCB, Ordering</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        In this video, explore essential steps for ordering PCB, from fixing issues before printing, reviewing design rules, error troubleshooting, professional documentation, and learning about local companies and Cheap Project group for seamless PCB manufacturing.
+      </p>
+    </td>
+    <td width="360" valign="top">
+      <a href="https://youtu.be/FoJUFKjwWjk">
+        <img src="https://img.youtube.com/vi/FoJUFKjwWjk/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 98 – PCB, Ordering Thumbnail"/>
+      </a>
+    </td>
+  </tr>  
 </table>
 
 ## Assembly and soldering videos
