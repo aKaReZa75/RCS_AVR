@@ -170,6 +170,24 @@
       </a>
     </td>
   </tr>
+
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/i9ef0sJyjoc">aKaReZa 104 – Repair, RCS AVR Soldering - PART B</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Continue soldering the RCS-AVR project with a focus on communication modules. This video covers LCD connector soldering, 4V regulator installation, Quectel M66 module assembly, SIM card connector setup, remaining component soldering, and final system testing to ensure everything functions correctly. Perfect for microcontroller board assembly and troubleshooting enthusiasts.
+      </p>
+    </td>
+    <td width="360" valign="top">
+      <a href="https://youtu.be/i9ef0sJyjoc">
+        <img src="https://img.youtube.com/vi/i9ef0sJyjoc/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 104 – Repair, RCS AVR Soldering - PART B Thumbnail"/>
+      </a>
+    </td>
+  </tr> 
 </table>
 
 ## Coding and testing videos
