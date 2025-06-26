@@ -209,9 +209,26 @@
 </table>
 
 ## Coding and testing videos
+<table style="border-collapse: collapse;">
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/397Jk0z9aTY">aKaReZa 106 – RCS, AVR - PART I</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Start coding the RCS-AVR project using PlatformIO, with a focus on LCD initialization, homepage design, relay control, and hardware interaction. This video lays the groundwork for structured, modular AVR programming tailored to practical embedded systems development.
+      </p>
+    </td>
+    <td width="360" valign="top">
+      <a href="https://youtu.be/397Jk0z9aTY">
+        <img src="https://img.youtube.com/vi/397Jk0z9aTY/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 106 – RCS, AVR - PART I Thumbnail"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
-> [!CAUTION] 
-> The videos related to this section are not yet prepared.
 
 # 🌟 Support Me
 If you found this repository useful:
