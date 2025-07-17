@@ -227,6 +227,25 @@
       </a>
     </td>
   </tr>
+
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/tSlz7DpWGOs">aKaReZa 109 – RCS, AVR - PART J</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Advance the RCS-AVR project by implementing output control, reading signal strength, managing network registration, and designing LCD menus. This video explores state machines, real-time status display, and software-hardware interaction—ideal for building smart embedded systems.
+      </p>
+    </td>
+    <td width="360" valign="top">
+      <a href="https://youtu.be/tSlz7DpWGOs">
+        <img src="https://img.youtube.com/vi/tSlz7DpWGOs/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 109 – RCS, AVR - PART J Thumbnail"/>
+      </a>
+    </td>
+  </tr>
+ 
 </table>
 
 
