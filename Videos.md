@@ -4,6 +4,71 @@
  - **Assembly and soldering videos**
  - **Coding and testing videos**
 
+```plaintext
+RCS, AVR Project
+├── PCB
+│   ├── [aKaReZa 70 - RCS, AVR - PART A]
+│   │     ├─ Kickoff — Conceptual design, enclosure, Git/GitHub.
+│   │     └─ Schematic — Altium Designer introduction and setup.
+│   │
+│   ├── [aKaReZa 71 - RCS, AVR - PART B]
+│   │     ├─ Power Supply — 12V, 5V, 4V, 3.3V design.
+│   │     └─ Safety — Fusing and voltage indicators.
+│   │
+│   ├── [aKaReZa 72 - RCS, AVR - PART C]
+│   │     ├─ Collaboration — Issues, Pull Requests, Git tools.
+│   │     └─ Power — Final regulator setup and LED resistors.
+│   │
+│   ├── [aKaReZa 73 - RCS, AVR - PART D]
+│   │     ├─ Logic & Outputs — ATMega328, Reset, Relays, ULN2003.
+│   │     ├─ Protection — Flywheel diode and LED indicators.
+│   │     └─ Structure — Hierarchical design + library file export.
+│   │
+│   ├── [aKaReZa 75 - RCS, AVR - PART E]
+│   │     ├─ LCD & Harness — Alphanumeric display and Harness tool.
+│   │     ├─ GSM — SIMCard, UART protocol, filters, network LED.
+│   │     └─ Review — GitHub Pull Requests and GSM tips.
+│   │
+│   ├── [aKaReZa 79 - RCS, AVR - PART F]
+│   │     ├─ Input — 220V detection and signal handling.
+│   │     ├─ Remote Control — Section creation and error fixes.
+│   │     └─ Integration — Board shape design + Hamibash feature.
+│   │
+│   ├── [aKaReZa 81 - RCS, AVR - PART G]
+│   │     ├─ Schematic Updates — GitHub issues and fixes.
+│   │     ├─ PCB — Component placement and routing.
+│   │     └─ Capacitors — Placement technique and performance tip.
+│   │
+│   └── [aKaReZa 83 - RCS, AVR - PART H]
+│         ├─ Routing — Completion and optimization.
+│         ├─ Tools — Polygon, Teardrops, Via Stitching.
+│         └─ Mounting — Screw placement and final fixes.
+│ 
+├── Soldering
+│   ├── [aKaReZa 100 - RCS, AVR - PART A]
+│   │     ├─ Sections — 12V, 5V, 3.3V regulators.
+│   │     ├─ MCU — ATMEGA soldering + relay + LCD.
+│   │     └─ Testing — Segment-wise validation.
+│   │
+│   └── [aKaReZa 104 - RCS, AVR - PART B]
+│         ├─ LCD Connector — Precision soldering tips.
+│         ├─ Components — 4V reg, Quectel M66, SIM filters.
+│         └─ Final Test — Complete module evaluation.
+│ 
+├── Programming
+│   ├── [aKaReZa 106 - RCS, AVR - PART I]
+│   │     ├─ PlatformIO — Project setup and structure.
+│   │     ├─ LCD — HomePage design and initialization.
+│   │     ├─ Relays — Output pin config and tests.
+│   │     └─ Control — Modular output handling logic.
+│   │
+│   └── [aKaReZa 109 - RCS, AVR - PART J]
+│         ├─ Control — Output status display on LCD.
+│         ├─ GSM — Signal strength and registration via M66.
+│         ├─ Logic — State machine design.
+│         └─ Interface — Graphical LCD menu implementation.
+```
+
 ## PCB Desing Videos
 <table style="border-collapse: collapse;">
   <tr>
