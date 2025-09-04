@@ -62,7 +62,7 @@ RCS, AVR Project
     │     ├─ Relays — Output pin config and tests.
     │     └─ Control — Modular output handling logic.
     │
-    └─  [aKaReZa 109 - RCS, AVR - PART J]
+    └── [aKaReZa 109 - RCS, AVR - PART J]
           ├─ Control — Output status display on LCD.
           ├─ GSM — Signal strength and registration via M66.
           ├─ Logic — State machine design.
