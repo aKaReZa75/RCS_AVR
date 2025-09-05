@@ -370,7 +370,7 @@ M66_Res_T M66_CheckSMS(void)
 
     display_Update();
 
-    M66_SendAtCmd(__M66_CMD_SMSdellAll, __M66_Okey, __M66_Default_TimeOut); 
+    M66_SendAtCmd(__M66_CMD_SMSdellAll, __M66_Okey, __M66_DelSMS_TimeOut); 
 
     usart_Flush();
 
