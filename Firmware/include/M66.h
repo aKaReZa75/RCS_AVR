@@ -36,7 +36,7 @@
 #define __M66_Okey             "OK"                 ///< Expected success response
 #define __M66_ERR              "ERROR"              ///< Expected error response
 #define __M66_Default_TimeOut  300                  ///< Default timeout in milliseconds
-#define __M66_DelSMS_TimeOut   3000                 ///< Default timeout in milliseconds
+#define __M66_DelSMS_TimeOut   3000                 ///< DelSMS timeout in milliseconds
 #define __M66_StartUp_TimeOut  20000                ///< Startup timeout in milliseconds
 
 
