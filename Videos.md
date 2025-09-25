@@ -57,18 +57,25 @@ RCS, AVR Project
 │ 
 └── Programming
     ├── [aKaReZa 106 - RCS, AVR - PART I]
-    │     ├─ PlatformIO — Project setup and structure.
-    │     ├─ LCD — HomePage design and initialization.
-    │     ├─ Relays — Output pin config and tests.
-    │     └─ Control — Modular output handling logic.
+    │   ├─ PlatformIO — Project setup and structure.
+    │   ├─ LCD — HomePage design and initialization.
+    │   ├─ Relays — Output pin config and tests.
+    │   └─ Control — Modular output handling logic.
     │
-    └── [aKaReZa 109 - RCS, AVR - PART J]
-          ├─ Control — Output status display on LCD.
-          ├─ GSM — Signal strength and registration via M66.
-          ├─ Logic — State machine design.
-          └─ Interface — Graphical LCD menu implementation.
-    
-
+    ├── [aKaReZa 109 - RCS, AVR - PART J]
+    │   ├─ Control — Output status display on LCD.
+    │   ├─ GSM — Signal strength and registration via M66.
+    │   ├─ Logic — State machine design.
+    │   └─ Interface — Graphical LCD menu implementation.
+    │
+    └── [aKaReZa 119 - RCS, AVR - PART K]
+        ├─ Libraries — Project structure and GSM setup.
+        ├─ SMS Rx — Parsing incoming messages.
+        ├─ Format — Suggested SMS command syntax.
+        ├─ Control — Output switching via SMS.
+        ├─ Reply — Sending confirmation messages.
+        ├─ Case Handling — `str_toUpper()` for flexibility.
+        └─ Stability — Debugging and system reliability.
 ```
 
 ## PCB Desing Videos
@@ -313,6 +320,22 @@ RCS, AVR Project
     </td>
   </tr>
 
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/OboAPzh3QSU">aKaReZa 119 – RCS, AVR - PART K</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Build SMS-based control systems with AVR and the Quectel M66 module. This video covers message parsing, output control, reply generation, and case-insensitive command handling using <code>str_toUpper()</code>—a practical guide for robust GSM integration in embedded projects.
+      </p>
+    </td>
+    <td width="360" valign="top">
+      <a href="https://youtu.be/OboAPzh3QSU">
+        <img src="https://img.youtube.com/vi/OboAPzh3QSU/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 119 – RCS, AVR - PART K Thumbnail"/>
+      </a>
+    </td>
 </table>
 
 
