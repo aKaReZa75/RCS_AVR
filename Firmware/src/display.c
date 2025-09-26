@@ -16,7 +16,7 @@ uint8_t Display_Sad[8]     = {0x00, 0x00, 0x00, 0x0A, 0x00, 0x0E, 0x11, 0x00};
 
 alcd_customChar_T Display_customChar;
 M66_SignalQ_T M66_SignalQ;
-Dispay_Page_T Dispay_Page;
+
 
 void display_Init(void)
 {
@@ -29,21 +29,6 @@ void display_Init(void)
   alcd_customChar(alcd_CustumChar_SQ1, Display_SQ1);
   alcd_customChar(alcd_CustumChar_Sad, Display_Sad);  
 };
-
-
-void display_Update(void)
-{
-  switch (Dispay_Page)
-  {
-    case Display_Page_Welcome:
-      display_PageWelcome();
-    break;
-
-    case Display_Page_Home:
-      display_HomePage();
-    break;
-  }
-}
 
 
 void display_PageWelcome(void)

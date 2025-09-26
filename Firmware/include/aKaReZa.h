@@ -27,6 +27,8 @@
 #include "outputs.h"
 #include "M66.h"
 #include "usart.h"
+#include "millis.h"
+#include "task.h"
 
 #define bitSet(_Reg, _Bit)    (_Reg |= (1ul<<_Bit))
 #define bitClear(_Reg, _Bit)  (_Reg &= ~(1ul<<_Bit))
