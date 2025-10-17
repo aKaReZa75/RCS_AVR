@@ -15,6 +15,8 @@ millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 Sys_State_T Sys_State = Sys_StartUp;
 GSM_State_T GSM_State = GSM_Reset;
 GSM_StartUp_Flags_T GSM_StartUp_Flags;
+GSM_Init_State_T GSM_Init_State;
+GSM_Init_Flags_T GSM_Init_Flags;
 
 void scheduler(void)
 {
@@ -89,16 +91,33 @@ void GSM_Task(void)
 
             if(GSM_StartUp_Flags.bits.Result == true)
             {
+                GSM_Init_Flags.raw = 0x00;
                 GSM_State = GSM_Init;
             };
         break;
 
         case GSM_Init:
-            
+            M66_Config();
+            if(usart_RxFlag == true)
+            {
+                usart_RxFlag = false;
+                usart_Flush();
+            };
+            if(GSM_Init_State == GSM_Init_Done)
+            {
+                if(GSM_Init_Flags.bits.Result == true)
+                {
+                    GSM_State = GSM_Idle;
+                }
+                else
+                {
+                    GSM_State = GSM_Fault;
+                };
+            };
         break;   
 
         case GSM_Idle:
-
+            Display_customChar = alcd_CustumChar_SQ2;
         break;  
         
         case GSM_SMS_ParseNumber:
@@ -114,7 +133,7 @@ void GSM_Task(void)
         break;   
         
         case GSM_Fault:
-
+            Display_customChar = alcd_CustumChar_Sad;
         break;          
     }
 };

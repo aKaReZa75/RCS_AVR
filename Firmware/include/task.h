@@ -40,6 +40,36 @@ typedef union
 } GSM_StartUp_Flags_T;
 
 
+typedef enum
+{
+    GSM_Init_Echo,
+    GSM_Init_Func,
+    GSM_Init_Text,
+    GSM_Init_Char,
+    GSM_Init_SMS,
+    GSM_Init_Del,
+    GSM_Init_Done
+} GSM_Init_State_T;
+
+
+
+typedef union 
+{
+    struct
+    {
+        uint8_t Echo :1;
+        uint8_t Func :1;
+        uint8_t Text :1;
+        uint8_t Char :1;
+        uint8_t SMS  :1;
+        uint8_t Del  :1;
+        uint8_t Result:1;
+        uint8_t reserve:1;
+    }bits;
+    uint8_t raw;
+} GSM_Init_Flags_T;
+
+
 void scheduler(void);
 void System_Task(void);
 void GSM_Task(void);

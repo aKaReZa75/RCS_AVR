@@ -20,6 +20,9 @@
 extern volatile bool usart_RxFlag;   /**< True: Data has been received completely */   
 extern char usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received data, with defined size */
 extern GSM_StartUp_Flags_T GSM_StartUp_Flags;
+extern GSM_Init_State_T GSM_Init_State;
+extern GSM_Init_Flags_T GSM_Init_Flags;
+
 
 /**
  * @brief Initializes the M66 GSM module
@@ -90,7 +93,7 @@ M66_Res_T M66_Startup(void)
                                   & GSM_StartUp_Flags.bits.CPIN
                                   & GSM_StartUp_Flags.bits.Call
                                   & GSM_StartUp_Flags.bits.SMS;
-                                  
+
     return M66_Res_OK;
 };
 
@@ -102,49 +105,160 @@ M66_Res_T M66_Startup(void)
  */
 M66_Res_T M66_Config(void)
 {
-    M66_Res_T _Res = M66_Res_ERR;
-
-    // Disable command echo
-    _Res = M66_SendAtCmd(__M66_CMD_EchoOff, "ATE0", __M66_Default_TimeOut);
-    if(_Res != M66_Res_OK)
+    static GSM_Init_State_T GSM_Init_State_Last = GSM_Init_Func;
+    switch (GSM_Init_State)
     {
-        return _Res;
-    };
-    M66_SendAtCmd("", __M66_Okey, __M66_Default_TimeOut);
+        case GSM_Init_Echo: // Disable command echo
+            if(GSM_Init_State_Last != GSM_Init_Echo)
+            {
+                usart_Putsln(__M66_CMD_EchoOff);
+                GSM_Init_State_Last = GSM_Init_Echo;
+            }
+            else
+            {
+                if(usart_RxFlag == true)
+                {
+                    if(strstr(usart_RxBuffer, "ATE0") != NULL)
+                    {
+                        GSM_Init_Flags.bits.Echo = true;
+                    }
+                    else if(strstr(usart_RxBuffer, __M66_Okey) != NULL)
+                    {
+                        GSM_Init_Flags.bits.Echo = true;
+                    }
+                    else
+                    {
+                        GSM_Init_Flags.bits.Echo = false;
+                    };
+                    GSM_Init_State = GSM_Init_Func;
+                };
+            };
+        break;
 
-    // Enable full functionality
-    _Res = M66_SendAtCmd(__M66_CMD_fullFunc, __M66_Okey, __M66_Default_TimeOut);
-    if(_Res != M66_Res_OK)
-    {
-        return _Res;
-    };
+        case GSM_Init_Func: // Enable full functionality
+            if(GSM_Init_State_Last != GSM_Init_Func)
+            {
+                usart_Putsln(__M66_CMD_fullFunc);
+                GSM_Init_State_Last = GSM_Init_Func;
+            }
+            else
+            {
+                if(usart_RxFlag == true)
+                {                
+                    if(strstr(usart_RxBuffer, __M66_Okey) != NULL)
+                    {
+                        GSM_Init_Flags.bits.Func = true;
+                    }
+                    else
+                    {
+                        GSM_Init_Flags.bits.Func = false;
+                    };
+                    GSM_Init_State = GSM_Init_Text;
+                };
+            };
+        break;
 
-    // Set SMS text mode
-    _Res = M66_SendAtCmd(__M66_CMD_textMode, __M66_Okey, __M66_Default_TimeOut);
-    if(_Res != M66_Res_OK)
-    {
-        return _Res;
-    };
-
-    // Set character encoding to GSM
-    _Res = M66_SendAtCmd(__M66_CMD_charSetting, __M66_Okey, __M66_Default_TimeOut);
-    if(_Res != M66_Res_OK)
-    {
-        return _Res;
-    };
-
-    // Configure SMS parameters
-    _Res = M66_SendAtCmd(__M66_CMD_Settings, __M66_Okey, __M66_Default_TimeOut); 
-    if(_Res != M66_Res_OK)
-    {
-        return _Res;
-    };
-
-    // Delete all SMS messages
-    _Res = M66_SendAtCmd(__M66_CMD_SMSdellAll, __M66_Okey, __M66_DelSMS_TimeOut); 
-    if(_Res != M66_Res_OK)
-    {
-        return _Res;
+        case GSM_Init_Text: // Set SMS text mode
+            if(GSM_Init_State_Last != GSM_Init_Text)
+            {
+                usart_Putsln(__M66_CMD_textMode);
+                GSM_Init_State_Last = GSM_Init_Text;
+            }
+            else
+            {
+                if(usart_RxFlag == true)
+                {                            
+                    if(strstr(usart_RxBuffer, __M66_Okey) != NULL)
+                    {
+                        GSM_Init_Flags.bits.Text = true;
+                    }
+                    else
+                    {
+                        GSM_Init_Flags.bits.Text = false;
+                    };
+                    GSM_Init_State = GSM_Init_Char;
+                };
+            };
+        break;
+        
+        case GSM_Init_Char: // Set character encoding to GSM
+            if(GSM_Init_State_Last != GSM_Init_Char)
+            {
+                usart_Putsln(__M66_CMD_charSetting);
+                GSM_Init_State_Last = GSM_Init_Char;
+            }
+            else
+            {
+                if(usart_RxFlag == true)
+                {                            
+                    if(strstr(usart_RxBuffer, __M66_Okey) != NULL)
+                    {
+                        GSM_Init_Flags.bits.Char = true;
+                    }
+                    else
+                    {
+                        GSM_Init_Flags.bits.Char = false;
+                    };
+                    GSM_Init_State = GSM_Init_SMS;
+                };
+            };
+        break;
+        
+        case GSM_Init_SMS:  // Configure SMS parameters
+            if(GSM_Init_State_Last != GSM_Init_SMS)
+            {
+                usart_Putsln(__M66_CMD_Settings);
+                GSM_Init_State_Last = GSM_Init_SMS;
+            }
+            else
+            {
+                if(usart_RxFlag == true)
+                {                            
+                    if(strstr(usart_RxBuffer, __M66_Okey) != NULL)
+                    {
+                        GSM_Init_Flags.bits.SMS = true;
+                    }
+                    else
+                    {
+                        GSM_Init_Flags.bits.SMS = false;
+                    };
+                    GSM_Init_State = GSM_Init_Del;
+                };
+            };
+        break;
+        
+        case GSM_Init_Del:
+            if(GSM_Init_State_Last != GSM_Init_Del)
+            {
+                usart_Putsln(__M66_CMD_SMSdellAll);
+                GSM_Init_State_Last = GSM_Init_Del;
+            }
+            else
+            {
+                if(usart_RxFlag == true)
+                {                            
+                    if(strstr(usart_RxBuffer, __M66_Okey) != NULL)
+                    {
+                        GSM_Init_Flags.bits.Del = true;
+                    }
+                    else
+                    {
+                        GSM_Init_Flags.bits.Del = false;
+                    };
+                    GSM_Init_State = GSM_Init_Done;
+                    GSM_Init_Flags.bits.Result = GSM_Init_Flags.bits.Echo
+                                            & GSM_Init_Flags.bits.Func
+                                            & GSM_Init_Flags.bits.Text
+                                            & GSM_Init_Flags.bits.Char
+                                            & GSM_Init_Flags.bits.SMS
+                                            & GSM_Init_Flags.bits.Del;                    
+                };
+            };
+        break;   
+        
+        case GSM_Init_Done:
+            
+        break;           
     };
 
     return M66_Res_OK;
