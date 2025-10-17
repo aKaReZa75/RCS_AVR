@@ -17,6 +17,7 @@ GSM_State_T GSM_State = GSM_Reset;
 GSM_StartUp_Flags_T GSM_StartUp_Flags;
 GSM_Init_State_T GSM_Init_State;
 GSM_Init_Flags_T GSM_Init_Flags;
+SMS_CMD_Type_T   SMS_CMD_Type;
 
 void scheduler(void)
 {
@@ -28,6 +29,7 @@ void scheduler(void)
     if(millisGSM.Delta > millisGSM.Interval)
     {
         millisGSM.Previous = System_millis;
+        millisGSM.Interval = 50;
         GSM_Task();
     };
 
@@ -118,18 +120,45 @@ void GSM_Task(void)
 
         case GSM_Idle:
             Display_customChar = alcd_CustumChar_SQ2;
+            if(usart_RxFlag == true)
+            {
+                if(strstr(usart_RxBuffer,"+CMTI") != NULL)
+                {
+                    GSM_State = GSM_SMS_ParseNumber;
+                }
+                else
+                {
+                    usart_RxFlag = false;
+                    usart_Flush();
+                };
+            };            
         break;  
         
         case GSM_SMS_ParseNumber:
-
+            M66_SMS_GetIndex();
+            GSM_State = GSM_SMS_ReadContent;
         break;   
         
         case GSM_SMS_ReadContent:
-
+            if(usart_RxFlag == true)
+            {
+                if(M66_CheckSMS() == M66_Res_OK)
+                {
+                    GSM_State = GSM_SMS_SendSMS;
+                }
+                else
+                {
+                    GSM_State = GSM_Fault;
+                };
+                usart_Putsln(__M66_CMD_SMSdellAll);
+                millisGSM.Interval = 500;
+                usart_RxFlag = false;
+                usart_Flush();
+            };
         break; 
         
         case GSM_SMS_SendSMS:
-
+            GSM_State = GSM_Idle;
         break;   
         
         case GSM_Fault:

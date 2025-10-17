@@ -70,6 +70,19 @@ typedef union
 } GSM_Init_Flags_T;
 
 
+typedef enum
+{
+    SMS_CMD_Phone_Incorrect,
+    SMS_CMD_POFF_MOFF, 
+    SMS_CMD_PON_MOFF,   
+    SMS_CMD_PON_MLOW,   
+    SMS_CMD_PON_MHIGH,  
+    SMS_CMD_POFF_MLOW,  
+    SMS_CMD_POFF_MHIGH, 
+    SMS_CMD_Unknown      
+} SMS_CMD_Type_T;
+
+
 void scheduler(void);
 void System_Task(void);
 void GSM_Task(void);

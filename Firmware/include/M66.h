@@ -98,4 +98,6 @@ M66_Res_T M66_SendAtCmd(char* _CMD, char* _Reponse, int16_t _TimeOut);
  */
 M66_Res_T M66_CheckSMS(void);
 
+void M66_SMS_GetIndex(void);
+
 #endif

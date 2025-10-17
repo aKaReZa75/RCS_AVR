@@ -22,7 +22,12 @@ extern char usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received da
 extern GSM_StartUp_Flags_T GSM_StartUp_Flags;
 extern GSM_Init_State_T GSM_Init_State;
 extern GSM_Init_Flags_T GSM_Init_Flags;
+extern SMS_CMD_Type_T   SMS_CMD_Type;
 
+#define SMS_Authorized_Number "+989355282124"
+#define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
+#define SMS_scanSet_Number    "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\""
+#define SMS_scanSet_Content   "\r\n+CMGR: \"%*[^\"]\",\"%*[^\"]\",\"\",\"%*[^\"]\"\r\n%[^\r]\r\n"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -365,6 +370,29 @@ void str_toUpper(char *_str, uint16_t _Length)
 };
 
 
+
+void M66_SMS_GetIndex(void)
+{
+    char _gsmCmd[20];    
+    uint8_t _SMSnum = 0;   /**< Number of the SMS message in the memory */
+
+    /* Extract the SMS number from the usart_RxBuffer */
+    sscanf(usart_RxBuffer, SMS_scanSet_Index, &_SMSnum);
+    if(_SMSnum == 0)
+    {
+        _SMSnum = 1;
+    };
+
+    usart_Flush();
+
+    memset(_gsmCmd, '\0', sizeof(_gsmCmd));
+    sprintf(_gsmCmd, "AT+CMGR=%d", _SMSnum);
+    usart_Putsln(_gsmCmd);
+};
+
+
+
+
 /**
  * @brief Checks for incoming SMS messages and parses the content.
  * 
@@ -397,86 +425,73 @@ M66_Res_T M66_CheckSMS(void)
 {
     char _phoneNumber[14];
     char _incomeText[20];
-    char _gsmCmd[20];
     uint8_t _Status = 0;
-    uint8_t _SMSnum = 0;   /**< Number of the SMS message in the memory */
     extern Outputs_T Outputs;
-
-    /* Extract the SMS number from the usart_RxBuffer */
-    sscanf(usart_RxBuffer, "\r\n+CMTI: \"SM\",%hhu\r\n", &_SMSnum);
-    if(_SMSnum == 0)
-    {
-        _SMSnum = 1;
-    };
-
-    usart_Flush();
-
-    memset(_gsmCmd, '\0', sizeof(_gsmCmd));
-    sprintf(_gsmCmd, "AT+CMGR=%d", _SMSnum);
-    M66_SendAtCmd(_gsmCmd, __M66_Okey, 1);
-    
-    while(!usart_RxFlag);
+    SMS_CMD_Type = SMS_CMD_Phone_Incorrect;
 
     // Parse SMS content
     memset(_phoneNumber, '\0', sizeof(_phoneNumber));
     memset(_incomeText, '\0', sizeof(_incomeText));
-    _Status = sscanf(usart_RxBuffer, "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\",\"\",\"%*[^\"]\"\r\n%[^\r]\r\n", _phoneNumber, _incomeText);
-    if(_Status != 2)
+
+    _Status = sscanf(usart_RxBuffer, SMS_scanSet_Number, _phoneNumber);
+    if(_Status != 1)
     {                   
         return M66_Res_ERR;
     };
 
-    if(strstr(_phoneNumber, "+989355282124"))
+    if(strstr(_phoneNumber, SMS_Authorized_Number))
     {
+
+        _Status = sscanf(usart_RxBuffer, SMS_scanSet_Content, _incomeText);
+        if(_Status != 1)
+        {                   
+            return M66_Res_ERR;
+        };
+
         str_toUpper(_incomeText, strlen(_incomeText));
 
         if(strstr(_incomeText, "RCS+OC=0,0") != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_OFF;
-            M66_SendSMS("+989355282124", "OKEY");
+            SMS_CMD_Type  = SMS_CMD_POFF_MOFF;
         }
         else if(strstr(_incomeText, "RCS+OC=1,0") != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_OFF;
-            M66_SendSMS("+989355282124", "OKEY");
+            SMS_CMD_Type  = SMS_CMD_PON_MOFF;
         }       
         else if(strstr(_incomeText, "RCS+OC=1,1") != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_LOW;
-            M66_SendSMS("+989355282124", "OKEY");
+            SMS_CMD_Type  = SMS_CMD_PON_MLOW;
+
         }
         else if(strstr(_incomeText, "RCS+OC=1,2") != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_HIGH;
-            M66_SendSMS("+989355282124", "OKEY");
+            SMS_CMD_Type  = SMS_CMD_PON_MHIGH;            
         }
         else if(strstr(_incomeText, "RCS+OC=0,1") != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_LOW;
-            M66_SendSMS("+989355282124", "OKEY");
+            SMS_CMD_Type  = SMS_CMD_POFF_MLOW;                
         }
         else if(strstr(_incomeText, "RCS+OC=0,2") != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_HIGH;
-            M66_SendSMS("+989355282124", "OKEY");
+            SMS_CMD_Type  = SMS_CMD_POFF_MHIGH;                
         }
         else
         {
-            M66_SendSMS("+989355282124", "ERROR");
+            SMS_CMD_Type  = SMS_CMD_Unknown;                
         };
     };
-
-    display_Update();
-
-    M66_SendAtCmd(__M66_CMD_SMSdellAll, __M66_Okey, __M66_DelSMS_TimeOut); 
-
-    usart_Flush();
 
     return M66_Res_OK;
 };
