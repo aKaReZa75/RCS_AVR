@@ -1,6 +1,7 @@
 #include "display.h"
 
 extern Outputs_T Outputs;
+extern GSM_State_T GSM_State;
 
 char alcd_Buffer[16];
 
@@ -69,14 +70,50 @@ void display_PageWelcome(void)
 
 void display_HomePage(void)
 {
+  static uint8_t Counter = 0;
   alcd_gotoxy(0,0);
   sprintf(alcd_Buffer,"T:%2.1f H:%d", 25.1, 30);
   alcd_puts(alcd_Buffer);
 
+  Counter++;
+  if(Counter > 4)
+  {
+    Counter = 0;
+  };
+
   alcd_gotoxy(14, 0);
-  alcd_putc(alcd_CustomChar_Antenna);
-  M66_SignalQ = M66_SQ_Med;
-  alcd_putc(M66_SignalQ);
+  if(GSM_State == GSM_StartUp)
+  {
+    if(Counter<2)
+    {
+      alcd_putc(' ');
+      alcd_putc(' ');
+    }
+    else
+    {
+      alcd_putc(alcd_CustomChar_Antenna);
+      alcd_putc(' ');
+    };
+  }
+  else if(GSM_State == GSM_Init)
+  {
+    if(Counter<2)
+    {
+      alcd_putc(alcd_CustomChar_Antenna);
+      alcd_putc(' ');
+    }
+    else
+    {
+      alcd_putc(alcd_CustomChar_Antenna);
+      alcd_putc(alcd_CustumChar_Time);
+    };
+  }
+  else
+  {
+    alcd_putc(alcd_CustomChar_Antenna);
+    alcd_putc(Display_customChar);
+  };
+
 
   alcd_gotoxy(0, 1);
   sprintf(alcd_Buffer,"P:%s ", Pump_Display[Outputs.Pump]);
