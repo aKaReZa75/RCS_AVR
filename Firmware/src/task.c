@@ -135,6 +135,7 @@ void GSM_Task(void)
         break;  
         
         case GSM_SMS_ParseNumber:
+            Display_customChar = alcd_CustumChar_Busy;
             M66_SMS_GetIndex();
             GSM_State = GSM_SMS_ReadContent;
         break;   
@@ -166,6 +167,7 @@ void GSM_Task(void)
             {
                 M66_sendWarning();
             };
+            millisDisplay.Interval = 2000;            
             GSM_State = GSM_Idle;
         break;   
         

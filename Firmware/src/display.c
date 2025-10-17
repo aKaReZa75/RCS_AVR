@@ -61,7 +61,8 @@ void display_Update(void)
 void display_PageWelcome(void)
 {
   alcd_gotoxy(0, 0);
-  alcd_puts("RCS AVR");
+  sprintf(alcd_Buffer, "RCS AVR V%s", firmwareVer);
+  alcd_puts(alcd_Buffer);
 
   alcd_gotoxy(0, 1);
   alcd_puts("aKaReZa");
@@ -113,7 +114,6 @@ void display_HomePage(void)
     alcd_putc(alcd_CustomChar_Antenna);
     alcd_putc(Display_customChar);
   };
-
 
   alcd_gotoxy(0, 1);
   sprintf(alcd_Buffer,"P:%s ", Pump_Display[Outputs.Pump]);

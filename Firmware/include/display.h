@@ -10,7 +10,8 @@ typedef enum
     alcd_CustumChar_SQ2,
     alcd_CustumChar_SQ3,
     alcd_CustumChar_Sad,
-    alcd_CustumChar_Time
+    alcd_CustumChar_Time,
+    alcd_CustumChar_Busy = 0x7F,
 }alcd_customChar_T;
 
 

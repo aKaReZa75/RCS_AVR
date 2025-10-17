@@ -29,6 +29,12 @@ extern Outputs_T Outputs;
 #define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
 #define SMS_scanSet_Number    "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\""
 #define SMS_scanSet_Content   "\r\n+CMGR: \"%*[^\"]\",\"%*[^\"]\",\"\",\"%*[^\"]\"\r\n%[^\r]\r\n"
+#define SMS_CMD_Pump_OFF_Motor_OFF   "RCS+OC=0,0"
+#define SMS_CMD_Pump_ON_Motor_OFF    "RCS+OC=1,0"
+#define SMS_CMD_Pump_ON_Motor_LOW    "RCS+OC=1,1"
+#define SMS_CMD_Pump_ON_Motor_HIGH   "RCS+OC=1,2"
+#define SMS_CMD_Pump_OFF_Motor_LOW   "RCS+OC=0,1"
+#define SMS_CMD_Pump_OFF_Motor_HIGH  "RCS+OC=0,2"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -450,38 +456,38 @@ M66_Res_T M66_CheckSMS(void)
 
         str_toUpper(_incomeText, strlen(_incomeText));
 
-        if(strstr(_incomeText, "RCS+OC=0,0") != NULL)
+        if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_OFF) != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_OFF;
             SMS_CMD_Type  = SMS_CMD_POFF_MOFF;
         }
-        else if(strstr(_incomeText, "RCS+OC=1,0") != NULL)
+        else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_OFF) != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_OFF;
             SMS_CMD_Type  = SMS_CMD_PON_MOFF;
         }       
-        else if(strstr(_incomeText, "RCS+OC=1,1") != NULL)
+        else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_LOW) != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_LOW;
             SMS_CMD_Type  = SMS_CMD_PON_MLOW;
 
         }
-        else if(strstr(_incomeText, "RCS+OC=1,2") != NULL)
+        else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_HIGH) != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_HIGH;
             SMS_CMD_Type  = SMS_CMD_PON_MHIGH;            
         }
-        else if(strstr(_incomeText, "RCS+OC=0,1") != NULL)
+        else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_LOW) != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_LOW;
             SMS_CMD_Type  = SMS_CMD_POFF_MLOW;                
         }
-        else if(strstr(_incomeText, "RCS+OC=0,2") != NULL)
+        else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_HIGH) != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_HIGH;
