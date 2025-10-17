@@ -158,6 +158,14 @@ void GSM_Task(void)
         break; 
         
         case GSM_SMS_SendSMS:
+            if(SMS_CMD_Type != SMS_CMD_Unknown)
+            {
+                M66_sendStatus();
+            }
+            else
+            {
+                M66_sendWarning();
+            };
             GSM_State = GSM_Idle;
         break;   
         

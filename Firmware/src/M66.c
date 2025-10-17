@@ -23,6 +23,7 @@ extern GSM_StartUp_Flags_T GSM_StartUp_Flags;
 extern GSM_Init_State_T GSM_Init_State;
 extern GSM_Init_Flags_T GSM_Init_Flags;
 extern SMS_CMD_Type_T   SMS_CMD_Type;
+extern Outputs_T Outputs;
 
 #define SMS_Authorized_Number "+989355282124"
 #define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
@@ -426,7 +427,6 @@ M66_Res_T M66_CheckSMS(void)
     char _phoneNumber[14];
     char _incomeText[20];
     uint8_t _Status = 0;
-    extern Outputs_T Outputs;
     SMS_CMD_Type = SMS_CMD_Phone_Incorrect;
 
     // Parse SMS content
@@ -494,4 +494,24 @@ M66_Res_T M66_CheckSMS(void)
     };
 
     return M66_Res_OK;
+};
+
+
+void M66_sendStatus(void)
+{
+    char _cmd[30];
+    extern char* Pump_Display[];
+    extern char* Motor_Display[]; 
+
+    sprintf(_cmd, "Pump: %s\nMotor: %s", 
+                Pump_Display[Outputs.Pump],
+                Motor_Display[Outputs.Motor]);
+
+    M66_SendSMS(SMS_Authorized_Number, _cmd);
+};
+
+
+void M66_sendWarning(void)
+{
+    M66_SendSMS(SMS_Authorized_Number, "Unknown Command!");
 };
