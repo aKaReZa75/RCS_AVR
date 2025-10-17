@@ -44,6 +44,7 @@
 #include "M66.h"
 #include "usart.h"
 #include "millis.h"
+#include "task.h"
 
 /* ============================================================================
  *                        BIT MANIPULATION MACROS

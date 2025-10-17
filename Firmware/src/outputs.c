@@ -1,5 +1,7 @@
 #include "outputs.h"
 
+Outputs_T Outputs;
+
 void outputs_Init(void)
 {
     GPIO_Config_OUTPUT(_PUMP_Config, _PUMP_Pin);
