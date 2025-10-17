@@ -6,6 +6,7 @@ int main(void)
 {
   outputs_Init();
   display_Init();
+  display_Update();
   millis_Init();
   usart_Init(Initialize);
   globalInt_Enable;

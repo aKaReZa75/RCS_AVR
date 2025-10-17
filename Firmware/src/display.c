@@ -33,13 +33,24 @@ void display_Init(void)
 
 void display_Update(void)
 {
+  static Dispay_Page_T Dispay_Page_Last;
   switch (Dispay_Page)
   {
     case Display_Page_Welcome:
+      if(Dispay_Page_Last != Display_Page_Welcome)
+      {
+        alcd_clear();
+        Dispay_Page_Last = Display_Page_Welcome;
+      }
       display_PageWelcome();
     break;
 
     case Display_Page_Home:
+      if(Dispay_Page_Last != Display_Page_Home)
+      {
+        alcd_clear();
+        Dispay_Page_Last = Display_Page_Home;
+      }    
       display_HomePage();
     break;
   }
