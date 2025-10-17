@@ -24,6 +24,21 @@ typedef enum
 } GSM_State_T;
 
 
+typedef union 
+{
+    struct
+    {
+        uint8_t Ready:1;
+        uint8_t CFUN :1;
+        uint8_t CPIN :1;
+        uint8_t Call :1;
+        uint8_t SMS  :1;
+        uint8_t Result:1;
+        uint8_t reserve:2;
+    }bits;
+    uint8_t raw;
+} GSM_StartUp_Flags_T;
+
 
 void scheduler(void);
 void System_Task(void);

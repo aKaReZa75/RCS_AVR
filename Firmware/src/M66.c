@@ -19,7 +19,7 @@
 
 extern volatile bool usart_RxFlag;   /**< True: Data has been received completely */   
 extern char usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received data, with defined size */
-
+extern GSM_StartUp_Flags_T GSM_StartUp_Flags;
 
 /**
  * @brief Initializes the M66 GSM module
@@ -55,46 +55,42 @@ M66_Res_T M66_Init(void)
  */
 M66_Res_T M66_Startup(void)
 {
-    M66_Res_T _Res = M66_Res_ERR;
-
-    // Send restart command
-    M66_SendAtCmd(__M66_CMD_Restart, "", __M66_Default_TimeOut);
-
     // Check for basic readiness
-    _Res = M66_SendAtCmd("", "RDY", __M66_StartUp_TimeOut);  
-    if(_Res != M66_Res_OK)
+    if(strstr(usart_RxBuffer, "RDY") != NULL)
     {
-        return _Res;
+        GSM_StartUp_Flags.bits.Ready = true;
     };
-  
+
     // Check for full functionality
-    _Res = M66_SendAtCmd("", "+CFUN", __M66_StartUp_TimeOut);
-    if(_Res != M66_Res_OK)
+    if(strstr(usart_RxBuffer, "+CFUN: 1") != NULL)
     {
-        return _Res;
+        GSM_StartUp_Flags.bits.CFUN = true;
     };
-     
+
     // Check SIM card status
-    _Res = M66_SendAtCmd("", "+CPIN", __M66_StartUp_TimeOut);
-    if(_Res != M66_Res_OK)
+    if(strstr(usart_RxBuffer, "+CPIN: READY") != NULL)
     {
-        return _Res;
-    };
+        GSM_StartUp_Flags.bits.CPIN = true;
+    };    
 
     // Check call readiness
-    _Res = M66_SendAtCmd("", "Call Ready", __M66_StartUp_TimeOut);
-    if(_Res != M66_Res_OK)
+    if(strstr(usart_RxBuffer, "Call Ready") != NULL)
     {
-        return _Res;
-    };
-   
+        GSM_StartUp_Flags.bits.Call = true;
+    };    
+
     // Check SMS readiness
-    _Res = M66_SendAtCmd("", "SMS Ready", __M66_StartUp_TimeOut);
-    if(_Res != M66_Res_OK)
+    if(strstr(usart_RxBuffer, "SMS Ready") != NULL)
     {
-        return _Res;
+        GSM_StartUp_Flags.bits.SMS = true;
     }; 
 
+    GSM_StartUp_Flags.bits.Result = GSM_StartUp_Flags.bits.Ready
+                                  & GSM_StartUp_Flags.bits.CFUN
+                                  & GSM_StartUp_Flags.bits.CPIN
+                                  & GSM_StartUp_Flags.bits.Call
+                                  & GSM_StartUp_Flags.bits.SMS;
+                                  
     return M66_Res_OK;
 };
 

@@ -2,6 +2,9 @@
 
 extern Dispay_Page_T Dispay_Page;
 extern volatile uint32_t System_millis;
+extern volatile bool usart_RxFlag;   /**< True: Data has been received completely */   
+extern char usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received data, with defined size */
+extern alcd_customChar_T Display_customChar;
 
 millis_T millisDisplay = {.Delta = 0, .Previous = 0, .Interval = 250};
 millis_T millisOutputs = {.Delta = 0, .Previous = 0, .Interval = 50};
@@ -11,7 +14,7 @@ millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 
 Sys_State_T Sys_State = Sys_StartUp;
 GSM_State_T GSM_State = GSM_Reset;
-
+GSM_StartUp_Flags_T GSM_StartUp_Flags;
 
 void scheduler(void)
 {
@@ -56,6 +59,7 @@ void System_Task(void)
         case Sys_StartUp:
             Dispay_Page = Display_Page_Home;
             millisDisplay.Interval = 2500;
+            Sys_State = Sys_Idle;
         break;
         
         case Sys_Idle:
@@ -70,15 +74,27 @@ void GSM_Task(void)
     switch (GSM_State)
     {
         case GSM_Reset:
-
+            GSM_StartUp_Flags.raw = 0x00;
+            usart_Putsln(__M66_CMD_Restart);
+            GSM_State = GSM_StartUp;
         break;
     
         case GSM_StartUp:
+            if(usart_RxFlag == true)
+            {
+                M66_Startup();
+                usart_RxFlag = false;
+                usart_Flush();
+            };
 
+            if(GSM_StartUp_Flags.bits.Result == true)
+            {
+                GSM_State = GSM_Init;
+            };
         break;
 
         case GSM_Init:
-
+            
         break;   
 
         case GSM_Idle:
