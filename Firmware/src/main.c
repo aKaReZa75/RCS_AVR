@@ -10,7 +10,7 @@ int main(void)
 {
   outputs_Init();
   display_Init();
-  
+  millis_Init();
   Dispay_Page = Display_Page_Welcome;
   display_Update();
 
