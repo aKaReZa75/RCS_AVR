@@ -324,42 +324,36 @@ M66_Res_T M66_CheckSMS(void)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_OFF;
-            Outputs_Control(Outputs);
             M66_SendSMS("+989355282124", "OKEY");
         }
         else if(strstr(_incomeText, "RCS+OC=1,0") != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_OFF;
-            Outputs_Control(Outputs);
             M66_SendSMS("+989355282124", "OKEY");
         }       
         else if(strstr(_incomeText, "RCS+OC=1,1") != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_LOW;
-            Outputs_Control(Outputs);
             M66_SendSMS("+989355282124", "OKEY");
         }
         else if(strstr(_incomeText, "RCS+OC=1,2") != NULL)
         {
             Outputs.Pump  = PUMP_ON;
             Outputs.Motor = MOTOR_HIGH;
-            Outputs_Control(Outputs);
             M66_SendSMS("+989355282124", "OKEY");
         }
         else if(strstr(_incomeText, "RCS+OC=0,1") != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_LOW;
-            Outputs_Control(Outputs);
             M66_SendSMS("+989355282124", "OKEY");
         }
         else if(strstr(_incomeText, "RCS+OC=0,2") != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_HIGH;
-            Outputs_Control(Outputs);
             M66_SendSMS("+989355282124", "OKEY");
         }
         else

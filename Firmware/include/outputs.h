@@ -45,6 +45,6 @@ typedef struct
 
 
 void outputs_Init(void);
-void Outputs_Control(Outputs_T _Outputs);
+void Outputs_Control(void);
 
 #endif
