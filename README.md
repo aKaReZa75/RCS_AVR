@@ -27,11 +27,31 @@ This project serves as an excellent platform for learning and experimenting with
              alt="aKaReZa 95 - Programming, Git - PART B Thumbnail"/>
       </a>
     </td>
-
   </td>
   </tr>
+
+<tr>
+  <td valign="top">
+  
+  > [!IMPORTANT]
+  > Begin your embedded systems journey with clarity and purpose. This episode outlines a structured roadmap for mastering microcontrollers, communication protocols, hardware design, and project development.  
+  > Learn how to choose your specialization, follow curated playlists, and engage effectively with the community—ideal for learners seeking a scalable, goal-driven path into embedded engineering.  
+  > [aKaReZa 124 – Embedded Systems Roadmap](https://youtu.be/3QYfv7A7aMc)  
+  > Watch it now to kickstart your journey!
+  
+  </td>
+  <td width="360" valign="middle" style="padding: 0;">
+    <a href="https://youtu.be/3QYfv7A7aMc">
+      <img src="https://img.youtube.com/vi/3QYfv7A7aMc/maxresdefault.jpg"
+           width="360"
+           alt="aKaReZa 124 – Embedded Systems Roadmap Thumbnail"/>
+    </a>
+  </td>
+</tr>
+
+  
   <tr>
-  <td colspan="2">
+  <td colspan="3">
 
   > [!CAUTION]
   > It is absolutely critical that you carefully read every single word of this document, line by line, to ensure you don't miss any details. Nothing can be overlooked.
