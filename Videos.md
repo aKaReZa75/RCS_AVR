@@ -57,25 +57,33 @@ RCS, AVR Project
 │ 
 └── Programming
     ├── [aKaReZa 106 - RCS, AVR - PART I]
-    │   ├─ PlatformIO — Project setup and structure.
-    │   ├─ LCD — HomePage design and initialization.
-    │   ├─ Relays — Output pin config and tests.
-    │   └─ Control — Modular output handling logic.
+    │     ├─ PlatformIO — Project setup and structure.
+    │     ├─ LCD — HomePage design and initialization.
+    │     ├─ Relays — Output pin config and tests.
+    │     └─ Control — Modular output handling logic.
     │
     ├── [aKaReZa 109 - RCS, AVR - PART J]
-    │   ├─ Control — Output status display on LCD.
-    │   ├─ GSM — Signal strength and registration via M66.
-    │   ├─ Logic — State machine design.
-    │   └─ Interface — Graphical LCD menu implementation.
+    │     ├─ Control — Output status display on LCD.
+    │     ├─ GSM — Signal strength and registration via M66.
+    │     ├─ Logic — State machine design.
+    │     └─ Interface — Graphical LCD menu implementation.
     │
-    └── [aKaReZa 119 - RCS, AVR - PART K]
-        ├─ Libraries — Project structure and GSM setup.
-        ├─ SMS Rx — Parsing incoming messages.
-        ├─ Format — Suggested SMS command syntax.
-        ├─ Control — Output switching via SMS.
-        ├─ Reply — Sending confirmation messages.
-        ├─ Case Handling — `str_toUpper()` for flexibility.
-        └─ Stability — Debugging and system reliability.
+    ├── [aKaReZa 119 - RCS, AVR - PART K]
+    │     ├─ Libraries — Project structure and GSM setup.
+    │     ├─ SMS Rx — Parsing incoming messages.
+    │     ├─ Format — Suggested SMS command syntax.
+    │     ├─ Control — Output switching via SMS.
+    │     ├─ Reply — Sending confirmation messages.
+    │     ├─ Case Handling — `str_toUpper()` for flexibility.
+    │     └─ Stability — Debugging and system reliability.
+    │
+    └── [aKaReZa 125 - RCS, AVR - PART L]
+          ├─ Git — Branch creation and version control.
+          ├─ State Machine — System behavior management.
+          ├─ Scheduler — Task configuration and execution.
+          ├─ Tasks — Output and display routines.
+          ├─ GSM States — One-time operations and transitions.
+          └─ Deployment — Pushing changes to GitHub.
 ```
 
 ## PCB Desing Videos
@@ -336,6 +344,26 @@ RCS, AVR Project
              alt="aKaReZa 119 – RCS, AVR - PART K Thumbnail"/>
       </a>
     </td>
+
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/RPZP1AIJVvo">aKaReZa 125 – RCS, AVR - PART L</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Advance your embedded software development workflow with Git and structured logic. This episode introduces Git branching for safe feature development, implements a robust State Machine, configures a Scheduler, and defines tasks for output and display control. It also reviews GSM module states and one-time operations, culminating in a clean GitHub push—ideal for building scalable, maintainable AVR-based systems.
+      </p>
+    </td>
+    <td width="360" valign="top">
+      <a href="https://youtu.be/RPZP1AIJVvo">
+        <img src="https://img.youtube.com/vi/RPZP1AIJVvo/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 125 – RCS, AVR - PART L Thumbnail"/>
+      </a>
+    </td>
+  </tr>
+
+   
 </table>
 
 
