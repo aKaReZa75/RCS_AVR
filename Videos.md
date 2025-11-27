@@ -77,13 +77,20 @@ RCS, AVR Project
     │     ├─ Case Handling — `str_toUpper()` for flexibility.
     │     └─ Stability — Debugging and system reliability.
     │
-    └── [aKaReZa 125 - RCS, AVR - PART L]
-          ├─ Git — Branch creation and version control.
-          ├─ State Machine — System behavior management.
-          ├─ Scheduler — Task configuration and execution.
-          ├─ Tasks — Output and display routines.
-          ├─ GSM States — One-time operations and transitions.
-          └─ Deployment — Pushing changes to GitHub.
+    ├── [aKaReZa 125 - RCS, AVR - PART L]
+    │     ├─ Git — Branch creation and version control.
+    │     ├─ State Machine — System behavior management.
+    │     ├─ Scheduler — Task configuration and execution.
+    │     ├─ Tasks — Output and display routines.
+    │     ├─ GSM States — One-time operations and transitions.
+    │     └─ Deployment — Pushing changes to GitHub.
+    │
+    └── [aKaReZa 128 - RCS, AVR - PART N]
+          ├─ GSM_Reset — Definition and safe reinitialization flow.
+          ├─ GSM_StartUp — Sequencing and non-blocking checks.
+          ├─ LCD Feedback — Live state reflection on display.
+          ├─ GSM_Init — Resource setup and readiness validation.
+          └─ GSM_Idle — Event-driven loop and transition rules.
 ```
 
 ## PCB Desing Videos
@@ -363,7 +370,24 @@ RCS, AVR Project
     </td>
   </tr>
 
-   
+  <tr style="background-color: #f9f9f9;">
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/RqF51kzmc10">aKaReZa 128 – RCS, AVR - PART N</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Deepen your understanding of <strong>State Machines in embedded systems</strong> with this AVR-based RCS project episode. You’ll learn how to implement and manage <strong>GSM_Reset, GSM_StartUp, GSM_Init, and GSM_Idle states</strong>, while reflecting transitions on the LCD. The tutorial emphasizes <strong>non-blocking code design principles</strong>, making it a crucial step toward building smarter, more reliable GSM-driven control systems.
+      </p>
+    </td>
+    <td width="360" valign="top">
+      <a href="https://youtu.be/RqF51kzmc10">
+        <img src="https://img.youtube.com/vi/RqF51kzmc10/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 128 – RCS, AVR - PART N Thumbnail"/>
+      </a>
+    </td>
+  </tr>
+  
 </table>
 
 
