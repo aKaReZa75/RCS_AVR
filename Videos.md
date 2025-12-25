@@ -85,12 +85,21 @@ RCS, AVR Project
     │     ├─ GSM States — One-time operations and transitions.
     │     └─ Deployment — Pushing changes to GitHub.
     │
-    └── [aKaReZa 128 - RCS, AVR - PART N]
-          ├─ GSM_Reset — Definition and safe reinitialization flow.
-          ├─ GSM_StartUp — Sequencing and non-blocking checks.
-          ├─ LCD Feedback — Live state reflection on display.
-          ├─ GSM_Init — Resource setup and readiness validation.
-          └─ GSM_Idle — Event-driven loop and transition rules.
+    ├── [aKaReZa 128 - RCS, AVR - PART N]
+    │   ├─ GSM_Reset — Definition and safe reinitialization flow.
+    │   ├─ GSM_StartUp — Sequencing and non-blocking checks.
+    │   ├─ LCD Feedback — Live state reflection on display.
+    │   ├─ GSM_Init — Resource setup and readiness validation.
+    │   └─ GSM_Idle — Event-driven loop and transition rules.
+    │
+    └── [aKaReZa 132 - RCS, AVR - PART O]
+        ├─ Detection — Finding new SMS messages from GSM.
+        ├─ GSM_SMS_ParseNumber — Extracting message index.
+        ├─ GSM_SMS_ReadContent — Getting sender number and text.
+        ├─ GSM_SMS_SendSMS — Reply SMS state machine.
+        ├─ LCD — Busy icon, Welcome Page redesign, FW version.
+        ├─ Code — Readability and structure improvements.
+        └─ Git — Introduction to git merge workflow.
 ```
 
 ## PCB Desing Videos
@@ -384,6 +393,24 @@ RCS, AVR Project
         <img src="https://img.youtube.com/vi/RqF51kzmc10/maxresdefault.jpg"
              width="360"
              alt="aKaReZa 128 – RCS, AVR - PART N Thumbnail"/>
+      </a>
+    </td>
+  </tr>
+
+  <tr style="background-color: #f9f9f9;">
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/P0FgmPWP3M4">aKaReZa 132 – RCS, AVR - PART O</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        Implement fully non‑blocking <strong>SMS receive/send state machines</strong> in the RCS‑AVR project. This episode walks through detecting new messages, parsing the SMS index, extracting the sender’s number and text, and sending replies through the GSM module. You’ll also enhance the LCD interface with <strong>custom characters</strong>, redesign the <strong>Welcome Page</strong>, display the firmware version, and learn how to integrate changes using <strong>git merge</strong> for a cleaner workflow.
+      </p>
+    </td>
+    <td width="360" valign="middle">
+      <a href="https://youtu.be/P0FgmPWP3M4">
+        <img src="https://img.youtube.com/vi/P0FgmPWP3M4/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 132 – RCS, AVR - PART O Thumbnail"/>
       </a>
     </td>
   </tr>
