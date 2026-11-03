@@ -1,7 +1,5 @@
 #include "aKaReZa.h"
 
-
-
 int main(void)
 {
   outputs_Init();
@@ -9,6 +7,7 @@ int main(void)
   display_Update();
   millis_Init();
   usart_Init(Initialize);
+  ev1527_Init();
   globalInt_Enable;
 
   while(1)

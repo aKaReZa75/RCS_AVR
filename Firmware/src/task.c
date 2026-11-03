@@ -1,23 +1,35 @@
 #include "task.h"
 
-extern Dispay_Page_T Dispay_Page;
+#define REMOTE_Idle_MS    10
+#define REMOTE_Idle_TICKS 18
+#define REMOTE_Sleep_MS   100
+#define Remote_Authorized 0x59647
+#define Remote_Key_A      0x08
+#define Remote_Key_B      0x04
+#define Remote_Key_C      0x02
+#define Remote_Key_D      0x01
+
+extern Outputs_T         Outputs;
+extern Dispay_Page_T     Dispay_Page;
 extern volatile uint32_t System_millis;
-extern volatile bool usart_RxFlag;   /**< True: Data has been received completely */   
-extern char usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received data, with defined size */
+extern volatile bool     usart_RxFlag;   /**< True: Data has been received completely */   
+extern char              usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received data, with defined size */
 extern alcd_customChar_T Display_customChar;
+extern volatile ev1527_T ev1527_Data;
 
 millis_T millisDisplay = {.Delta = 0, .Previous = 0, .Interval = 250};
 millis_T millisOutputs = {.Delta = 0, .Previous = 0, .Interval = 50};
 millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 50};
 millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
-
+millis_T millisRemote  = {.Delta = 0, .Previous = 0, .Interval = REMOTE_Idle_MS}; 
 
 Sys_State_T Sys_State = Sys_StartUp;
 GSM_State_T GSM_State = GSM_Reset;
 GSM_StartUp_Flags_T GSM_StartUp_Flags;
-GSM_Init_State_T GSM_Init_State;
-GSM_Init_Flags_T GSM_Init_Flags;
-SMS_CMD_Type_T   SMS_CMD_Type;
+GSM_Init_State_T    GSM_Init_State;
+GSM_Init_Flags_T    GSM_Init_Flags;
+SMS_CMD_Type_T      SMS_CMD_Type;
+Remote_State_T      Remote_State;
 
 void scheduler(void)
 {
@@ -25,6 +37,13 @@ void scheduler(void)
     millisOutputs.Delta = System_millis - millisOutputs.Previous;
     millisSystem.Delta  = System_millis - millisSystem.Previous;
     millisGSM.Delta     = System_millis - millisGSM.Previous;
+    millisRemote.Delta  = System_millis - millisRemote.Previous;
+
+    if(millisRemote.Delta > millisRemote.Interval)
+    {
+        millisRemote.Previous = System_millis;
+        Remote_Task();
+    };
 
     if(millisGSM.Delta > millisGSM.Interval)
     {
@@ -55,6 +74,72 @@ void scheduler(void)
 };
 
 
+
+void Remote_Task(void)
+{
+    static uint8_t _failCounter = 0;
+    switch (Remote_State)
+    {
+        case Remote_deInit:
+            ev1527_deInit();
+            _failCounter = 0;
+            millisRemote.Interval = REMOTE_Sleep_MS;
+            Remote_State = Remote_Init;
+        break;
+        
+        case Remote_Init:
+            ev1527_Init();
+            millisRemote.Interval = REMOTE_Idle_MS;
+            Remote_State = Remote_Idle;
+        break;
+
+        case Remote_Idle:
+            if(ev1527_Data.Bits.Detect == true)
+            {
+                ev1527_Data.Bits.Detect = false;
+                _failCounter = 0;
+                Remote_State = Remote_Check;
+            }
+            else
+            {
+                _failCounter++;
+                if(_failCounter >= REMOTE_Idle_TICKS)
+                {
+                    Remote_State = Remote_deInit;
+                };
+            };
+        break;
+        
+        case Remote_Check:
+            if(ev1527_Data.Bits.Address == Remote_Authorized)
+            {
+                switch (ev1527_Data.Bits.Keys)
+                {
+                    case Remote_Key_A:
+                        Outputs.Pump  = PUMP_OFF;
+                        Outputs.Motor = MOTOR_OFF;
+                    break;
+
+                    case Remote_Key_B:
+                        Outputs.Pump  = PUMP_ON;
+                        Outputs.Motor = MOTOR_HIGH;
+                    break;
+
+                    case Remote_Key_C:
+                        Outputs.Pump  = PUMP_ON;
+                        Outputs.Motor = MOTOR_LOW;
+                    break;  
+                    
+                    case Remote_Key_D:
+                        Outputs.Pump  = PUMP_OFF;
+                        Outputs.Motor = MOTOR_LOW;
+                    break;                    
+                };
+            };
+            Remote_State = Remote_Idle;
+        break;        
+    };
+};
 
 void System_Task(void)
 {

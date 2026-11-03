@@ -83,8 +83,17 @@ typedef enum
 } SMS_CMD_Type_T;
 
 
+typedef enum
+{
+    Remote_Init = 0,
+    Remote_deInit,
+    Remote_Idle,
+    Remote_Check
+} Remote_State_T;
+
 void scheduler(void);
 void System_Task(void);
 void GSM_Task(void);
+void Remote_Task(void);
 
 #endif

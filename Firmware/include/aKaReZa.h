@@ -45,8 +45,9 @@
 #include "usart.h"
 #include "millis.h"
 #include "task.h"
+#include "ev1527.h"
 
-#define firmwareVer "1.0.0"
+#define firmwareVer "1.1.0"
 /* ============================================================================
  *                        BIT MANIPULATION MACROS
  * ============================================================================
