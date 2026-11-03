@@ -35,6 +35,7 @@ void display_Init(void)
 void display_Update(void)
 {
   static Dispay_Page_T Dispay_Page_Last;
+  static uint8_t       _dispCounter = 0;
   switch (Dispay_Page)
   {
     case Display_Page_Welcome:
@@ -54,9 +55,36 @@ void display_Update(void)
       }    
       display_HomePage();
     break;
-  }
-}
 
+    case Display_Page_EV1527:
+      if(Dispay_Page_Last != Display_Page_EV1527)
+      {
+        alcd_clear();
+        Dispay_Page_Last = Display_Page_EV1527;
+        display_EV1527_Show();
+      };
+      _dispCounter++;
+      if(_dispCounter >= 10)
+      {
+        _dispCounter = 0;
+        Dispay_Page = Display_Page_Home;
+      };
+    break;
+  };
+};
+
+
+void display_EV1527_Show(void)
+{
+  extern volatile ev1527_T ev1527_Data;
+  sprintf(alcd_Buffer, "Add: 0x%lX", (uint32_t) ev1527_Data.Bits.Address);
+  alcd_gotoxy(0, 0);
+  alcd_puts(alcd_Buffer);
+
+  sprintf(alcd_Buffer, "Key: 0x%X", ev1527_Data.Bits.Keys);
+  alcd_gotoxy(0, 1);
+  alcd_puts(alcd_Buffer);  
+};
 
 void display_PageWelcome(void)
 {

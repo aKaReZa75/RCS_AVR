@@ -98,6 +98,7 @@ void Remote_Task(void)
             {
                 ev1527_Data.Bits.Detect = false;
                 _failCounter = 0;
+                Dispay_Page  = Display_Page_EV1527;
                 Remote_State = Remote_Check;
             }
             else
@@ -115,6 +116,11 @@ void Remote_Task(void)
             {
                 switch (ev1527_Data.Bits.Keys)
                 {
+                    case (Remote_Key_A | Remote_Key_B):
+                        Outputs.Pump  = PUMP_ON;
+                        Outputs.Motor = MOTOR_OFF;
+                    break;
+
                     case Remote_Key_A:
                         Outputs.Pump  = PUMP_OFF;
                         Outputs.Motor = MOTOR_OFF;
