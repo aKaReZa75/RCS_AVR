@@ -35,6 +35,7 @@ extern Outputs_T Outputs;
 #define SMS_CMD_Pump_ON_Motor_HIGH   "RCS+OC=1,2"
 #define SMS_CMD_Pump_OFF_Motor_LOW   "RCS+OC=0,1"
 #define SMS_CMD_Pump_OFF_Motor_HIGH  "RCS+OC=0,2"
+#define SMS_CMD_CheckStatus          "RCS+STS?"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -456,7 +457,11 @@ M66_Res_T M66_CheckSMS(void)
 
         str_toUpper(_incomeText, strlen(_incomeText));
 
-        if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_OFF) != NULL)
+        if(strstr(_incomeText, SMS_CMD_CheckStatus) != NULL)
+        {
+            SMS_CMD_Type = SMS_CMD_Status;
+        }
+        else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_OFF) != NULL)
         {
             Outputs.Pump  = PUMP_OFF;
             Outputs.Motor = MOTOR_OFF;
@@ -505,7 +510,7 @@ M66_Res_T M66_CheckSMS(void)
 
 void M66_sendStatus(void)
 {
-    char _cmd[30];
+    char _cmd[60];
     extern char* Pump_Display[];
     extern char* Motor_Display[]; 
     extern AHT20_Data_T AHT20_Data;

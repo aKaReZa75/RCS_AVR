@@ -196,6 +196,8 @@ void Remote_Task(void)
                         Outputs.Motor = MOTOR_LOW;
                     break;                    
                 };
+                SMS_CMD_Type = SMS_CMD_Status;                
+                GSM_State    = GSM_SMS_SendSMS;
             };
             Remote_State = Remote_Idle;
         break;        
