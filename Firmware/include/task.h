@@ -95,5 +95,6 @@ void scheduler(void);
 void System_Task(void);
 void GSM_Task(void);
 void Remote_Task(void);
+void Sensor_Task(void);
 
 #endif

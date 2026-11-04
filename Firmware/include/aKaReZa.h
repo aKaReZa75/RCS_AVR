@@ -46,8 +46,11 @@
 #include "millis.h"
 #include "task.h"
 #include "ev1527.h"
+#include "i2c.h"
+#include "err.h"
+#include "aht20.h"
 
-#define firmwareVer "1.1.0"
+#define firmwareVer "1.2.0"
 /* ============================================================================
  *                        BIT MANIPULATION MACROS
  * ============================================================================

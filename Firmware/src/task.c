@@ -22,6 +22,7 @@ millis_T millisOutputs = {.Delta = 0, .Previous = 0, .Interval = 50};
 millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 50};
 millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisRemote  = {.Delta = 0, .Previous = 0, .Interval = REMOTE_Idle_MS}; 
+millis_T millisSensor  = {.Delta = 0, .Previous = 0, .Interval = 500}; 
 
 Sys_State_T Sys_State = Sys_StartUp;
 GSM_State_T GSM_State = GSM_Reset;
@@ -38,6 +39,13 @@ void scheduler(void)
     millisSystem.Delta  = System_millis - millisSystem.Previous;
     millisGSM.Delta     = System_millis - millisGSM.Previous;
     millisRemote.Delta  = System_millis - millisRemote.Previous;
+    millisSensor.Delta  = System_millis - millisSensor.Previous;
+
+    if(millisSensor.Delta > millisSensor.Interval)
+    {
+        millisSensor.Previous = System_millis;
+        Sensor_Task();
+    };
 
     if(millisRemote.Delta > millisRemote.Interval)
     {
@@ -73,6 +81,11 @@ void scheduler(void)
     };
 };
 
+
+void Sensor_Task(void)
+{
+
+};
 
 
 void Remote_Task(void)
