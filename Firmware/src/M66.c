@@ -508,10 +508,13 @@ void M66_sendStatus(void)
     char _cmd[30];
     extern char* Pump_Display[];
     extern char* Motor_Display[]; 
+    extern AHT20_Data_T AHT20_Data;
 
-    sprintf(_cmd, "Pump: %s\nMotor: %s", 
+    sprintf(_cmd, "Pump: %s\nMotor: %s\nTemp: %2.1f'c\nHumidity: %2.1f%%", 
                 Pump_Display[Outputs.Pump],
-                Motor_Display[Outputs.Motor]);
+                Motor_Display[Outputs.Motor],
+                AHT20_Data.Temp,
+                AHT20_Data.Humidity);
 
     M66_SendSMS(SMS_Authorized_Number, _cmd);
 };
