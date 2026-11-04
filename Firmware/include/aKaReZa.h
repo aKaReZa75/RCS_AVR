@@ -50,7 +50,10 @@
 #include "err.h"
 #include "aht20.h"
 
-#define firmwareVer "1.2.0"
+#define firmwareVer   "1.2.1"
+#define Learn_Key_DDR DDRD
+#define Learn_Key_Pin 3
+#define Learn_Key_STS PIND
 /* ============================================================================
  *                        BIT MANIPULATION MACROS
  * ============================================================================

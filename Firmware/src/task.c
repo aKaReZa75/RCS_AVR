@@ -17,6 +17,9 @@ extern char              usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to stor
 extern alcd_customChar_T Display_customChar;
 extern volatile ev1527_T ev1527_Data;
 
+bool         Sensor_Flt_Flag = false;
+AHT20_Data_T AHT20_Data = {.Humidity = 0.0f, .Temp = 0.0f};
+
 millis_T millisDisplay = {.Delta = 0, .Previous = 0, .Interval = 250};
 millis_T millisOutputs = {.Delta = 0, .Previous = 0, .Interval = 50};
 millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 50};
@@ -31,6 +34,7 @@ GSM_Init_State_T    GSM_Init_State;
 GSM_Init_Flags_T    GSM_Init_Flags;
 SMS_CMD_Type_T      SMS_CMD_Type;
 Remote_State_T      Remote_State;
+Sensor_State_T      Sensor_State;
 
 void scheduler(void)
 {
@@ -84,7 +88,41 @@ void scheduler(void)
 
 void Sensor_Task(void)
 {
+    AHT20_Res_T Sensor_Res;
+    switch (Sensor_State)
+    {
+        case Sensor_Init:
+            Sensor_Res = aht20_Init();
+            if(Sensor_Res == AHT20_Res_OK)
+            {
+                Sensor_State = Sensor_Idle;
+            }
+            else
+            {
+                Sensor_State = Sensor_Fault;
+            };
+        break;
 
+        case Sensor_Idle:
+            Sensor_State = Sensor_Measure;
+        break;
+        
+        case Sensor_Measure:
+            Sensor_Res = aht20_getData(&AHT20_Data);
+            if(Sensor_Res == AHT20_Res_OK)
+            {
+                Sensor_State = Sensor_Idle;
+            }
+            else
+            {
+                Sensor_State = Sensor_Fault;
+            };           
+        break;
+        
+        case Sensor_Fault:
+            Sensor_Flt_Flag = true;
+        break;        
+    };
 };
 
 
@@ -111,7 +149,10 @@ void Remote_Task(void)
             {
                 ev1527_Data.Bits.Detect = false;
                 _failCounter = 0;
-                Dispay_Page  = Display_Page_EV1527;
+                if(bitCheckLow(Learn_Key_STS, Learn_Key_Pin))
+                {
+                    Dispay_Page  = Display_Page_EV1527;
+                };
                 Remote_State = Remote_Check;
             }
             else

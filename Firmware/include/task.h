@@ -91,6 +91,14 @@ typedef enum
     Remote_Check
 } Remote_State_T;
 
+typedef enum
+{
+    Sensor_Init = 0,
+    Sensor_Idle,
+    Sensor_Measure,
+    Sensor_Fault
+} Sensor_State_T;
+
 void scheduler(void);
 void System_Task(void);
 void GSM_Task(void);

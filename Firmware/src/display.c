@@ -1,7 +1,9 @@
 #include "display.h"
 
-extern Outputs_T Outputs;
-extern GSM_State_T GSM_State;
+extern Outputs_T    Outputs;
+extern GSM_State_T  GSM_State;
+extern AHT20_Data_T AHT20_Data;
+extern bool         Sensor_Flt_Flag;
 
 char alcd_Buffer[16];
 
@@ -101,7 +103,14 @@ void display_HomePage(void)
 {
   static uint8_t Counter = 0;
   alcd_gotoxy(0,0);
-  sprintf(alcd_Buffer,"T:%2.1f H:%d", 25.1, 30);
+  if(Sensor_Flt_Flag == false)
+  {
+    sprintf(alcd_Buffer,"T:%2.1f H:%2.1f", AHT20_Data.Temp, AHT20_Data.Humidity);
+  }
+  else
+  {
+    sprintf(alcd_Buffer,"T:%c    H:%c", alcd_CustumChar_Sad, alcd_CustumChar_Sad);
+  };
   alcd_puts(alcd_Buffer);
 
   Counter++;
