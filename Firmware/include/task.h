@@ -20,7 +20,8 @@ typedef enum
     GSM_SMS_ParseNumber,    
     GSM_SMS_ReadContent,    
     GSM_SMS_SendSMS,        
-	GSM_Fault
+	GSM_Fault,
+    GSM_CheckSQ
 } GSM_State_T;
 
 

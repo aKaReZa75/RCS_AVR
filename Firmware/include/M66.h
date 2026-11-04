@@ -30,6 +30,7 @@
 #define __M66_CMD_NetReg       "AT+CREG?"           ///< Check network registration
 #define __M66_CMD_Operator     "AT+COPS?"           ///< Query current operator
 #define __M66_CMD_Restart      "AT+QPOWD=0"         ///< Restart the module
+#define __M66_CMD_CheckSQ      "AT+CSQ"             ///< Check signal quality (RSSI and BER)
 
 /* Control Characters & Defaults */
 #define __M66_CtrlZ            0x1A                 ///< End-of-message character for SMS

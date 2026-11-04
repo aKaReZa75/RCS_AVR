@@ -15,6 +15,7 @@ extern volatile uint32_t System_millis;
 extern volatile bool     usart_RxFlag;   /**< True: Data has been received completely */   
 extern char              usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received data, with defined size */
 extern alcd_customChar_T Display_customChar;
+extern M66_SignalQ_T     M66_SignalQ;
 extern volatile ev1527_T ev1527_Data;
 
 bool         Sensor_Flt_Flag = false;
@@ -220,6 +221,11 @@ void System_Task(void)
 
 void GSM_Task(void)
 {
+    static uint8_t _csq_Timer   = 0;
+    static uint8_t _csq_TimeOut = 0;
+    uint8_t        _rssi = 0;
+    uint8_t        _ber  = 0;
+
     switch (GSM_State)
     {
         case GSM_Reset:
@@ -255,7 +261,8 @@ void GSM_Task(void)
             {
                 if(GSM_Init_Flags.bits.Result == true)
                 {
-                    GSM_State = GSM_Idle;
+                    Display_customChar = alcd_CustumChar_Time;
+                    GSM_State          = GSM_Idle;
                 }
                 else
                 {
@@ -265,7 +272,7 @@ void GSM_Task(void)
         break;   
 
         case GSM_Idle:
-            Display_customChar = alcd_CustumChar_SQ2;
+            _csq_Timer++;
             if(usart_RxFlag == true)
             {
                 if(strstr(usart_RxBuffer,"+CMTI") != NULL)
@@ -277,9 +284,62 @@ void GSM_Task(void)
                     usart_RxFlag = false;
                     usart_Flush();
                 };
-            };            
+            }; 
+            
+            if(_csq_Timer >= 25)
+            {
+                _csq_Timer   = 0;
+                _csq_TimeOut = 0;
+                usart_Putsln(__M66_CMD_CheckSQ);  
+                GSM_State = GSM_CheckSQ;  
+            };
         break;  
         
+        case GSM_CheckSQ:
+           if(usart_RxFlag == true)
+           {
+                if(strstr(usart_RxBuffer, "+CSQ"))
+                {
+                    sscanf(usart_RxBuffer, "\r\n+CSQ: %hhu,%hhu\r\n", &_rssi, &_ber);
+                    if(_rssi >= 20)
+                    {
+                        M66_SignalQ = M66_SQ_High;
+                    }
+                    else if(_rssi >= 15)
+                    {
+                        M66_SignalQ = M66_SQ_Med;
+                    }
+                    else if(_rssi >= 10)
+                    {
+                        M66_SignalQ = M66_SQ_Low;
+                    }
+                    else if(_rssi < 10)
+                    {
+                        M66_SignalQ = M66_SQ_None;
+                    };
+                    Display_customChar = M66_SignalQ;
+                };
+
+                if(_rssi == 99)
+                {
+                    GSM_State = GSM_Fault;
+                }
+                else
+                {
+                    GSM_State = GSM_Idle;
+                };
+           }
+           else
+           {
+            _csq_TimeOut++;
+            if(_csq_TimeOut >= 5)
+            {
+                    _csq_TimeOut = 0;
+                    GSM_State    = GSM_Idle;
+            };            
+           };          
+        break;
+
         case GSM_SMS_ParseNumber:
             Display_customChar = alcd_CustumChar_Busy;
             M66_SMS_GetIndex();
