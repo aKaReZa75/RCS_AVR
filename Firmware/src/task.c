@@ -18,6 +18,7 @@ extern alcd_customChar_T Display_customChar;
 extern M66_SignalQ_T     M66_SignalQ;
 extern volatile ev1527_T ev1527_Data;
 
+bool         System_PowerOn  = true;          
 bool         Sensor_Flt_Flag = false;
 AHT20_Data_T AHT20_Data = {.Humidity = 0.0f, .Temp = 0.0f};
 
@@ -264,7 +265,15 @@ void GSM_Task(void)
                 if(GSM_Init_Flags.bits.Result == true)
                 {
                     Display_customChar = alcd_CustumChar_Time;
-                    GSM_State          = GSM_Idle;
+                    if(System_PowerOn == true)
+                    {
+                        SMS_CMD_Type = SMS_CMD_PowerOn;                          
+                        GSM_State    = GSM_SMS_SendSMS;
+                    }
+                    else
+                    {
+                        GSM_State = GSM_Idle;
+                    }
                 }
                 else
                 {
@@ -367,7 +376,12 @@ void GSM_Task(void)
         break; 
         
         case GSM_SMS_SendSMS:
-            if(SMS_CMD_Type != SMS_CMD_Unknown)
+
+            if(SMS_CMD_Type == SMS_CMD_PowerOn)
+            {
+                M66_sendPowenOn();
+            }
+            else if(SMS_CMD_Type != SMS_CMD_Unknown)
             {
                 M66_sendStatus();
             }

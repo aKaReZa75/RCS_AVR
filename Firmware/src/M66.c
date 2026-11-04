@@ -524,6 +524,11 @@ void M66_sendStatus(void)
     M66_SendSMS(SMS_Authorized_Number, _cmd);
 };
 
+void M66_sendPowenOn(void)
+{
+    char _text[25] = "RCS AVR powered on!";
+    M66_SendSMS(SMS_Authorized_Number, _text);
+};
 
 void M66_sendWarning(void)
 {

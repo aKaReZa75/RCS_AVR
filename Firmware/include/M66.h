@@ -102,5 +102,6 @@ M66_Res_T M66_CheckSMS(void);
 void M66_SMS_GetIndex(void);
 void M66_sendStatus(void);
 void M66_sendWarning(void);
+void M66_sendPowenOn(void);
 
 #endif
