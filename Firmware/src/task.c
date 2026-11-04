@@ -239,6 +239,7 @@ void GSM_Task(void)
             if(GSM_StartUp_Flags.bits.Result == true)
             {
                 GSM_Init_Flags.raw = 0x00;
+                GSM_Init_State     = GSM_Init_Echo;
                 GSM_State = GSM_Init;
             };
         break;
@@ -318,6 +319,8 @@ void GSM_Task(void)
         
         case GSM_Fault:
             Display_customChar = alcd_CustumChar_Sad;
+            millisGSM.Interval = 2500;
+            GSM_State          = GSM_Reset;
         break;          
     }
 };
