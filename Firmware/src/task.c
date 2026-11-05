@@ -228,7 +228,12 @@ void System_Task(void)
             }
             else
             {
-                if(_remoteCounter >= 20) /* 20 = 1000ms/50ms = 1Sec */
+                if(_remoteCounter >= 200) /* 200 = 1000ms/50ms = 10Sec */
+                {
+                    _remoteCounter = 0;
+                    mem_Wipe();
+                }
+                else if(_remoteCounter >= 20) /* 20 = 1000ms/50ms = 1Sec */
                 {
                     _remoteCounter = 0;
                     Dispay_Page    = Display_Page_Authorized;
