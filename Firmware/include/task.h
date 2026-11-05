@@ -82,6 +82,7 @@ typedef enum
     SMS_CMD_POFF_MHIGH,
     SMS_CMD_Status, 
     SMS_CMD_PowerOn,
+    SMS_CMD_AddPhoneNumber,
     SMS_CMD_Unknown      
 } SMS_CMD_Type_T;
 

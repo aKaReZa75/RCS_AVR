@@ -48,6 +48,6 @@ typedef union
 #define Config_Remote_Len     6
 
 void mem_Read(void);
-
+void mem_Update_Number(void);
 
 #endif

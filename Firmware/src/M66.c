@@ -25,6 +25,7 @@ extern GSM_Init_Flags_T GSM_Init_Flags;
 extern SMS_CMD_Type_T   SMS_CMD_Type;
 extern Outputs_T Outputs;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
+extern Config_Device_T         Config_Device;
 
 #define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
 #define SMS_scanSet_Number    "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\""
@@ -36,6 +37,7 @@ extern SMS_Authorized_Number_T SMS_Authorized_Number;
 #define SMS_CMD_Pump_OFF_Motor_LOW   "RCS+OC=0,1"
 #define SMS_CMD_Pump_OFF_Motor_HIGH  "RCS+OC=0,2"
 #define SMS_CMD_CheckStatus          "RCS+STS?"
+#define SMS_CMD_AddNumber            "RCS+AN"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -446,9 +448,8 @@ M66_Res_T M66_CheckSMS(void)
         return M66_Res_ERR;
     };
 
-    if(strstr(_phoneNumber, SMS_Authorized_Number.fields.Number))
+    if(Config_Device.fields.Phone_CFG == false)
     {
-
         _Status = sscanf(usart_RxBuffer, SMS_scanSet_Content, _incomeText);
         if(_Status != 1)
         {                   
@@ -457,50 +458,75 @@ M66_Res_T M66_CheckSMS(void)
 
         str_toUpper(_incomeText, strlen(_incomeText));
 
-        if(strstr(_incomeText, SMS_CMD_CheckStatus) != NULL)
+        if(strstr(_incomeText, SMS_CMD_AddNumber) != NULL)
         {
-            SMS_CMD_Type = SMS_CMD_Status;
-        }
-        else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_OFF) != NULL)
-        {
-            Outputs.Pump  = PUMP_OFF;
-            Outputs.Motor = MOTOR_OFF;
-            SMS_CMD_Type  = SMS_CMD_POFF_MOFF;
-        }
-        else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_OFF) != NULL)
-        {
-            Outputs.Pump  = PUMP_ON;
-            Outputs.Motor = MOTOR_OFF;
-            SMS_CMD_Type  = SMS_CMD_PON_MOFF;
-        }       
-        else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_LOW) != NULL)
-        {
-            Outputs.Pump  = PUMP_ON;
-            Outputs.Motor = MOTOR_LOW;
-            SMS_CMD_Type  = SMS_CMD_PON_MLOW;
-
-        }
-        else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_HIGH) != NULL)
-        {
-            Outputs.Pump  = PUMP_ON;
-            Outputs.Motor = MOTOR_HIGH;
-            SMS_CMD_Type  = SMS_CMD_PON_MHIGH;            
-        }
-        else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_LOW) != NULL)
-        {
-            Outputs.Pump  = PUMP_OFF;
-            Outputs.Motor = MOTOR_LOW;
-            SMS_CMD_Type  = SMS_CMD_POFF_MLOW;                
-        }
-        else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_HIGH) != NULL)
-        {
-            Outputs.Pump  = PUMP_OFF;
-            Outputs.Motor = MOTOR_HIGH;
-            SMS_CMD_Type  = SMS_CMD_POFF_MHIGH;                
+            memcpy(SMS_Authorized_Number.fields.Number, _phoneNumber, sizeof(_phoneNumber));
+            mem_Update_Number();
+            SMS_CMD_Type = SMS_CMD_AddPhoneNumber;
         }
         else
         {
-            SMS_CMD_Type  = SMS_CMD_Unknown;                
+            return M66_Res_ERR;
+        };
+    }
+    else
+    {
+        if(strstr(_phoneNumber, SMS_Authorized_Number.fields.Number))
+        {
+
+            _Status = sscanf(usart_RxBuffer, SMS_scanSet_Content, _incomeText);
+            if(_Status != 1)
+            {                   
+                return M66_Res_ERR;
+            };
+
+            str_toUpper(_incomeText, strlen(_incomeText));
+
+            if(strstr(_incomeText, SMS_CMD_CheckStatus) != NULL)
+            {
+                SMS_CMD_Type = SMS_CMD_Status;
+            }
+            else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_OFF) != NULL)
+            {
+                Outputs.Pump  = PUMP_OFF;
+                Outputs.Motor = MOTOR_OFF;
+                SMS_CMD_Type  = SMS_CMD_POFF_MOFF;
+            }
+            else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_OFF) != NULL)
+            {
+                Outputs.Pump  = PUMP_ON;
+                Outputs.Motor = MOTOR_OFF;
+                SMS_CMD_Type  = SMS_CMD_PON_MOFF;
+            }       
+            else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_LOW) != NULL)
+            {
+                Outputs.Pump  = PUMP_ON;
+                Outputs.Motor = MOTOR_LOW;
+                SMS_CMD_Type  = SMS_CMD_PON_MLOW;
+
+            }
+            else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_HIGH) != NULL)
+            {
+                Outputs.Pump  = PUMP_ON;
+                Outputs.Motor = MOTOR_HIGH;
+                SMS_CMD_Type  = SMS_CMD_PON_MHIGH;            
+            }
+            else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_LOW) != NULL)
+            {
+                Outputs.Pump  = PUMP_OFF;
+                Outputs.Motor = MOTOR_LOW;
+                SMS_CMD_Type  = SMS_CMD_POFF_MLOW;                
+            }
+            else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_HIGH) != NULL)
+            {
+                Outputs.Pump  = PUMP_OFF;
+                Outputs.Motor = MOTOR_HIGH;
+                SMS_CMD_Type  = SMS_CMD_POFF_MHIGH;                
+            }
+            else
+            {
+                SMS_CMD_Type  = SMS_CMD_Unknown;                
+            };
         };
     };
 
@@ -522,15 +548,4 @@ void M66_sendStatus(void)
                 AHT20_Data.Humidity);
 
     M66_SendSMS(SMS_Authorized_Number.fields.Number, _cmd);
-};
-
-void M66_sendPowenOn(void)
-{
-    char _text[25] = "RCS AVR powered on!";
-    M66_SendSMS(SMS_Authorized_Number.fields.Number, _text);
-};
-
-void M66_sendWarning(void)
-{
-    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Unknown Command!");
 };

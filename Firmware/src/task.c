@@ -16,7 +16,9 @@ extern char              usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to stor
 extern alcd_customChar_T Display_customChar;
 extern M66_SignalQ_T     M66_SignalQ;
 extern volatile ev1527_T ev1527_Data;
-extern Remote_Authorized_T  Remote_Authorized;
+extern Remote_Authorized_T     Remote_Authorized;
+extern SMS_Authorized_Number_T SMS_Authorized_Number;
+extern Config_Device_T         Config_Device;
 
 bool         System_PowerOn  = true;          
 bool         Sensor_Flt_Flag = false;
@@ -224,8 +226,9 @@ void System_Task(void)
 
 void GSM_Task(void)
 {
-    static uint8_t _csq_Timer   = 0;
-    static uint8_t _csq_TimeOut = 0;
+    static uint8_t  _csq_Timer   = 0;
+    static uint8_t  _csq_TimeOut = 0;
+    static uint16_t _Init_Timerout = 0;
     uint8_t        _rssi = 0;
     uint8_t        _ber  = 0;
 
@@ -234,6 +237,7 @@ void GSM_Task(void)
         case GSM_Reset:
             GSM_StartUp_Flags.raw = 0x00;
             usart_Putsln(__M66_CMD_Restart);
+            _Init_Timerout = 0;
             GSM_State = GSM_StartUp;
         break;
     
@@ -249,7 +253,15 @@ void GSM_Task(void)
             {
                 GSM_Init_Flags.raw = 0x00;
                 GSM_Init_State     = GSM_Init_Echo;
+                _Init_Timerout     = 0;
                 GSM_State = GSM_Init;
+            };
+
+            _Init_Timerout++;
+            if(_Init_Timerout > 1200) /* 120 Sec*100ms = 1200*/
+            {
+                _Init_Timerout = 0;
+                GSM_State = GSM_Fault;
             };
         break;
 
@@ -269,6 +281,7 @@ void GSM_Task(void)
                     {
                         //SMS_CMD_Type = SMS_CMD_PowerOn;                          
                         //GSM_State    = GSM_SMS_SendSMS;
+                        GSM_State = GSM_Idle;
                     }
                     else
                     {
@@ -280,6 +293,13 @@ void GSM_Task(void)
                     GSM_State = GSM_Fault;
                 };
             };
+
+            _Init_Timerout++;
+            if(_Init_Timerout > 1200) /* 120 Sec*100ms = 1200*/
+            {
+                _Init_Timerout = 0;
+                GSM_State = GSM_Fault;
+            };            
         break;   
 
         case GSM_Idle:
@@ -379,7 +399,11 @@ void GSM_Task(void)
 
             if(SMS_CMD_Type == SMS_CMD_PowerOn)
             {
-                M66_sendPowenOn();
+                M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
+            }
+            else if( SMS_CMD_Type == SMS_CMD_AddPhoneNumber)
+            {
+                M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
             }
             else if(SMS_CMD_Type != SMS_CMD_Unknown)
             {
@@ -387,7 +411,7 @@ void GSM_Task(void)
             }
             else
             {
-                M66_sendWarning();
+                M66_SendSMS(SMS_Authorized_Number.fields.Number, "Unknown Command!");
             };
             millisDisplay.Interval = 2000;            
             GSM_State = GSM_Idle;

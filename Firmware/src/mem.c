@@ -13,6 +13,19 @@ hcrc16_T crc16_modbus =
   .xorOut = 0x0000
 };
 
+
+void mem_Update_Number(void)
+{
+    Config_Device.fields.Phone_CFG = true;
+    Config_Device.fields.Status    = 0x03;
+    Config_Device.fields.CheckSum  = CRC16_Calc(&crc16_modbus, Config_Device.raw, (Config_Device_Len-2));
+    e2prom_block_Write(Config_Device_Address, Config_Device.raw, Config_Device_Len);
+
+    SMS_Authorized_Number.fields.CheckSum = CRC16_Calc(&crc16_modbus, SMS_Authorized_Number.raw, (Config_Phone_Len-2));
+    e2prom_block_Write(Config_Phone_Address, SMS_Authorized_Number.raw, Config_Phone_Len);
+};
+
+
 void mem_Read(void)
 {
     bool _checkSum_Err = false;
