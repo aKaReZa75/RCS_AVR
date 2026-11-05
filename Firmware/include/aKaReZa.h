@@ -52,7 +52,7 @@
 #include "e2prom.h"
 #include "mem.h"
 
-#define firmwareVer   "1.3.0"
+#define firmwareVer   "1.3.2"
 #define Learn_Key_DDR DDRD
 #define Learn_Key_Pin 3
 #define Learn_Key_STS PIND

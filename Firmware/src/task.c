@@ -412,29 +412,40 @@ void GSM_Task(void)
         break; 
         
         case GSM_SMS_SendSMS:
-
-            if(SMS_CMD_Type == SMS_CMD_PowerOn)
+            if(Config_Device.fields.Phone_CFG == true)
             {
-                M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
-            }
-            else if( SMS_CMD_Type == SMS_CMD_AddPhoneNumber)
-            {
-                M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
-            }
-            else if( SMS_CMD_Type == SMS_CMD_AddRemoteAdd)
-            {
-                M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been set successfully.");
-            }            
-            else if(SMS_CMD_Type != SMS_CMD_Unknown)
-            {
-                M66_sendStatus();
+                if(SMS_CMD_Type == SMS_CMD_PowerOn)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
+                }
+                else if( SMS_CMD_Type == SMS_CMD_AddPhoneNumber)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
+                }
+                else if( SMS_CMD_Type == SMS_CMD_AddRemoteAdd)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been set successfully.");
+                }       
+                else if( SMS_CMD_Type == SMS_CMD_WipeAll)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Factory Reset Done!");
+                    mem_Wipe();
+                }                 
+                else if(SMS_CMD_Type != SMS_CMD_Unknown)
+                {
+                    M66_sendStatus();
+                }
+                else
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Unknown Command!");
+                };
+                GSM_State = GSM_Idle;                
             }
             else
             {
-                M66_SendSMS(SMS_Authorized_Number.fields.Number, "Unknown Command!");
-            };
+                GSM_State = GSM_Fault;
+            };  
             millisDisplay.Interval = 2000;            
-            GSM_State = GSM_Idle;
         break;   
         
         case GSM_Fault:

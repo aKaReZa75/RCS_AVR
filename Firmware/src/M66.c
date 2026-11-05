@@ -40,6 +40,7 @@ extern Remote_Authorized_T     Remote_Authorized;
 #define SMS_CMD_CheckStatus          "RCS+STS?"
 #define SMS_CMD_AddNumber            "RCS+AN"
 #define SMS_CMD_AddRemote            "RCS+AR="
+#define SMS_CMD_Wipe                 "RCS+WIPE"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -500,6 +501,10 @@ M66_Res_T M66_CheckSMS(void)
                 mem_Update_Remote();
                 SMS_CMD_Type = SMS_CMD_AddRemoteAdd;
             }
+            else if(strstr(_incomeText, SMS_CMD_Wipe) != NULL)
+            {
+                SMS_CMD_Type  = SMS_CMD_WipeAll;
+            }            
             else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_OFF) != NULL)
             {
                 Outputs.Pump  = PUMP_OFF;

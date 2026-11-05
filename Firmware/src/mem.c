@@ -13,6 +13,25 @@ hcrc16_T crc16_modbus =
   .xorOut = 0x0000
 };
 
+void mem_Wipe(void)
+{
+    Config_Device.fields.Phone_CFG = false;
+    Config_Device.fields.PowerOn   = false;
+    Config_Device.fields.Remote_CFG= false;
+    Config_Device.fields.RemoteSTS = false;
+    Config_Device.fields.Status    = 0x0F;
+    Config_Device.fields.CheckSum  = CRC16_Calc(&crc16_modbus, Config_Device.raw, (Config_Device_Len-2));
+    e2prom_block_Write(Config_Device_Address, Config_Device.raw, Config_Device_Len);
+
+    memset(SMS_Authorized_Number.fields.Number, 0, sizeof(SMS_Authorized_Number.fields.Number));
+    SMS_Authorized_Number.fields.CheckSum = CRC16_Calc(&crc16_modbus, SMS_Authorized_Number.raw, (Config_Phone_Len-2));
+    e2prom_block_Write(Config_Phone_Address, SMS_Authorized_Number.raw, Config_Phone_Len);
+
+    Remote_Authorized.fields.Address = 0x0;
+    Remote_Authorized.fields.CheckSum = CRC16_Calc(&crc16_modbus, Remote_Authorized.raw, (Config_Remote_Len-2));
+    e2prom_block_Write(Config_Remote_Address, Remote_Authorized.raw, Config_Remote_Len);    
+};
+
 void mem_Update_Remote(void)
 {
     Config_Device.fields.Remote_CFG= true;
@@ -56,5 +75,11 @@ void mem_Read(void)
     if(CRC16_Calc(&crc16_modbus, Remote_Authorized.raw, Config_Remote_Len) != 0)
     {
         _checkSum_Err = true;
+    };
+
+    if(_checkSum_Err == true)
+    {
+        Config_Device.fields.Status = 0x05;
+        mem_Wipe();
     };
 };

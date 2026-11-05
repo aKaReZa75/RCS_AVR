@@ -182,11 +182,19 @@ void display_HomePage(void)
     alcd_putc(Display_customChar);
   };
 
-  alcd_gotoxy(0, 1);
-  sprintf(alcd_Buffer,"P:%s ", Pump_Display[Outputs.Pump]);
-  alcd_puts(alcd_Buffer);    
+  if(Config_Device.fields.Status == 0x03)
+  {
+    alcd_gotoxy(0, 1);
+    sprintf(alcd_Buffer,"P:%s ", Pump_Display[Outputs.Pump]);
+    alcd_puts(alcd_Buffer);    
 
-  alcd_gotoxy(7, 1);
-  sprintf(alcd_Buffer,"M:%s ", Motor_Display[Outputs.Motor]);
-  alcd_puts(alcd_Buffer);     
+    alcd_gotoxy(7, 1);
+    sprintf(alcd_Buffer,"M:%s ", Motor_Display[Outputs.Motor]);
+    alcd_puts(alcd_Buffer); 
+  }
+  else
+  {
+    alcd_gotoxy(0, 1);
+    alcd_puts("Config Error!");
+  }; 
 };
