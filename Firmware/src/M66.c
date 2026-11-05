@@ -24,8 +24,8 @@ extern GSM_Init_State_T GSM_Init_State;
 extern GSM_Init_Flags_T GSM_Init_Flags;
 extern SMS_CMD_Type_T   SMS_CMD_Type;
 extern Outputs_T Outputs;
+extern SMS_Authorized_Number_T SMS_Authorized_Number;
 
-#define SMS_Authorized_Number "+989355282124"
 #define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
 #define SMS_scanSet_Number    "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\""
 #define SMS_scanSet_Content   "\r\n+CMGR: \"%*[^\"]\",\"%*[^\"]\",\"\",\"%*[^\"]\"\r\n%[^\r]\r\n"
@@ -446,7 +446,7 @@ M66_Res_T M66_CheckSMS(void)
         return M66_Res_ERR;
     };
 
-    if(strstr(_phoneNumber, SMS_Authorized_Number))
+    if(strstr(_phoneNumber, SMS_Authorized_Number.fields.Number))
     {
 
         _Status = sscanf(usart_RxBuffer, SMS_scanSet_Content, _incomeText);
@@ -521,16 +521,16 @@ void M66_sendStatus(void)
                 AHT20_Data.Temp,
                 AHT20_Data.Humidity);
 
-    M66_SendSMS(SMS_Authorized_Number, _cmd);
+    M66_SendSMS(SMS_Authorized_Number.fields.Number, _cmd);
 };
 
 void M66_sendPowenOn(void)
 {
     char _text[25] = "RCS AVR powered on!";
-    M66_SendSMS(SMS_Authorized_Number, _text);
+    M66_SendSMS(SMS_Authorized_Number.fields.Number, _text);
 };
 
 void M66_sendWarning(void)
 {
-    M66_SendSMS(SMS_Authorized_Number, "Unknown Command!");
+    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Unknown Command!");
 };

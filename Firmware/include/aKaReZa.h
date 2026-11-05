@@ -49,8 +49,10 @@
 #include "i2c.h"
 #include "err.h"
 #include "aht20.h"
+#include "e2prom.h"
+#include "mem.h"
 
-#define firmwareVer   "1.2.4"
+#define firmwareVer   "1.3.0"
 #define Learn_Key_DDR DDRD
 #define Learn_Key_Pin 3
 #define Learn_Key_STS PIND

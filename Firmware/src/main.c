@@ -9,6 +9,7 @@ int main(void)
   usart_Init(Initialize);
   ev1527_Init();
   i2c_Init();
+  mem_Read();
   globalInt_Enable;
 
   while(1)

@@ -3,7 +3,6 @@
 #define REMOTE_Idle_MS    10
 #define REMOTE_Idle_TICKS 18
 #define REMOTE_Sleep_MS   100
-#define Remote_Authorized 0x59647
 #define Remote_Key_A      0x08
 #define Remote_Key_B      0x04
 #define Remote_Key_C      0x02
@@ -17,6 +16,7 @@ extern char              usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to stor
 extern alcd_customChar_T Display_customChar;
 extern M66_SignalQ_T     M66_SignalQ;
 extern volatile ev1527_T ev1527_Data;
+extern Remote_Authorized_T  Remote_Authorized;
 
 bool         System_PowerOn  = true;          
 bool         Sensor_Flt_Flag = false;
@@ -168,7 +168,7 @@ void Remote_Task(void)
         break;
         
         case Remote_Check:
-            if(ev1527_Data.Bits.Address == Remote_Authorized)
+            if(ev1527_Data.Bits.Address == Remote_Authorized.fields.Address)
             {
                 switch (ev1527_Data.Bits.Keys)
                 {
@@ -197,8 +197,8 @@ void Remote_Task(void)
                         Outputs.Motor = MOTOR_LOW;
                     break;                    
                 };
-                SMS_CMD_Type = SMS_CMD_Status;                
-                GSM_State    = GSM_SMS_SendSMS;
+                //SMS_CMD_Type = SMS_CMD_Status;                
+                //GSM_State    = GSM_SMS_SendSMS;
             };
             Remote_State = Remote_Idle;
         break;        
@@ -267,8 +267,8 @@ void GSM_Task(void)
                     Display_customChar = alcd_CustumChar_Time;
                     if(System_PowerOn == true)
                     {
-                        SMS_CMD_Type = SMS_CMD_PowerOn;                          
-                        GSM_State    = GSM_SMS_SendSMS;
+                        //SMS_CMD_Type = SMS_CMD_PowerOn;                          
+                        //GSM_State    = GSM_SMS_SendSMS;
                     }
                     else
                     {
