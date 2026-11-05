@@ -51,5 +51,6 @@ void mem_Read(void);
 void mem_Update_Number(void);
 void mem_Update_Remote(void);
 void mem_Wipe(void);
+void mem_Update_Config(void);
 
 #endif

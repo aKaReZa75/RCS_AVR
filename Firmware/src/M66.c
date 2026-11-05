@@ -41,6 +41,7 @@ extern Remote_Authorized_T     Remote_Authorized;
 #define SMS_CMD_AddNumber            "RCS+AN"
 #define SMS_CMD_AddRemote            "RCS+AR="
 #define SMS_CMD_Wipe                 "RCS+WIPE"
+#define SMS_CMD_Config               "RCS+CFG="
 
 /**
  * @brief Initializes the M66 GSM module
@@ -489,6 +490,20 @@ M66_Res_T M66_CheckSMS(void)
             if(strstr(_incomeText, SMS_CMD_CheckStatus) != NULL)
             {
                 SMS_CMD_Type = SMS_CMD_Status;
+            }
+            else if(strstr(_incomeText, SMS_CMD_Config) != NULL)
+            {
+                uint8_t _PStatus = false;
+                uint8_t _RStatus = false;
+                _Status = sscanf(_incomeText, "RCS+CFG=%hhu,%hhu", &_PStatus, &_RStatus);
+                if(_Status != 2)
+                {                   
+                    return M66_Res_ERR;
+                }; 
+                Config_Device.fields.PowerOn   = _PStatus & 0x01;
+                Config_Device.fields.RemoteSTS = _RStatus & 0x01;
+                mem_Update_Config();
+                SMS_CMD_Type = SMS_CMD_dConfig;
             }
             else if(strstr(_incomeText, SMS_CMD_AddRemote) != NULL)
             {

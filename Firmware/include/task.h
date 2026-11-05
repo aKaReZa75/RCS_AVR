@@ -85,6 +85,7 @@ typedef enum
     SMS_CMD_AddPhoneNumber,
     SMS_CMD_AddRemoteAdd,
     SMS_CMD_WipeAll,
+    SMS_CMD_dConfig,
     SMS_CMD_Unknown      
 } SMS_CMD_Type_T;
 

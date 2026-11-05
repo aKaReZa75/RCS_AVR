@@ -199,8 +199,11 @@ void Remote_Task(void)
                         Outputs.Motor = MOTOR_LOW;
                     break;                    
                 };
-                //SMS_CMD_Type = SMS_CMD_Status;                
-                //GSM_State    = GSM_SMS_SendSMS;
+                if(Config_Device.fields.RemoteSTS == true)
+                {
+                    SMS_CMD_Type = SMS_CMD_Status;                
+                    GSM_State    = GSM_SMS_SendSMS;
+                };
             };
             Remote_State = Remote_Idle;
         break;        
@@ -295,9 +298,15 @@ void GSM_Task(void)
                     Display_customChar = alcd_CustumChar_Time;
                     if(System_PowerOn == true)
                     {
-                        //SMS_CMD_Type = SMS_CMD_PowerOn;                          
-                        //GSM_State    = GSM_SMS_SendSMS;
-                        GSM_State = GSM_Idle;
+                        if(Config_Device.fields.PowerOn == true)
+                        {
+                            SMS_CMD_Type = SMS_CMD_PowerOn;                          
+                            GSM_State    = GSM_SMS_SendSMS;
+                        }
+                        else
+                        {
+                            GSM_State = GSM_Idle;
+                        };
                     }
                     else
                     {
@@ -418,19 +427,23 @@ void GSM_Task(void)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
                 }
-                else if( SMS_CMD_Type == SMS_CMD_AddPhoneNumber)
+                else if(SMS_CMD_Type == SMS_CMD_AddPhoneNumber)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
                 }
-                else if( SMS_CMD_Type == SMS_CMD_AddRemoteAdd)
+                else if(SMS_CMD_Type == SMS_CMD_AddRemoteAdd)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been set successfully.");
                 }       
-                else if( SMS_CMD_Type == SMS_CMD_WipeAll)
+                else if(SMS_CMD_Type == SMS_CMD_WipeAll)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Factory Reset Done!");
                     mem_Wipe();
-                }                 
+                }    
+                else if(SMS_CMD_Type == SMS_CMD_dConfig ) 
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "System Config Done.");
+                }            
                 else if(SMS_CMD_Type != SMS_CMD_Unknown)
                 {
                     M66_sendStatus();

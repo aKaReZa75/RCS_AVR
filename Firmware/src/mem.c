@@ -13,6 +13,12 @@ hcrc16_T crc16_modbus =
   .xorOut = 0x0000
 };
 
+void mem_Update_Config(void)
+{
+    Config_Device.fields.CheckSum  = CRC16_Calc(&crc16_modbus, Config_Device.raw, (Config_Device_Len-2));
+    e2prom_block_Write(Config_Device_Address, Config_Device.raw, Config_Device_Len);
+};
+
 void mem_Wipe(void)
 {
     Config_Device.fields.Phone_CFG = false;
