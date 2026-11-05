@@ -26,6 +26,7 @@ extern SMS_CMD_Type_T   SMS_CMD_Type;
 extern Outputs_T Outputs;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
+extern Remote_Authorized_T     Remote_Authorized;
 
 #define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
 #define SMS_scanSet_Number    "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\""
@@ -38,6 +39,7 @@ extern Config_Device_T         Config_Device;
 #define SMS_CMD_Pump_OFF_Motor_HIGH  "RCS+OC=0,2"
 #define SMS_CMD_CheckStatus          "RCS+STS?"
 #define SMS_CMD_AddNumber            "RCS+AN"
+#define SMS_CMD_AddRemote            "RCS+AR="
 
 /**
  * @brief Initializes the M66 GSM module
@@ -435,7 +437,8 @@ M66_Res_T M66_CheckSMS(void)
 {
     char _phoneNumber[14];
     char _incomeText[20];
-    uint8_t _Status = 0;
+    uint8_t  _Status = 0;
+    uint32_t _Remote = 0;
     SMS_CMD_Type = SMS_CMD_Phone_Incorrect;
 
     // Parse SMS content
@@ -485,6 +488,17 @@ M66_Res_T M66_CheckSMS(void)
             if(strstr(_incomeText, SMS_CMD_CheckStatus) != NULL)
             {
                 SMS_CMD_Type = SMS_CMD_Status;
+            }
+            else if(strstr(_incomeText, SMS_CMD_AddRemote) != NULL)
+            {
+                _Status = sscanf(_incomeText, "RCS+AR=%lx", &_Remote);
+                if(_Status != 1)
+                {                   
+                    return M66_Res_ERR;
+                };
+                Remote_Authorized.fields.Address = _Remote;
+                mem_Update_Remote();
+                SMS_CMD_Type = SMS_CMD_AddRemoteAdd;
             }
             else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_OFF) != NULL)
             {

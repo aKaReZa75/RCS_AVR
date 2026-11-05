@@ -405,6 +405,10 @@ void GSM_Task(void)
             {
                 M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
             }
+            else if( SMS_CMD_Type == SMS_CMD_AddRemoteAdd)
+            {
+                M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been set successfully.");
+            }            
             else if(SMS_CMD_Type != SMS_CMD_Unknown)
             {
                 M66_sendStatus();

@@ -13,6 +13,16 @@ hcrc16_T crc16_modbus =
   .xorOut = 0x0000
 };
 
+void mem_Update_Remote(void)
+{
+    Config_Device.fields.Remote_CFG= true;
+    Config_Device.fields.Status    = 0x03;
+    Config_Device.fields.CheckSum  = CRC16_Calc(&crc16_modbus, Config_Device.raw, (Config_Device_Len-2));
+    e2prom_block_Write(Config_Device_Address, Config_Device.raw, Config_Device_Len);
+
+    Remote_Authorized.fields.CheckSum = CRC16_Calc(&crc16_modbus, Remote_Authorized.raw, (Config_Remote_Len-2));
+    e2prom_block_Write(Config_Remote_Address, Remote_Authorized.raw, Config_Remote_Len);
+};
 
 void mem_Update_Number(void)
 {
