@@ -209,6 +209,7 @@ void Remote_Task(void)
 
 void System_Task(void)
 {
+    static uint16_t _remoteCounter = 0;
     switch (Sys_State)
     {
         case Sys_StartUp:
@@ -218,7 +219,22 @@ void System_Task(void)
         break;
         
         case Sys_Idle:
-
+            if(bitCheckLow(Learn_Key_STS, Learn_Key_Pin))
+            {
+                _remoteCounter++;
+            }
+            else
+            {
+                if(_remoteCounter >= 20) /* 20 = 1000ms/50ms = 1Sec */
+                {
+                    _remoteCounter = 0;
+                    Dispay_Page    = Display_Page_Authorized;
+                }
+                else
+                {
+                    _remoteCounter = 0;
+                };
+            };
         break;
     };
 };

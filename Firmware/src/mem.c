@@ -39,8 +39,7 @@ void mem_Update_Number(void)
 void mem_Read(void)
 {
     bool _checkSum_Err = false;
-
-    char alcdBuf[17];
+    
     e2prom_block_Read(Config_Device_Address, Config_Device.raw, Config_Device_Len);
     if(CRC16_Calc(&crc16_modbus, Config_Device.raw, Config_Device_Len) != 0)
     {
@@ -58,20 +57,4 @@ void mem_Read(void)
     {
         _checkSum_Err = true;
     };
-
-    alcd_clear();
-    if(_checkSum_Err == true)
-    {
-        alcd_puts("Config Error!");
-    }
-    else
-    {
-        
-        alcd_puts("AN:");
-        alcd_puts(SMS_Authorized_Number.fields.Number);    
-        sprintf(alcdBuf, "AR:0x%05lx [%02x]", Remote_Authorized.fields.Address, Config_Device.raw[0]);
-        alcd_gotoxy(0, 1);
-        alcd_puts(alcdBuf);   
-    }
-    delay_ms(5000);
 };

@@ -4,6 +4,9 @@ extern Outputs_T    Outputs;
 extern GSM_State_T  GSM_State;
 extern AHT20_Data_T AHT20_Data;
 extern bool         Sensor_Flt_Flag;
+extern SMS_Authorized_Number_T SMS_Authorized_Number;
+extern Config_Device_T         Config_Device;
+extern Remote_Authorized_T     Remote_Authorized;
 
 char alcd_Buffer[16];
 
@@ -66,15 +69,42 @@ void display_Update(void)
         display_EV1527_Show();
       };
       _dispCounter++;
-      if(_dispCounter >= 10)
+      if(_dispCounter >= 10) /* 250ms *10 = 2500ms*/
       {
         _dispCounter = 0;
         Dispay_Page = Display_Page_Home;
       };
     break;
+
+    case Display_Page_Authorized:
+      if(Dispay_Page_Last != Display_Page_Authorized)
+      {
+        _dispCounter = 0;
+        alcd_clear();
+        display_Authorized();
+        Dispay_Page_Last = Display_Page_Authorized;
+      };
+
+      _dispCounter++;
+      if(_dispCounter >= 20) /* 250ms *20 = 5000ms*/
+      {
+        _dispCounter = 0;
+        Dispay_Page = Display_Page_Home;
+      };      
+    break;
   };
 };
 
+
+void display_Authorized(void)
+{
+
+  alcd_puts("AN:");
+  alcd_puts(SMS_Authorized_Number.fields.Number);    
+  sprintf(alcd_Buffer, "AR:0x%05lx [%02x]", Remote_Authorized.fields.Address, Config_Device.raw[0]);
+  alcd_gotoxy(0, 1);
+  alcd_puts(alcd_Buffer);  
+};
 
 void display_EV1527_Show(void)
 {
