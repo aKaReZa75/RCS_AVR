@@ -29,7 +29,8 @@ typedef enum
     Display_Page_Welcome = 0,
     Display_Page_Home,
     Display_Page_EV1527,
-    Display_Page_Authorized
+    Display_Page_Authorized,
+    Display_Page_Learning
 } Dispay_Page_T;
 
 void display_HomePage(void);
@@ -38,5 +39,6 @@ void display_Update(void);
 void display_PageWelcome(void);
 void display_EV1527_Show(void);
 void display_Authorized(void);
+void display_Learning(void);
 
 #endif

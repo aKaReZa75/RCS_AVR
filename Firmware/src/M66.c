@@ -27,6 +27,7 @@ extern Outputs_T Outputs;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
 extern Remote_Authorized_T     Remote_Authorized;
+extern Remote_State_T          Remote_State;
 
 #define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
 #define SMS_scanSet_Number    "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\""
@@ -42,6 +43,7 @@ extern Remote_Authorized_T     Remote_Authorized;
 #define SMS_CMD_AddRemote            "RCS+AR="
 #define SMS_CMD_Wipe                 "RCS+WIPE"
 #define SMS_CMD_Config               "RCS+CFG="
+#define SMS_CMD_Learnin              "RCS+LRN"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -311,12 +313,12 @@ M66_Res_T M66_SendSMS(char* _PhoneNumber, char* _Text)
     sprintf(_CMD, "AT+CMGS=\"%s\"", _PhoneNumber);
     _Res = M66_SendAtCmd(_CMD, ">", __M66_Default_TimeOut); 
 
-    if(_Res != M66_Res_OK)
-    {
-        /* Send Ctrl+Z to terminate any pending text-entry state */
-        usart_Write(__M66_CtrlZ);        
-        return _Res;
-    };
+    // if(_Res != M66_Res_OK)
+    // {
+    //     /* Send Ctrl+Z to terminate any pending text-entry state */
+    //     usart_Write(__M66_CtrlZ);        
+    //     return _Res;
+    // };
 
     /* Send message content and termination character */
     usart_Puts(_Text);
@@ -491,6 +493,11 @@ M66_Res_T M66_CheckSMS(void)
             {
                 SMS_CMD_Type = SMS_CMD_Status;
             }
+            else if(strstr(_incomeText, SMS_CMD_Learnin) != NULL)
+            {
+                Remote_State = Remote_Learning;
+                SMS_CMD_Type = SMS_CMD_RemoteLearning;
+            }            
             else if(strstr(_incomeText, SMS_CMD_Config) != NULL)
             {
                 uint8_t _PStatus = false;
@@ -514,7 +521,7 @@ M66_Res_T M66_CheckSMS(void)
                 };
                 Remote_Authorized.fields.Address = _Remote;
                 mem_Update_Remote();
-                SMS_CMD_Type = SMS_CMD_AddRemoteAdd;
+                SMS_CMD_Type = SMS_CMD_RemoteDone;
             }
             else if(strstr(_incomeText, SMS_CMD_Wipe) != NULL)
             {

@@ -7,11 +7,19 @@ extern bool         Sensor_Flt_Flag;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
 extern Remote_Authorized_T     Remote_Authorized;
+extern Remote_State_T          Remote_State;
 
 char alcd_Buffer[16];
 
 char* Pump_Display[]  = {"OFF", "ON"};
 char* Motor_Display[] = {"OFF", "LOW", "HIGH"};
+char* Learning_frames[] =
+{
+    "Learning   ",
+    "Learning.  ",
+    "Learning.. ",
+    "Learning..."
+};
 
 uint8_t Display_Antenna[8] = {0x1F, 0x15, 0x0E, 0x04, 0x04, 0x04, 0x04, 0x04};
 uint8_t Display_Time[8]    = {0x1F, 0x11, 0x0A, 0x04, 0x0A, 0x11, 0x1F, 0x00};
@@ -23,6 +31,8 @@ uint8_t Display_Sad[8]     = {0x00, 0x00, 0x00, 0x0A, 0x00, 0x0E, 0x11, 0x00};
 alcd_customChar_T Display_customChar;
 M66_SignalQ_T M66_SignalQ;
 Dispay_Page_T Dispay_Page;
+
+uint8_t lFrame = 0;
 
 void display_Init(void)
 {
@@ -92,6 +102,54 @@ void display_Update(void)
         Dispay_Page = Display_Page_Home;
       };      
     break;
+
+    case Display_Page_Learning:
+      if(Dispay_Page_Last != Display_Page_Learning)
+      {
+        _dispCounter = 0;
+        alcd_clear();      
+        Dispay_Page_Last = Display_Page_Learning;
+      };
+
+      _dispCounter++;
+      if(_dispCounter >= 2) /* 250ms *2 = 500ms*/
+      {
+        _dispCounter = 0;
+        lFrame++;
+        if(lFrame > 3)
+        {
+          lFrame = 0;
+        };
+      };        
+      
+
+      display_Learning();  
+    break;
+  };
+};
+
+
+void display_Learning(void)
+{
+  if(Remote_State == Remote_Learning)
+  {
+    alcd_gotoxy(0, 0);
+    alcd_puts(Learning_frames[lFrame]);
+  }
+  else if(Remote_State == Remote_Learn_Fail)
+  {
+    alcd_gotoxy(0, 0);
+    alcd_puts(Learning_frames[0]);
+    alcd_gotoxy(0, 1);
+    alcd_puts("Failed!");
+  }
+  else if(Remote_State == Remote_Learn_Done)
+  {
+    alcd_gotoxy(0, 0);
+    alcd_puts(Learning_frames[0]);    
+    alcd_gotoxy(0, 1);
+    sprintf(alcd_Buffer, "Done: 0x%05lx", Remote_Authorized.fields.Address);
+    alcd_puts(alcd_Buffer);
   };
 };
 

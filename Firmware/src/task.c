@@ -132,10 +132,15 @@ void Sensor_Task(void)
 
 void Remote_Task(void)
 {
-    static uint8_t _failCounter = 0;
+    static uint8_t  _failCounter = 0;
+    static uint16_t _learnCounter= 0;
+    static Remote_State_T Remote_State_Last;
+    static uint32_t _remoteAdd[5] = {0};
+    static uint8_t  _rIndex = 0;
     switch (Remote_State)
     {
         case Remote_deInit:
+            Remote_State_Last = Remote_deInit;
             ev1527_deInit();
             _failCounter = 0;
             millisRemote.Interval = REMOTE_Sleep_MS;
@@ -143,12 +148,14 @@ void Remote_Task(void)
         break;
         
         case Remote_Init:
+            Remote_State_Last = Remote_Init;
             ev1527_Init();
             millisRemote.Interval = REMOTE_Idle_MS;
             Remote_State = Remote_Idle;
         break;
 
         case Remote_Idle:
+            Remote_State_Last = Remote_Idle;
             if(ev1527_Data.Bits.Detect == true)
             {
                 ev1527_Data.Bits.Detect = false;
@@ -170,6 +177,7 @@ void Remote_Task(void)
         break;
         
         case Remote_Check:
+            Remote_State = Remote_Check;
             if(ev1527_Data.Bits.Address == Remote_Authorized.fields.Address)
             {
                 switch (ev1527_Data.Bits.Keys)
@@ -206,8 +214,87 @@ void Remote_Task(void)
                 };
             };
             Remote_State = Remote_Idle;
-        break;        
+        break;  
+        
+        case Remote_Learning:
+            if(Remote_State_Last != Remote_Learning)
+            {
+                Remote_State_Last = Remote_Learning;
+                Dispay_Page = Display_Page_Learning;
+                millisRemote.Interval = REMOTE_Idle_MS;
+                _learnCounter = 0;
+                _rIndex       = 0;
+                memset(_remoteAdd, 0, sizeof(_remoteAdd));
+                ev1527_Init();
+            };
+
+
+            if(ev1527_Data.Bits.Detect == true)
+            {
+                bool _res  = true;
+                uint8_t _i = 0;
+                _remoteAdd[_rIndex] = (uint32_t)ev1527_Data.Bits.Address;
+                _rIndex++;
+                if(_rIndex>5)
+                {
+                    for(_i=1;_i<5;_i++)
+                    {
+                        if(_remoteAdd[0] != _remoteAdd[_i])
+                        {
+                            _res = false;     
+                        };
+                    };
+
+                    if(_res == true)
+                    {
+                        Remote_Authorized.fields.Address = _remoteAdd[0];
+                        Remote_State = Remote_Learn_Done;
+                        millisRemote.Interval = 2500;
+                    }
+                    else
+                    {
+                        Remote_State = Remote_Learn_Fail;
+                        millisRemote.Interval = 2500;
+                    };
+                };
+                ev1527_Data.Bits.Detect = false;
+                ev1527_Init();
+            };
+
+            
+            _learnCounter++;
+            if(_learnCounter >= 1500)  /* 1500*10ms=15Sec*/
+            {
+                _learnCounter=0;
+                Remote_State = Remote_Learn_Fail;
+                millisRemote.Interval = 2500;
+            };
+        break;   
+        
+        case Remote_Learn_Fail:
+            if(GSM_State == GSM_Idle)
+            {
+                GSM_State    = GSM_SMS_SendSMS;
+                SMS_CMD_Type = SMS_CMD_RemoteFail;
+            };            
+            Remote_State_Last = Remote_Learn_Fail;
+            Dispay_Page  = Display_Page_Home;
+            Remote_State = Remote_deInit;
+        break;
+
+        case Remote_Learn_Done:
+            if(GSM_State == GSM_Idle)
+            {
+                GSM_State    = GSM_SMS_SendSMS;
+                SMS_CMD_Type = SMS_CMD_RemoteDone;
+            };        
+            Remote_State_Last = Remote_Learn_Fail;
+            Dispay_Page  = Display_Page_Home;
+            Remote_State = Remote_Init;
+            mem_Update_Remote();
+        break;
     };
+
 };
 
 void System_Task(void)
@@ -228,12 +315,17 @@ void System_Task(void)
             }
             else
             {
-                if(_remoteCounter >= 200) /* 200 = 1000ms/50ms = 10Sec */
+                if(_remoteCounter >= 200) /* 100*100ms = 10Sec */
                 {
                     _remoteCounter = 0;
                     mem_Wipe();
                 }
-                else if(_remoteCounter >= 20) /* 20 = 1000ms/50ms = 1Sec */
+                else if(_remoteCounter >= 50) /* 50*100ms = 5Sec */
+                {
+                    _remoteCounter = 0;
+                    Remote_State   = Remote_Learning;
+                }                
+                else if(_remoteCounter >= 15) /* 15*100ms = 1.5Sec */
                 {
                     _remoteCounter = 0;
                     Dispay_Page    = Display_Page_Authorized;
@@ -436,10 +528,18 @@ void GSM_Task(void)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
                 }
-                else if(SMS_CMD_Type == SMS_CMD_AddRemoteAdd)
+                else if(SMS_CMD_Type == SMS_CMD_RemoteLearning)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Device is in remote learning mode...");
+                }                 
+                else if(SMS_CMD_Type == SMS_CMD_RemoteDone)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been set successfully.");
-                }       
+                } 
+                else if(SMS_CMD_Type == SMS_CMD_RemoteFail)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Learning failed, Please try again.");
+                }                           
                 else if(SMS_CMD_Type == SMS_CMD_WipeAll)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Factory Reset Done!");
