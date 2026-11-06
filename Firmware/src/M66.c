@@ -457,15 +457,7 @@ M66_Res_T M66_CheckSMS(void)
 
     if(Config_Device.fields.Phone_CFG == false)
     {
-        _Status = sscanf(usart_RxBuffer, SMS_scanSet_Content, _incomeText);
-        if(_Status != 1)
-        {                   
-            return M66_Res_ERR;
-        };
-
-        str_toUpper(_incomeText, strlen(_incomeText));
-
-        if(strstr(_incomeText, SMS_CMD_AddNumber) != NULL)
+        if(strstr(usart_RxBuffer, SMS_CMD_AddNumber) != NULL)
         {
             memcpy(SMS_Authorized_Number.fields.Number, _phoneNumber, sizeof(_phoneNumber));
             mem_Update_Number();
