@@ -54,7 +54,7 @@
 #include "wdt.h"
 
 #define firmwareVer   "1.5.0"
-#define gitHash       "a52fb13"
+#define gitHash       "0b98b63"
 #define Learn_Key_DDR DDRD
 #define Learn_Key_Pin 3
 #define Learn_Key_STS PIND

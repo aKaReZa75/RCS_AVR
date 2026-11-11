@@ -38,7 +38,7 @@ millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisRemote  = {.Delta = 0, .Previous = 0, .Interval = REMOTE_Idle_MS}; 
 millis_T millisSensor  = {.Delta = 0, .Previous = 0, .Interval = 500}; 
 millis_T millisAStart  = {.Delta = 0, .Previous = 0, .Interval = 150000}; 
-millis_T millisALCdBL  = {.Delta = 0, .Previous = 0, .Interval = 6000}; 
+millis_T millisALCdBL  = {.Delta = 0, .Previous = 0, .Interval = 120000}; 
 
 Sys_State_T Sys_State = Sys_StartUp;
 GSM_State_T GSM_State = GSM_Reset;
