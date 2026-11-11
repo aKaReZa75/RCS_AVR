@@ -51,9 +51,10 @@
 #include "aht20.h"
 #include "e2prom.h"
 #include "mem.h"
+#include "wdt.h"
 
-#define firmwareVer   "1.4.5"
-#define gitHash       "e772985"
+#define firmwareVer   "1.5.0"
+#define gitHash       "a52fb13"
 #define Learn_Key_DDR DDRD
 #define Learn_Key_Pin 3
 #define Learn_Key_STS PIND

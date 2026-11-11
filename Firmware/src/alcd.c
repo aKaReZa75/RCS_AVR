@@ -265,7 +265,7 @@ void alcd_init(void)
 
     #if __alcd_useBL == true
         bitSet(__alcd_BL_Config, __alcd_BL_Pin);
-        bitSet(__alcd_BL_Control, __alcd_BL_Pin);
+        //bitSet(__alcd_BL_Control, __alcd_BL_Pin);
     #endif
 
     /* HD44780 initialization sequence for 4-bit mode */

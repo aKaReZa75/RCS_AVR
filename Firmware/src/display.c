@@ -39,7 +39,7 @@ uint8_t lFrame = 0;
 void display_Init(void)
 {
   alcd_init();
-  alcd_backLight(true);
+  //alcd_backLight(true);
   alcd_customChar(alcd_CustomChar_Antenna, Display_Antenna);
   alcd_customChar(alcd_CustumChar_Time, Display_Time);  
   alcd_customChar(alcd_CustumChar_SQ3, Display_SQ3);

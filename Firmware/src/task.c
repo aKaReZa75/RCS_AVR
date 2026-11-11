@@ -51,6 +51,7 @@ Sensor_State_T      Sensor_State;
 
 void scheduler(void)
 {
+    wdt_Reset();
     millisDisplay.Delta = System_millis - millisDisplay.Previous;
     millisOutputs.Delta = System_millis - millisOutputs.Previous;
     millisSystem.Delta  = System_millis - millisSystem.Previous;
