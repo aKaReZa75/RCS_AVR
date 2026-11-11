@@ -44,6 +44,8 @@ extern Remote_State_T          Remote_State;
 #define SMS_CMD_Wipe                 "RCS+WIPE"
 #define SMS_CMD_Config               "RCS+CFG="
 #define SMS_CMD_Learnin              "RCS+LRN"
+#define SMS_CMD_RemoteAdd            "RCS+AR?"
+#define SMS_CMD_RemoteDEL            "RCS+AR=DEL"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -486,6 +488,17 @@ M66_Res_T M66_CheckSMS(void)
             {
                 SMS_CMD_Type = SMS_CMD_Status;
             }
+            else if(strstr(_incomeText, SMS_CMD_RemoteDEL) != NULL)
+            {
+                Remote_Authorized.fields.Address = 0x0;
+                Config_Device.fields.Remote_CFG  = false;
+                mem_Update_Remote();
+                SMS_CMD_Type = SMS_CMD_RemoteDelete;
+            }               
+            else if(strstr(_incomeText, SMS_CMD_RemoteAdd) != NULL)
+            {
+                SMS_CMD_Type = SMS_CMD_RemoteAddress;
+            }               
             else if(strstr(_incomeText, SMS_CMD_Learnin) != NULL)
             {
                 Remote_State = Remote_Learning;
@@ -512,6 +525,7 @@ M66_Res_T M66_CheckSMS(void)
                 {                   
                     return M66_Res_ERR;
                 };
+                Config_Device.fields.Remote_CFG  = true;
                 Remote_Authorized.fields.Address = _Remote;
                 mem_Update_Remote();
                 SMS_CMD_Type = SMS_CMD_RemoteDone;

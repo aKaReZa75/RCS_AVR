@@ -350,7 +350,7 @@ void GSM_Task(void)
     static uint16_t _Init_Timerout = 0;
     uint8_t        _rssi = 0;
     uint8_t        _ber  = 0;
-
+    char          _Text[50] = {'\n'};
     switch (GSM_State)
     {
         case GSM_Reset:
@@ -529,6 +529,15 @@ void GSM_Task(void)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
                 }
+                else if(SMS_CMD_Type == SMS_CMD_RemoteAddress)
+                {
+                    sprintf(_Text, "Remote Address: 0x%05lX", (uint32_t)Remote_Authorized.fields.Address);
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, _Text);
+                }  
+                else if(SMS_CMD_Type == SMS_CMD_RemoteDelete)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been deleted successfully.");
+                }                              
                 else if(SMS_CMD_Type == SMS_CMD_AddPhoneNumber)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");

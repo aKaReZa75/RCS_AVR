@@ -52,8 +52,8 @@
 #include "e2prom.h"
 #include "mem.h"
 
-#define firmwareVer   "1.4.1"
-#define gitHash       "bfb23b6"
+#define firmwareVer   "1.4.2"
+#define gitHash       "307ea17"
 #define Learn_Key_DDR DDRD
 #define Learn_Key_Pin 3
 #define Learn_Key_STS PIND

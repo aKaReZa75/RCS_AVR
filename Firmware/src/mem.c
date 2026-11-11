@@ -40,7 +40,6 @@ void mem_Wipe(void)
 
 void mem_Update_Remote(void)
 {
-    Config_Device.fields.Remote_CFG= true;
     Config_Device.fields.Status    = 0x03;
     Config_Device.fields.CheckSum  = CRC16_Calc(&crc16_modbus, Config_Device.raw, (Config_Device_Len-2));
     e2prom_block_Write(Config_Device_Address, Config_Device.raw, Config_Device_Len);

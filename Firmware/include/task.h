@@ -88,6 +88,8 @@ typedef enum
     SMS_CMD_WipeAll,
     SMS_CMD_dConfig,
     SMS_CMD_RemoteLearning,
+    SMS_CMD_RemoteAddress,
+    SMS_CMD_RemoteDelete,
     SMS_CMD_Unknown      
 } SMS_CMD_Type_T;
 
