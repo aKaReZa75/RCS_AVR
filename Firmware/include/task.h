@@ -91,6 +91,7 @@ typedef enum
     SMS_CMD_RemoteAddress,
     SMS_CMD_RemoteDelete,
     SMS_CMD_NumberDelete,
+    SMS_CMD_CfgStatus,
     SMS_CMD_Unknown      
 } SMS_CMD_Type_T;
 

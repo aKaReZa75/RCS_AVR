@@ -534,6 +534,13 @@ void GSM_Task(void)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
                 }
+                else if(SMS_CMD_Type == SMS_CMD_CfgStatus)
+                {
+                    sprintf(_Text,"Power-on SMS: %s\nRemote status SMS: %s",
+                            Config_Device.fields.PowerOn   ? "ON" : "OFF",
+                            Config_Device.fields.RemoteSTS ? "ON" : "OFF");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, _Text);
+                }                 
                 else if(SMS_CMD_Type == SMS_CMD_RemoteAddress)
                 {
                     sprintf(_Text, "Remote Address: 0x%05lX", (uint32_t)Remote_Authorized.fields.Address);
