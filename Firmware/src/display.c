@@ -183,7 +183,8 @@ void display_PageWelcome(void)
   alcd_puts(alcd_Buffer);
 
   alcd_gotoxy(0, 1);
-  alcd_puts("aKaReZa");
+  sprintf(alcd_Buffer, "aKaReZa[%s]", gitHash);
+  alcd_puts(alcd_Buffer);
 };
 
 

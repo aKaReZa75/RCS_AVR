@@ -313,6 +313,7 @@ M66_Res_T M66_SendSMS(char* _PhoneNumber, char* _Text)
     sprintf(_CMD, "AT+CMGS=\"%s\"", _PhoneNumber);
     _Res = M66_SendAtCmd(_CMD, ">", __M66_Default_TimeOut); 
 
+    (void)_Res; // Suppress unused variable warning if not used
     // if(_Res != M66_Res_OK)
     // {
     //     /* Send Ctrl+Z to terminate any pending text-entry state */
@@ -573,12 +574,21 @@ void M66_sendStatus(void)
     extern char* Pump_Display[];
     extern char* Motor_Display[]; 
     extern AHT20_Data_T AHT20_Data;
+    extern bool  Sensor_Flt_Flag;
 
-    sprintf(_cmd, "Pump: %s\nMotor: %s\nTemp: %2.1f'c\nHumidity: %2.1f%%", 
-                Pump_Display[Outputs.Pump],
-                Motor_Display[Outputs.Motor],
-                AHT20_Data.Temp,
-                AHT20_Data.Humidity);
-
+    if(Sensor_Flt_Flag == false)
+    {
+        sprintf(_cmd, "Pump: %s\nMotor: %s\nTemp: %2.1f'c\nHumidity: %2.1f%%", 
+                    Pump_Display[Outputs.Pump],
+                    Motor_Display[Outputs.Motor],
+                    AHT20_Data.Temp,
+                    AHT20_Data.Humidity);
+    }
+    else
+    {
+        sprintf(_cmd, "Pump: %s\nMotor: %s\nTemp: Fault\nHumidity: Fault", 
+                    Pump_Display[Outputs.Pump],
+                    Motor_Display[Outputs.Motor]);
+    };
     M66_SendSMS(SMS_Authorized_Number.fields.Number, _cmd);
 };

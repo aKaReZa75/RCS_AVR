@@ -96,6 +96,7 @@ void Sensor_Task(void)
     switch (Sensor_State)
     {
         case Sensor_Init:
+            millisSensor.Interval = 500;
             Sensor_Res = aht20_Init();
             if(Sensor_Res == AHT20_Res_OK)
             {
@@ -124,6 +125,8 @@ void Sensor_Task(void)
         break;
         
         case Sensor_Fault:
+            Sensor_State    = Sensor_Init;
+            millisSensor.Interval = 10000;
             Sensor_Flt_Flag = true;
         break;        
     };
@@ -352,6 +355,8 @@ void GSM_Task(void)
     {
         case GSM_Reset:
             GSM_StartUp_Flags.raw = 0x00;
+            usart_Write(__M66_CtrlZ);
+            delay_ms(1);
             usart_Putsln(__M66_CMD_Restart);
             _Init_Timerout = 0;
             GSM_State = GSM_StartUp;
