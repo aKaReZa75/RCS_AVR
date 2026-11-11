@@ -23,6 +23,7 @@ extern ev1527_T ev1527_Data_cpy;
 extern Remote_Authorized_T     Remote_Authorized;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
+extern Display_BakckLight_T    Display_BakckLight;
 
 bool         AutoStartUp     = false;
 bool         System_PowerOn  = true;          
@@ -36,7 +37,8 @@ millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisRemote  = {.Delta = 0, .Previous = 0, .Interval = REMOTE_Idle_MS}; 
 millis_T millisSensor  = {.Delta = 0, .Previous = 0, .Interval = 500}; 
-millis_T millisAStart  = {.Delta = 0, .Previous = 0, .Interval = 12000}; 
+millis_T millisAStart  = {.Delta = 0, .Previous = 0, .Interval = 150000}; 
+millis_T millisALCdBL  = {.Delta = 0, .Previous = 0, .Interval = 6000}; 
 
 Sys_State_T Sys_State = Sys_StartUp;
 GSM_State_T GSM_State = GSM_Reset;
@@ -55,6 +57,13 @@ void scheduler(void)
     millisGSM.Delta     = System_millis - millisGSM.Previous;
     millisRemote.Delta  = System_millis - millisRemote.Previous;
     millisSensor.Delta  = System_millis - millisSensor.Previous;
+    millisALCdBL.Delta  = System_millis - millisALCdBL.Previous;
+
+    if(millisALCdBL.Delta > millisALCdBL.Interval)
+    {
+        millisALCdBL.Previous = System_millis;
+        Display_BakckLight    = Display_BL_OFF;
+    };
 
     if(millisSensor.Delta > millisSensor.Interval)
     {
@@ -201,6 +210,7 @@ void Remote_Task(void)
                 ev1527_Data.rawValue = 0x0;
                 ev1527_Init();
                 _listenTimer = 0;
+                millisALCdBL.Previous = System_millis;              
             };
 
             _listenTimer++;
@@ -220,9 +230,20 @@ void Remote_Task(void)
                 switch (ev1527_Data.Bits.Keys)
                 {
                     case (Remote_Key_A | Remote_Key_B):
-                        Outputs.Pump  = PUMP_ON;
-                        Outputs.Motor = MOTOR_OFF;
+                        AutoStartUp = !AutoStartUp;
+                        millisAStart.Previous = System_millis;   
                     break;
+
+                    case (Remote_Key_A | Remote_Key_C):
+                        Display_BakckLight    = Display_BL_ON;
+                        millisALCdBL.Previous = System_millis;
+                        millisALCdBL.Interval = 60000;    
+                    break;
+
+                    case (Remote_Key_A | Remote_Key_D):
+                        Outputs.Pump  = PUMP_ON;
+                        Outputs.Motor = MOTOR_OFF;   
+                    break;                    
 
                     case Remote_Key_A:
                         Outputs.Pump  = PUMP_OFF;
@@ -256,6 +277,9 @@ void Remote_Task(void)
         case Remote_Learning:
             if(Remote_State_Last != Remote_Learning)
             {
+                Display_BakckLight    = Display_BL_Blinky;
+                millisALCdBL.Previous = System_millis;
+                millisALCdBL.Interval = 18000;                
                 Remote_State_Last = Remote_Learning;
                 Dispay_Page = Display_Page_Learning;
                 millisRemote.Interval = REMOTE_Idle_MS;
@@ -348,6 +372,9 @@ void System_Task(void)
         case Sys_Idle:
             if(AutoStartUp == true)
             {
+                Display_BakckLight    = Display_BL_Blinky;
+                millisALCdBL.Previous = System_millis;
+                millisALCdBL.Interval = 18000;                   
                 Outputs.Pump  = PUMP_ON;
                 Outputs.Motor = MOTOR_OFF;               
                 millisAStart.Delta = System_millis - millisAStart.Previous;
@@ -359,6 +386,9 @@ void System_Task(void)
                     Outputs.Motor = MOTOR_HIGH;
                     SMS_CMD_Type  = SMS_CMD_Status;
                     GSM_State     = GSM_SMS_SendSMS;
+                    Display_BakckLight    = Display_BL_OFF;
+                    millisALCdBL.Previous = System_millis;
+                    millisALCdBL.Interval = 5000;                         
                 };
             };
 
@@ -369,6 +399,9 @@ void System_Task(void)
 
             if(bitCheckLow(Learn_Key_STS, Learn_Key_Pin))
             {
+                Display_BakckLight = Display_BL_ON;
+                millisALCdBL.Previous = System_millis;
+                millisALCdBL.Interval = 120000;               
                 Key_Learn_ctr++;
             }
             else
@@ -508,7 +541,7 @@ void GSM_Task(void)
                     if(Config_Device.fields.Phone_CFG == true)
                     {
                         if(strstr(usart_RxBuffer, SMS_Authorized_Number.fields.Number) != NULL)
-                        {
+                        {                          
                             AutoStartUp = true;
                             SMS_CMD_Type  = SMS_CMD_autoStart;
                             GSM_State     = GSM_SMS_SendSMS;   

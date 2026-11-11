@@ -33,6 +33,13 @@ typedef enum
     Display_Page_Learning
 } Dispay_Page_T;
 
+typedef enum
+{
+    Display_BL_ON = 0,
+    Display_BL_Blinky,
+    Display_BL_OFF,
+} Display_BakckLight_T;
+
 void display_HomePage(void);
 void display_Init(void);
 void display_Update(void);

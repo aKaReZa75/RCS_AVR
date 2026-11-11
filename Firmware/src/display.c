@@ -1,5 +1,6 @@
 #include "display.h"
 
+extern bool         AutoStartUp;
 extern Outputs_T    Outputs;
 extern GSM_State_T  GSM_State;
 extern AHT20_Data_T AHT20_Data;
@@ -31,6 +32,7 @@ uint8_t Display_Sad[8]     = {0x00, 0x00, 0x00, 0x0A, 0x00, 0x0E, 0x11, 0x00};
 alcd_customChar_T Display_customChar;
 M66_SignalQ_T M66_SignalQ;
 Dispay_Page_T Dispay_Page;
+Display_BakckLight_T Display_BakckLight = Display_BL_ON;
 
 uint8_t lFrame = 0;
 
@@ -51,6 +53,41 @@ void display_Update(void)
 {
   static Dispay_Page_T Dispay_Page_Last;
   static uint8_t       _dispCounter = 0;
+  static bool          _backLightState = true;
+  static uint8_t       _backLightTimer = 0;
+  switch (Display_BakckLight)
+  {
+    case Display_BL_ON:
+      bitSet(__alcd_BL_Control, __alcd_BL_Pin);
+    break;
+
+    case Display_BL_OFF:
+      bitClear(__alcd_BL_Control, __alcd_BL_Pin);
+    break;
+
+    case Display_BL_Blinky:
+      _backLightTimer++;
+      if(_backLightState == false)
+      {
+        if(_backLightTimer>=1)
+        {
+          _backLightTimer = 0;
+          _backLightState = true;
+        };
+      }
+      else
+      {
+        if(_backLightTimer>=6)
+        {
+          _backLightTimer = 0;
+          _backLightState = false;
+        };
+      };
+      bitChange(__alcd_BL_Control, __alcd_BL_Pin, _backLightState);
+    break;
+  };
+
+
   switch (Dispay_Page)
   {
     case Display_Page_Welcome:
@@ -270,6 +307,13 @@ void display_HomePage(void)
   }
   else
   {
-    alcd_puts("   ");
+    if(AutoStartUp == true)
+    {
+      alcd_puts("ASU");
+    } 
+    else
+    {
+      alcd_puts("   ");
+    }
   };  
 };
