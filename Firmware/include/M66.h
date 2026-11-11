@@ -31,6 +31,8 @@
 #define __M66_CMD_Operator     "AT+COPS?"           ///< Query current operator
 #define __M66_CMD_Restart      "AT+QPOWD=0"         ///< Restart the module
 #define __M66_CMD_CheckSQ      "AT+CSQ"             ///< Check signal quality (RSSI and BER)
+#define __M66_CMD_CallerID     "AT+CLIP=1"          ///< Enable caller ID for incoming calls
+#define __M66_CMD_Hangup       "ATH"                ///< Hang up the current or incoming call.
 
 /* Control Characters & Defaults */
 #define __M66_CtrlZ            0x1A                 ///< End-of-message character for SMS

@@ -24,6 +24,7 @@ extern Remote_Authorized_T     Remote_Authorized;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
 
+bool         AutoStartUp     = false;
 bool         System_PowerOn  = true;          
 bool         Sensor_Flt_Flag = false;
 AHT20_Data_T AHT20_Data = {.Humidity = 0.0f, .Temp = 0.0f};
@@ -35,6 +36,7 @@ millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisRemote  = {.Delta = 0, .Previous = 0, .Interval = REMOTE_Idle_MS}; 
 millis_T millisSensor  = {.Delta = 0, .Previous = 0, .Interval = 500}; 
+millis_T millisAStart  = {.Delta = 0, .Previous = 0, .Interval = 12000}; 
 
 Sys_State_T Sys_State = Sys_StartUp;
 GSM_State_T GSM_State = GSM_Reset;
@@ -344,6 +346,22 @@ void System_Task(void)
         break;
         
         case Sys_Idle:
+            if(AutoStartUp == true)
+            {
+                Outputs.Pump  = PUMP_ON;
+                Outputs.Motor = MOTOR_OFF;               
+                millisAStart.Delta = System_millis - millisAStart.Previous;
+                if(millisAStart.Delta >= millisAStart.Interval)
+                {
+                    AutoStartUp = false;
+                    millisAStart.Previous = System_millis;
+                    Outputs.Pump  = PUMP_ON;
+                    Outputs.Motor = MOTOR_HIGH;
+                    SMS_CMD_Type  = SMS_CMD_Status;
+                    GSM_State     = GSM_SMS_SendSMS;
+                };
+            };
+
             if(Config_Device.fields.Remote_CFG == false && Config_Device.fields.Phone_CFG == false)
             {
                 Config_Device.fields.Status = 0x05;
@@ -485,6 +503,23 @@ void GSM_Task(void)
                 {
                     GSM_State = GSM_SMS_ParseNumber;
                 }
+                else if(strstr(usart_RxBuffer,"+CLIP") != NULL)
+                {
+                    if(Config_Device.fields.Phone_CFG == true)
+                    {
+                        if(strstr(usart_RxBuffer, SMS_Authorized_Number.fields.Number) != NULL)
+                        {
+                            AutoStartUp = true;
+                            SMS_CMD_Type  = SMS_CMD_autoStart;
+                            GSM_State     = GSM_SMS_SendSMS;   
+                            millisGSM.Interval = 2500;                         
+                            millisAStart.Previous = System_millis;
+                        };
+                    };
+                    usart_Putsln(__M66_CMD_Hangup);
+                    usart_RxFlag = false;
+                    usart_Flush();                  
+                }
                 else
                 {
                     usart_RxFlag = false;
@@ -577,6 +612,10 @@ void GSM_Task(void)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
                 }
+                else if(SMS_CMD_Type == SMS_CMD_autoStart)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Device is in auto startup mode.");
+                }                 
                 else if(SMS_CMD_Type == SMS_CMD_rListening)
                 {
                     //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Device is in remote listening mode.");

@@ -48,6 +48,7 @@ typedef enum
     GSM_Init_Text,
     GSM_Init_Char,
     GSM_Init_SMS,
+    GSM_Init_CID,
     GSM_Init_Del,
     GSM_Init_Done
 } GSM_Init_State_T;
@@ -63,9 +64,9 @@ typedef union
         uint8_t Text :1;
         uint8_t Char :1;
         uint8_t SMS  :1;
+        uint8_t CID  :1;
         uint8_t Del  :1;
         uint8_t Result:1;
-        uint8_t reserve:1;
     }bits;
     uint8_t raw;
 } GSM_Init_Flags_T;
@@ -93,6 +94,7 @@ typedef enum
     SMS_CMD_NumberDelete,
     SMS_CMD_CfgStatus,
     SMS_CMD_rListening,
+    SMS_CMD_autoStart,
     SMS_CMD_Unknown      
 } SMS_CMD_Type_T;
 

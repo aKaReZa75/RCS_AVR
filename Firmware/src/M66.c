@@ -19,15 +19,19 @@
 
 extern volatile bool usart_RxFlag;   /**< True: Data has been received completely */   
 extern char usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to store received data, with defined size */
+extern volatile uint32_t   System_millis;
 extern GSM_StartUp_Flags_T GSM_StartUp_Flags;
 extern GSM_Init_State_T GSM_Init_State;
 extern GSM_Init_Flags_T GSM_Init_Flags;
 extern SMS_CMD_Type_T   SMS_CMD_Type;
+extern bool             AutoStartUp;
+extern millis_T         millisAStart;
 extern Outputs_T Outputs;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
 extern Remote_Authorized_T     Remote_Authorized;
 extern Remote_State_T          Remote_State;
+
 
 #define SMS_scanSet_Index     "\r\n+CMTI: \"SM\",%hhu\r\n"
 #define SMS_scanSet_Number    "\r\n+CMGR: \"%*[^\"]\",\"%[^\"]\""
@@ -49,6 +53,7 @@ extern Remote_State_T          Remote_State;
 #define SMS_CMD_NumberDEL            "RCS+AN=DEL"
 #define SMS_CMD_ConfigSts            "RCS+CFG?"
 #define SMS_CMD_RemoteListening      "RCS+LST"
+#define SMS_CMD_autoStartRoutine     "RCS+AUTO"
 
 /**
  * @brief Initializes the M66 GSM module
@@ -248,11 +253,34 @@ M66_Res_T M66_Config(void)
                     {
                         GSM_Init_Flags.bits.SMS = false;
                     };
-                    GSM_Init_State = GSM_Init_Del;
+                    GSM_Init_State = GSM_Init_CID;
                 };
             };
         break;
         
+        case GSM_Init_CID:  // Enable caller ID for incoming calls
+            if(GSM_Init_State_Last != GSM_Init_CID)
+            {
+                usart_Putsln(__M66_CMD_CallerID);
+                GSM_Init_State_Last = GSM_Init_CID;
+            }
+            else
+            {
+                if(usart_RxFlag == true)
+                {                            
+                    if(strstr(usart_RxBuffer, __M66_Okey) != NULL)
+                    {
+                        GSM_Init_Flags.bits.CID = true;
+                    }
+                    else
+                    {
+                        GSM_Init_Flags.bits.CID = false;
+                    };
+                    GSM_Init_State = GSM_Init_Del;
+                };
+            };
+        break;
+
         case GSM_Init_Del:
             if(GSM_Init_State_Last != GSM_Init_Del)
             {
@@ -492,6 +520,12 @@ M66_Res_T M66_CheckSMS(void)
             {
                 SMS_CMD_Type = SMS_CMD_Status;
             }
+            else if(strstr(_incomeText, SMS_CMD_autoStartRoutine) != NULL)
+            {
+                AutoStartUp  = true;
+                millisAStart.Previous = System_millis;
+                SMS_CMD_Type = SMS_CMD_autoStart;
+            }               
             else if(strstr(_incomeText, SMS_CMD_NumberDEL) != NULL)
             {
                 SMS_CMD_Type = SMS_CMD_NumberDelete;
