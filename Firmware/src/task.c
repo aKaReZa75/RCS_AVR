@@ -16,6 +16,7 @@ extern char              usart_RxBuffer[__usart_RxBufferSize]; /* Buffer to stor
 extern alcd_customChar_T Display_customChar;
 extern M66_SignalQ_T     M66_SignalQ;
 extern volatile ev1527_T ev1527_Data;
+extern ev1527_T ev1527_Data_cpy;
 extern Remote_Authorized_T     Remote_Authorized;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
@@ -23,10 +24,11 @@ extern Config_Device_T         Config_Device;
 bool         System_PowerOn  = true;          
 bool         Sensor_Flt_Flag = false;
 AHT20_Data_T AHT20_Data = {.Humidity = 0.0f, .Temp = 0.0f};
+uint16_t     Key_Learn_ctr = 0;
 
 millis_T millisDisplay = {.Delta = 0, .Previous = 0, .Interval = 250};
 millis_T millisOutputs = {.Delta = 0, .Previous = 0, .Interval = 50};
-millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 50};
+millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisRemote  = {.Delta = 0, .Previous = 0, .Interval = REMOTE_Idle_MS}; 
 millis_T millisSensor  = {.Delta = 0, .Previous = 0, .Interval = 500}; 
@@ -137,6 +139,7 @@ void Remote_Task(void)
 {
     static uint8_t  _failCounter = 0;
     static uint16_t _learnCounter= 0;
+    static uint16_t _listenTimer = 0;
     static Remote_State_T Remote_State_Last;
     static uint32_t _remoteAdd[5] = {0};
     static uint8_t  _rIndex = 0;
@@ -163,10 +166,6 @@ void Remote_Task(void)
             {
                 ev1527_Data.Bits.Detect = false;
                 _failCounter = 0;
-                if(bitCheckLow(Learn_Key_STS, Learn_Key_Pin))
-                {
-                    Dispay_Page  = Display_Page_EV1527;
-                };
                 Remote_State = Remote_Check;
             }
             else
@@ -179,6 +178,36 @@ void Remote_Task(void)
             };
         break;
         
+        case Remote_Listening:
+            if(Remote_State_Last != Remote_Listening)
+            {
+                ev1527_Data_cpy.rawValue = 0x0;
+                _listenTimer = 0;
+                Remote_State_Last = Remote_Listening;
+                ev1527_Init();
+                millisRemote.Interval = REMOTE_Idle_MS;
+                Dispay_Page = Display_Page_EV1527;
+            };
+
+            if(ev1527_Data.Bits.Detect == true)
+            {
+                ev1527_Data_cpy.rawValue = ev1527_Data.rawValue;
+                ev1527_Data.Bits.Detect = false;
+                ev1527_Data.rawValue = 0x0;
+                ev1527_Init();
+                _listenTimer = 0;
+            };
+
+            _listenTimer++;
+            if(_listenTimer > 1500)  /* 1500*10ms = 15S */
+            {
+                _listenTimer = 0;
+                Remote_State = Remote_deInit;
+                Dispay_Page  = Display_Page_Home;
+            };
+
+        break;
+
         case Remote_Check:
             Remote_State = Remote_Check;
             if(ev1527_Data.Bits.Address == Remote_Authorized.fields.Address)
@@ -302,7 +331,6 @@ void Remote_Task(void)
 
 void System_Task(void)
 {
-    static uint16_t _remoteCounter = 0;
     switch (Sys_State)
     {
         case Sys_StartUp:
@@ -319,28 +347,39 @@ void System_Task(void)
 
             if(bitCheckLow(Learn_Key_STS, Learn_Key_Pin))
             {
-                _remoteCounter++;
+                Key_Learn_ctr++;
             }
             else
             {
-                if(_remoteCounter >= 200) /* 100*100ms = 10Sec */
+                if(Key_Learn_ctr >= 100) /* 100*100ms = 10Sec */
                 {
-                    _remoteCounter = 0;
+                    Key_Learn_ctr = 0;
                     mem_Wipe();
                 }
-                else if(_remoteCounter >= 50) /* 50*100ms = 5Sec */
+                else if(Key_Learn_ctr >= 50) /* 50*100ms = 5Sec */
                 {
-                    _remoteCounter = 0;
+                    Key_Learn_ctr = 0;
                     Remote_State   = Remote_Learning;
-                }                
-                else if(_remoteCounter >= 15) /* 15*100ms = 1.5Sec */
+                }    
+                else if(Key_Learn_ctr >= 25) /* 25*100ms = 2.5Sec */
                 {
-                    _remoteCounter = 0;
-                    Dispay_Page    = Display_Page_Authorized;
+                    Key_Learn_ctr = 0;
+                    Remote_State   = Remote_Listening;
+                }                               
+                else if(Key_Learn_ctr >= 15) /* 15*100ms = 1.5Sec */
+                {
+                    Key_Learn_ctr = 0;
+                    Dispay_Page   = Display_Page_Authorized;
+                }
+                else if(Key_Learn_ctr >= 3) /* 3*100ms = 0.3Sec */
+                {   
+                    Key_Learn_ctr = 0;
+                    Remote_State= Remote_deInit;
+                    Dispay_Page = Display_Page_Home;
                 }
                 else
                 {
-                    _remoteCounter = 0;
+                    Key_Learn_ctr = 0;
                 };
             };
         break;

@@ -104,7 +104,8 @@ typedef enum
     Remote_Check,
     Remote_Learning,
     Remote_Learn_Done,
-    Remote_Learn_Fail
+    Remote_Learn_Fail,
+    Remote_Listening
 } Remote_State_T;
 
 typedef enum

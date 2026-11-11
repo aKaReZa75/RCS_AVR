@@ -65,7 +65,7 @@
  * @note Declared volatile because it is written inside the ISR
  * ------------------------------------------------------- */
 volatile ev1527_T ev1527_Data = {.rawValue = 0x0};
-
+ev1527_T ev1527_Data_cpy = {.rawValue = 0x0};
 
 /* ============================================================================
  *                         INTERRUPT SERVICE ROUTINE

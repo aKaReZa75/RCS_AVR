@@ -4,11 +4,11 @@ extern Outputs_T    Outputs;
 extern GSM_State_T  GSM_State;
 extern AHT20_Data_T AHT20_Data;
 extern bool         Sensor_Flt_Flag;
+extern uint16_t     Key_Learn_ctr;
 extern SMS_Authorized_Number_T SMS_Authorized_Number;
 extern Config_Device_T         Config_Device;
 extern Remote_Authorized_T     Remote_Authorized;
 extern Remote_State_T          Remote_State;
-
 char alcd_Buffer[16];
 
 char* Pump_Display[]  = {"OFF", "ON"};
@@ -76,14 +76,9 @@ void display_Update(void)
       {
         alcd_clear();
         Dispay_Page_Last = Display_Page_EV1527;
-        display_EV1527_Show();
       };
-      _dispCounter++;
-      if(_dispCounter >= 10) /* 250ms *10 = 2500ms*/
-      {
-        _dispCounter = 0;
-        Dispay_Page = Display_Page_Home;
-      };
+
+      display_EV1527_Show();
     break;
 
     case Display_Page_Authorized:
@@ -166,12 +161,17 @@ void display_Authorized(void)
 
 void display_EV1527_Show(void)
 {
-  extern volatile ev1527_T ev1527_Data;
-  sprintf(alcd_Buffer, "Add: 0x%lX", (uint32_t) ev1527_Data.Bits.Address);
+  extern ev1527_T ev1527_Data_cpy;
+  sprintf(alcd_Buffer, "Add: 0x%05lX", (uint32_t) ev1527_Data_cpy.Bits.Address);
   alcd_gotoxy(0, 0);
   alcd_puts(alcd_Buffer);
 
-  sprintf(alcd_Buffer, "Key: 0x%X", ev1527_Data.Bits.Keys);
+  sprintf(alcd_Buffer, "Key: 0x%01X [%c%c%c%c] ",
+          ev1527_Data_cpy.Bits.Keys,
+          (bitCheck(ev1527_Data_cpy.Bits.Keys, 3)) ? '1' : '0',
+          (bitCheck(ev1527_Data_cpy.Bits.Keys, 2)) ? '1' : '0',
+          (bitCheck(ev1527_Data_cpy.Bits.Keys, 1)) ? '1' : '0',
+          (bitCheck(ev1527_Data_cpy.Bits.Keys, 0)) ? '1' : '0');
   alcd_gotoxy(0, 1);
   alcd_puts(alcd_Buffer);  
 };
@@ -249,7 +249,23 @@ void display_HomePage(void)
 
     alcd_gotoxy(7, 1);
     sprintf(alcd_Buffer,"M:%s ", Motor_Display[Outputs.Motor]);
-    alcd_puts(alcd_Buffer); 
+    alcd_puts(alcd_Buffer);
+    
+    alcd_gotoxy(13, 1);
+    if(Key_Learn_ctr>=99)
+    {
+      sprintf(alcd_Buffer, "%2u", (uint16_t)(Key_Learn_ctr*0.1));
+      alcd_puts(alcd_Buffer);
+    }
+    else if(Key_Learn_ctr >= 3)
+    {
+      sprintf(alcd_Buffer, "%1.1f", (float)(Key_Learn_ctr*0.1f));
+      alcd_puts(alcd_Buffer);
+    }
+    else
+    {
+      alcd_puts("   ");
+    };
   }
   else
   {
