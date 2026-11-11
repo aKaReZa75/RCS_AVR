@@ -50,7 +50,6 @@ void mem_Update_Remote(void)
 
 void mem_Update_Number(void)
 {
-    Config_Device.fields.Phone_CFG = true;
     Config_Device.fields.Status    = 0x03;
     Config_Device.fields.CheckSum  = CRC16_Calc(&crc16_modbus, Config_Device.raw, (Config_Device_Len-2));
     e2prom_block_Write(Config_Device_Address, Config_Device.raw, Config_Device_Len);
@@ -78,6 +77,11 @@ void mem_Read(void)
 
     e2prom_block_Read(Config_Remote_Address, Remote_Authorized.raw, Config_Remote_Len);
     if(CRC16_Calc(&crc16_modbus, Remote_Authorized.raw, Config_Remote_Len) != 0)
+    {
+        _checkSum_Err = true;
+    };
+
+    if(Config_Device.fields.Remote_CFG == false && Config_Device.fields.Phone_CFG == false)
     {
         _checkSum_Err = true;
     };

@@ -312,6 +312,11 @@ void System_Task(void)
         break;
         
         case Sys_Idle:
+            if(Config_Device.fields.Remote_CFG == false && Config_Device.fields.Phone_CFG == false)
+            {
+                Config_Device.fields.Status = 0x05;
+            };
+
             if(bitCheckLow(Learn_Key_STS, Learn_Key_Pin))
             {
                 _remoteCounter++;
@@ -534,6 +539,14 @@ void GSM_Task(void)
                     sprintf(_Text, "Remote Address: 0x%05lX", (uint32_t)Remote_Authorized.fields.Address);
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, _Text);
                 }  
+                else if(SMS_CMD_Type == SMS_CMD_NumberDelete)
+                {
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Number has been deleted successfully.");
+                    memset(SMS_Authorized_Number.fields.Number, 0, sizeof(SMS_Authorized_Number.fields.Number));
+                    Config_Device.fields.Phone_CFG = false;
+                    mem_Update_Number();
+                    mem_Update_Config();                    
+                }                     
                 else if(SMS_CMD_Type == SMS_CMD_RemoteDelete)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been deleted successfully.");
