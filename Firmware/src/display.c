@@ -250,26 +250,26 @@ void display_HomePage(void)
     alcd_gotoxy(7, 1);
     sprintf(alcd_Buffer,"M:%s ", Motor_Display[Outputs.Motor]);
     alcd_puts(alcd_Buffer);
-    
-    alcd_gotoxy(13, 1);
-    if(Key_Learn_ctr>=99)
-    {
-      sprintf(alcd_Buffer, "%2u", (uint16_t)(Key_Learn_ctr*0.1));
-      alcd_puts(alcd_Buffer);
-    }
-    else if(Key_Learn_ctr >= 3)
-    {
-      sprintf(alcd_Buffer, "%1.1f", (float)(Key_Learn_ctr*0.1f));
-      alcd_puts(alcd_Buffer);
-    }
-    else
-    {
-      alcd_puts("   ");
-    };
   }
   else
   {
     alcd_gotoxy(0, 1);
     alcd_puts("Config Error!");
   }; 
+
+  alcd_gotoxy(13, 1);
+  if(Key_Learn_ctr>=99)
+  {
+    sprintf(alcd_Buffer, " %2u", (uint16_t)(Key_Learn_ctr*0.1));
+    alcd_puts(alcd_Buffer);
+  }
+  else if(Key_Learn_ctr >= 3)
+  {
+    sprintf(alcd_Buffer, "%1.1f", (float)(Key_Learn_ctr*0.1f));
+    alcd_puts(alcd_Buffer);
+  }
+  else
+  {
+    alcd_puts("   ");
+  };  
 };

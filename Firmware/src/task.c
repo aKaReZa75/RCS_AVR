@@ -1,5 +1,8 @@
 #include "task.h"
 
+#define MSG_CMD_OK    "Command accepted."
+#define MSG_CMD_NotOK "Invalid command!"
+
 #define REMOTE_Idle_MS    10
 #define REMOTE_Idle_TICKS 18
 #define REMOTE_Sleep_MS   100
@@ -279,6 +282,7 @@ void Remote_Task(void)
 
                     if(_res == true)
                     {
+                        Config_Device.fields.Remote_CFG  = true;
                         Remote_Authorized.fields.Address = _remoteAdd[0];
                         Remote_State = Remote_Learn_Done;
                         millisRemote.Interval = 2500;
@@ -573,6 +577,11 @@ void GSM_Task(void)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
                 }
+                else if(SMS_CMD_Type == SMS_CMD_rListening)
+                {
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Device is in remote listening mode.");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
+                }                  
                 else if(SMS_CMD_Type == SMS_CMD_CfgStatus)
                 {
                     sprintf(_Text,"Power-on SMS: %s\nRemote status SMS: %s",
@@ -587,7 +596,8 @@ void GSM_Task(void)
                 }  
                 else if(SMS_CMD_Type == SMS_CMD_NumberDelete)
                 {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Number has been deleted successfully.");
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Number has been deleted successfully.");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
                     memset(SMS_Authorized_Number.fields.Number, 0, sizeof(SMS_Authorized_Number.fields.Number));
                     Config_Device.fields.Phone_CFG = false;
                     mem_Update_Number();
@@ -595,19 +605,23 @@ void GSM_Task(void)
                 }                     
                 else if(SMS_CMD_Type == SMS_CMD_RemoteDelete)
                 {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been deleted successfully.");
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been deleted successfully.");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
                 }                              
                 else if(SMS_CMD_Type == SMS_CMD_AddPhoneNumber)
                 {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Your number has been added as authorized.");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
                 }
                 else if(SMS_CMD_Type == SMS_CMD_RemoteLearning)
                 {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Device is in remote learning mode...");
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Device is in remote learning mode...");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
                 }                 
                 else if(SMS_CMD_Type == SMS_CMD_RemoteDone)
                 {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been set successfully.");
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Remote has been set successfully.");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
                 } 
                 else if(SMS_CMD_Type == SMS_CMD_RemoteFail)
                 {
@@ -615,12 +629,14 @@ void GSM_Task(void)
                 }                           
                 else if(SMS_CMD_Type == SMS_CMD_WipeAll)
                 {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Factory Reset Done!");
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "Factory Reset Done!");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
                     mem_Wipe();
                 }    
                 else if(SMS_CMD_Type == SMS_CMD_dConfig ) 
-                {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "System Config Done.");
+                {        
+                    //M66_SendSMS(SMS_Authorized_Number.fields.Number, "System Config Done.");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_OK);
                 }            
                 else if(SMS_CMD_Type != SMS_CMD_Unknown)
                 {
@@ -628,7 +644,7 @@ void GSM_Task(void)
                 }
                 else
                 {
-                    M66_SendSMS(SMS_Authorized_Number.fields.Number, "Unknown Command!");
+                    M66_SendSMS(SMS_Authorized_Number.fields.Number, MSG_CMD_NotOK);
                 };
                 GSM_State = GSM_Idle;                
             }
