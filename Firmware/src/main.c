@@ -8,7 +8,7 @@ int main(void)
 {
   wdt_Init(WDT_TIMEOUT_8S);
   get_Reset_Srouce(&Reset_Source);
-  if(Reset_Source == RESET_SOURCE_POWER_ON)
+  if(Reset_Source == RESET_SOURCE_POWER_ON || Reset_Source == RESET_SOURCE_EXTERNAL)
   {
     System_PowerOn = true;
     Display_BakckLight = Display_BL_ON;

@@ -53,8 +53,8 @@
 #include "mem.h"
 #include "wdt.h"
 
-#define firmwareVer   "1.5.0"
-#define gitHash       "0b98b63"
+#define firmwareVer   "1.5.1"
+#define gitHash       "8fe61ce"
 #define Learn_Key_DDR DDRD
 #define Learn_Key_Pin 3
 #define Learn_Key_STS PIND

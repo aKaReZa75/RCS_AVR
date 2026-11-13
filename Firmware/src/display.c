@@ -309,7 +309,14 @@ void display_HomePage(void)
   {
     if(AutoStartUp == true)
     {
-      alcd_puts("ASU");
+      if(Counter<2)
+      {
+        alcd_puts("ASU");
+      }
+      else
+      {
+        alcd_puts("   ");
+      };      
     } 
     else
     {

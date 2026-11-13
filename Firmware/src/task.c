@@ -37,7 +37,7 @@ millis_T millisSystem  = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisGSM     = {.Delta = 0, .Previous = 0, .Interval = 100};
 millis_T millisRemote  = {.Delta = 0, .Previous = 0, .Interval = REMOTE_Idle_MS}; 
 millis_T millisSensor  = {.Delta = 0, .Previous = 0, .Interval = 500}; 
-millis_T millisAStart  = {.Delta = 0, .Previous = 0, .Interval = 150000}; 
+millis_T millisAStart  = {.Delta = 0, .Previous = 0, .Interval = 180000}; 
 millis_T millisALCdBL  = {.Delta = 0, .Previous = 0, .Interval = 120000}; 
 
 Sys_State_T Sys_State = Sys_StartUp;
@@ -227,11 +227,21 @@ void Remote_Task(void)
         case Remote_Check:
             Remote_State = Remote_Check;
             if(ev1527_Data.Bits.Address == Remote_Authorized.fields.Address)
-            {
+            {              
                 switch (ev1527_Data.Bits.Keys)
-                {
+                {                 
                     case (Remote_Key_A | Remote_Key_B):
-                        AutoStartUp = !AutoStartUp;
+                        if(AutoStartUp == true)
+                        {
+                            AutoStartUp = false;
+                            Display_BakckLight    = Display_BL_ON;
+                            millisALCdBL.Previous = System_millis;
+                            millisALCdBL.Interval = 5000;                                  
+                        }
+                        else
+                        {
+                            AutoStartUp = true;
+                        };
                         millisAStart.Previous = System_millis;   
                     break;
 
@@ -642,6 +652,9 @@ void GSM_Task(void)
         case GSM_SMS_SendSMS:
             if(Config_Device.fields.Phone_CFG == true)
             {
+                Display_BakckLight    = Display_BL_ON;
+                millisALCdBL.Previous = System_millis;
+                millisALCdBL.Interval = 10000;                    
                 if(SMS_CMD_Type == SMS_CMD_PowerOn)
                 {
                     M66_SendSMS(SMS_Authorized_Number.fields.Number, "RCS AVR powered on!");
