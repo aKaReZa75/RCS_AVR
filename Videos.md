@@ -92,14 +92,22 @@ RCS, AVR Project
     │   ├─ GSM_Init — Resource setup and readiness validation.
     │   └─ GSM_Idle — Event-driven loop and transition rules.
     │
-    └── [aKaReZa 132 - RCS, AVR - PART N]
-        ├─ Detection — Finding new SMS messages from GSM.
-        ├─ GSM_SMS_ParseNumber — Extracting message index.
-        ├─ GSM_SMS_ReadContent — Getting sender number and text.
-        ├─ GSM_SMS_SendSMS — Reply SMS state machine.
-        ├─ LCD — Busy icon, Welcome Page redesign, FW version.
-        ├─ Code — Readability and structure improvements.
-        └─ Git — Introduction to git merge workflow.
+    ├── [aKaReZa 132 - RCS, AVR - PART N]
+    │   ├─ Detection — Finding new SMS messages from GSM.
+    │   ├─ GSM_SMS_ParseNumber — Extracting message index.
+    │   ├─ GSM_SMS_ReadContent — Getting sender number and text.
+    │   ├─ GSM_SMS_SendSMS — Reply SMS state machine.
+    │   ├─ LCD — Busy icon, Welcome Page redesign, FW version.
+    │   ├─ Code — Readability and structure improvements.
+    │   └─ Git — Introduction to git merge workflow.
+    │
+    └── [aKaReZa 150 - RCS, AVR - PART O]
+        ├─ EV1527 Library — Adding the library to the RCS-AVR project.
+        ├─ State Machine — Remote state machine structure and organization.
+        ├─ State Management — Defining and managing remote states.
+        ├─ State Transitions — Implementing and managing remote section transitions.
+        ├─ Remote Detection — Stages of remote detection and identification.
+        └─ Learning Method — Remote identification and learning capability.
 ```
 
 ## PCB Desing Videos
@@ -411,6 +419,24 @@ RCS, AVR Project
         <img src="https://img.youtube.com/vi/P0FgmPWP3M4/maxresdefault.jpg"
              width="360"
              alt="aKaReZa 132 – RCS, AVR - PART O Thumbnail"/>
+      </a>
+    </td>
+  </tr>
+
+  <tr>
+    <td valign="top" style="padding: 0 10px;">
+      <h3 style="margin: 0;">
+        <a href="https://youtu.be/aqiqLh-sPnc">aKaReZa 150 – RCS, AVR - PART O</a>
+      </h3>
+      <p style="margin: 8px 0 0;">
+        In this part of the RCS-AVR project, we add the capability to receive and identify remotes based on the EV1527 protocol. We add the EV1527 library to the project, examine the State Machine structure for managing the different stages of receiving and identifying the remote, look at how State Transitions are defined and managed, and implement the remote detection and Learning method to add remote identification and learning capability to the RCS-AVR project.
+      </p>
+    </td>
+    <td width="360" valign="middle" style="padding: 0;">
+      <a href="https://youtu.be/aqiqLh-sPnc">
+        <img src="https://img.youtube.com/vi/aqiqLh-sPnc/maxresdefault.jpg"
+             width="360"
+             alt="aKaReZa 150 – RCS, AVR - PART O Thumbnail"/>
       </a>
     </td>
   </tr>
