@@ -113,6 +113,7 @@ void Sensor_Task(void)
     switch (Sensor_State)
     {
         case Sensor_Init:
+            Sensor_Flt_Flag = false;
             millisSensor.Interval = 500;
             Sensor_Res = aht20_Init();
             if(Sensor_Res == AHT20_Res_OK)
@@ -227,53 +228,80 @@ void Remote_Task(void)
         case Remote_Check:
             Remote_State = Remote_Check;
             if(ev1527_Data.Bits.Address == Remote_Authorized.fields.Address)
-            {              
+            {   
+                if(AutoStartUp == false)
+                {
+                    Display_BakckLight    = Display_BL_ON;
+                    millisALCdBL.Previous = System_millis;
+                    millisALCdBL.Interval = 5000;   
+                };
+                               
                 switch (ev1527_Data.Bits.Keys)
                 {                 
                     case (Remote_Key_A | Remote_Key_B):
-                        if(AutoStartUp == true)
-                        {
-                            AutoStartUp = false;
-                            Display_BakckLight    = Display_BL_ON;
-                            millisALCdBL.Previous = System_millis;
-                            millisALCdBL.Interval = 5000;                                  
-                        }
-                        else
+                        if(AutoStartUp == false)
                         {
                             AutoStartUp = true;
+                            if(GSM_State == GSM_Idle)
+                            {
+                                GSM_State    = GSM_SMS_SendSMS;
+                                SMS_CMD_Type = SMS_CMD_autoStart;
+                            };
+                            millisAStart.Previous = System_millis;  
                         };
-                        millisAStart.Previous = System_millis;   
                     break;
 
                     case (Remote_Key_A | Remote_Key_C):
-                        Display_BakckLight    = Display_BL_ON;
-                        millisALCdBL.Previous = System_millis;
-                        millisALCdBL.Interval = 60000;    
+                        if(AutoStartUp == false)
+                        {
+                            Display_BakckLight    = Display_BL_ON;
+                            millisALCdBL.Previous = System_millis;
+                            millisALCdBL.Interval = 60000;    
+                        }
                     break;
 
                     case (Remote_Key_A | Remote_Key_D):
-                        Outputs.Pump  = PUMP_ON;
-                        Outputs.Motor = MOTOR_OFF;   
+                        if(AutoStartUp == false)
+                        {
+                            Outputs.Pump  = PUMP_ON;
+                            Outputs.Motor = MOTOR_OFF;
+                        };
                     break;                    
 
                     case Remote_Key_A:
                         Outputs.Pump  = PUMP_OFF;
                         Outputs.Motor = MOTOR_OFF;
+                        if(AutoStartUp == true)
+                        {
+                            AutoStartUp   = false;
+                            Display_BakckLight    = Display_BL_ON;
+                            millisALCdBL.Previous = System_millis;
+                            millisALCdBL.Interval = 5000;   
+                        };
                     break;
 
                     case Remote_Key_B:
-                        Outputs.Pump  = PUMP_ON;
-                        Outputs.Motor = MOTOR_HIGH;
+                        if(AutoStartUp == false)
+                        {
+                            Outputs.Pump  = PUMP_ON;
+                            Outputs.Motor = MOTOR_HIGH;
+                        };
                     break;
 
                     case Remote_Key_C:
-                        Outputs.Pump  = PUMP_ON;
-                        Outputs.Motor = MOTOR_LOW;
+                        if(AutoStartUp == false)
+                        {
+                            Outputs.Pump  = PUMP_ON;
+                            Outputs.Motor = MOTOR_LOW;
+                        };
                     break;  
                     
                     case Remote_Key_D:
-                        Outputs.Pump  = PUMP_OFF;
-                        Outputs.Motor = MOTOR_LOW;
+                        if(AutoStartUp == false)
+                        {
+                            Outputs.Pump  = PUMP_OFF;
+                            Outputs.Motor = MOTOR_LOW;
+                        };
                     break;                    
                 };
                 if(Config_Device.fields.RemoteSTS == true)

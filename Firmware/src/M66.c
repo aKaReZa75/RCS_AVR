@@ -590,42 +590,52 @@ M66_Res_T M66_CheckSMS(void)
                 Outputs.Pump  = PUMP_OFF;
                 Outputs.Motor = MOTOR_OFF;
                 SMS_CMD_Type  = SMS_CMD_POFF_MOFF;
+                AutoStartUp   = false;
             }
             else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_OFF) != NULL)
             {
                 Outputs.Pump  = PUMP_ON;
                 Outputs.Motor = MOTOR_OFF;
                 SMS_CMD_Type  = SMS_CMD_PON_MOFF;
+                AutoStartUp   = false;
             }       
             else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_LOW) != NULL)
             {
                 Outputs.Pump  = PUMP_ON;
                 Outputs.Motor = MOTOR_LOW;
                 SMS_CMD_Type  = SMS_CMD_PON_MLOW;
+                AutoStartUp   = false;
 
             }
             else if(strstr(_incomeText, SMS_CMD_Pump_ON_Motor_HIGH) != NULL)
             {
                 Outputs.Pump  = PUMP_ON;
                 Outputs.Motor = MOTOR_HIGH;
-                SMS_CMD_Type  = SMS_CMD_PON_MHIGH;            
+                SMS_CMD_Type  = SMS_CMD_PON_MHIGH; 
+                AutoStartUp   = false;           
             }
             else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_LOW) != NULL)
             {
                 Outputs.Pump  = PUMP_OFF;
                 Outputs.Motor = MOTOR_LOW;
-                SMS_CMD_Type  = SMS_CMD_POFF_MLOW;                
+                SMS_CMD_Type  = SMS_CMD_POFF_MLOW;
+                AutoStartUp   = false;                
             }
             else if(strstr(_incomeText, SMS_CMD_Pump_OFF_Motor_HIGH) != NULL)
             {
                 Outputs.Pump  = PUMP_OFF;
                 Outputs.Motor = MOTOR_HIGH;
-                SMS_CMD_Type  = SMS_CMD_POFF_MHIGH;                
+                SMS_CMD_Type  = SMS_CMD_POFF_MHIGH;  
+                AutoStartUp   = false;              
             }
             else
             {
                 SMS_CMD_Type  = SMS_CMD_Unknown;                
             };
+        }
+        else
+        {
+            return M66_Res_OK;
         };
     };
 
